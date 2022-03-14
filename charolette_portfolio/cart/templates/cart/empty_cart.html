@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- ====== Header ======  -->
+        <header id="home" class="sub-header" style="background-image: url({{ background.0.background_image.cdn_url }});">
+            <div class="header-overlay">
+                <!-- header content -->
+                <div class="caption v-middle text-center">
+                    <h1>{{ background.0.header_title }}</h1>
+        
+                </div>
+            </div>
+        </header>
+
+    <!-- ====== End Header ======  -->
+    
+    <!-- ====== Shop Cart ======  -->
+    <section class="shop-cart text-center">
+        <h1>Cart Empty <span> <i class="fa fa-exclamation" aria-hidden="true"></i></span></h1>
+    </section>
+    <!-- ====== End Shop Cart ======  -->
+{% endblock %}

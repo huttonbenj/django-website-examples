@@ -1,0 +1,38 @@
+<section>
+    <div class="section m-0 clearfix py-5" style="background-color: #383838;">
+        <div class="container clearfix">
+    
+            <div class="heading-block center border-bottom-0 bottommargin topmargin-sm mx-auto" style="max-width: 700px;">
+                <h3 class="nott font-secondary fw-normal" style="font-size: 36px;">FAQs</h3>
+                <span>Have a question?  Check out some our frequently asked questions.</span>
+            </div>
+    
+            <div class="row clearfix">
+                <!-- Features colomns
+                                ============================================= -->
+
+                    <div id="faqs" class="faqs">
+
+                        {% for faq in faqs %}
+                        <div class="toggle faq">
+                            <div class="toggle-header">
+                                <div class="toggle-icon">
+                                    <img class="i-plain color i-small icon-line2-screen-desktop inline-block" src="{{faq.icon.url}}"
+                                    alt="icon">
+                                </div>
+                                <div class="toggle-title">
+                                    {{faq.title}}
+                                </div>
+                            </div>
+                            <div class="toggle-content">{{faq.description|safe}}</div>
+                        </div>
+                        {% endfor %}
+
+
+                </div>
+            </div>
+  
+            <div class="row text-center about-home-button mt-2"><a href="{% url 'faqs' %}" class="btn btn-outline-primary ml-auto">View FAQs Page →</a></div>
+        </div>
+    </div>
+    </section><!-- #content end -->

@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block extra_css %}
+<style>
+    @media (max-width: 992px){
+        .mobile {
+            border-left: 2px solid #001878 !important;
+            border-right: 2px solid #001878 !important;
+            border-top: 1px solid #001878 !important;
+            border-bottom: 1px solid #001878 !important;
+        }
+        .mobile-gallery-wrap {
+            padding-top: 25px !important;
+        }
+        .mobile-grid-filter {
+            margin-bottom: 25px !important;
+        }
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<section id="page-title" class="page-title-mini">
+
+    <div class="container clearfix">
+        <h1>{{page_obj.page_title}}</h1>
+        <span>{{page_obj.page_title_description}}</span>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">{{page_obj.page_title}}</li>
+        </ol>
+    </div>
+
+</section>
+
+
+
+<!-- Content
+            ============================================= -->
+<section id="content">
+    <div class="content-wrap mobile-gallery-wrap">
+        <div class="container clearfix">
+            <div class="grid-filter-wrap">
+
+                <!-- Portfolio Filter
+                            ============================================= -->
+                <ul class="grid-filter mobile-grid-filter" data-container="#portfolio">
+                    <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+                    {% for item in categories %}
+                    <li><a href="#" data-filter=".{{item}}">
+                            <div>{{item|title}}</div>
+                        </a></li>
+                    {% endfor %}
+                </ul><!-- .grid-filter end -->
+
+                <div class="grid-shuffle rounded" data-container="#portfolio">
+                    <i class="icon-random"></i>
+                </div>
+
+            </div>
+            <!-- Portfolio Items
+                        ============================================= -->
+            <div id="portfolio" class="portfolio row grid-container g-0">
+                {% for item in gallery_images %}
+
+                {% if forloop.counter|divisibleby:4 or forloop.counter == 1 %}
+                <!-- Portfolio Item: Start -->
+
+                <article class="portfolio-item col-lg-6 col-md-4 col-sm-6 col-12 {{item.category}} wide mobile">
+                    <!-- Grid Inner: Start -->
+                    <div class="grid-inner">
+                        <!-- Image: Start -->
+                        <div class="portfolio-image">
+                            <a href="{{item.image.url}}">
+                                {% thumbnail item.image "400x300" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
+                            </a>
+                            <!-- Overlay: Start -->
+                            <div class="bg-overlay">
+                                <div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
+                                    <!-- Decription: Start -->
+                                    <div class="d-flex">
+                                        <a href="{{item.image.url}}" class="overlay-trigger-icon bg-light text-dark"
+                                            data-hover-animate="fadeInUpSmall" data-hover-animate-out="fadeOutDownSmall"
+                                            data-hover-speed="350" data-lightbox="image" title="Image"><i
+                                                class="icon-line-plus"></i></a>
+                                    </div>
+                                </div>
+                                <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+                            </div>
+                            <!-- Overlay: End -->
+                        </div>
+                        <!-- Image: End -->
+                    </div>
+                    <!-- Grid Inner: End -->
+                </article>
+
+                {% else %}
+
+                <article class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 {{item.category}} mobile">
+                    <!-- Grid Inner: Start -->
+                    <div class="grid-inner">
+                        <!-- Image: Start -->
+                        <div class="portfolio-image">
+                            <a href="{{item.image.url}}">
+                                {% thumbnail item.image "400x300" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
+                            </a>
+                            <!-- Overlay: Start -->
+                            <div class="bg-overlay">
+                                <div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
+                                    <!-- Decription: Start -->
+                                    <div class="d-flex">
+                                        <a href="{{item.image.url}}" class="overlay-trigger-icon bg-light text-dark"
+                                            data-hover-animate="fadeInUpSmall" data-hover-animate-out="fadeOutDownSmall"
+                                            data-hover-speed="350" data-lightbox="image" title="Image"><i
+                                                class="icon-line-plus"></i></a>
+                                    </div>
+                                </div>
+                                <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+                            </div>
+                            <!-- Overlay: End -->
+                        </div>
+                        <!-- Image: End -->
+                    </div>
+                    <!-- Grid Inner: End -->
+                </article>
+
+                {% endif %}
+
+                <!-- Portfolio Item: End -->
+                {% endfor %}
+
+            </div><!-- #portfolio end -->
+        </div>
+    </div>
+</section><!-- #content end -->
+
+
+
+{% endblock %}

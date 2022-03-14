@@ -1,0 +1,5 @@
+venv
+deployment
+__pycache__
+migrations
+local_settings.py

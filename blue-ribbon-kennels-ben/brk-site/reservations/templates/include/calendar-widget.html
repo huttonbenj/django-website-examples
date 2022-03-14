@@ -1,0 +1,1064 @@
+{% load static %}
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+
+  // determine whether to get end_date or pickup_date for the actual end date
+  function getEndDate(obj) {
+    if (obj["end_date"]) {
+      var end_date = obj["end_date"];
+    } else if (obj["pickup_date"]) {
+      var end_date = obj["end_date"];
+    }
+    return end_date;
+  }
+
+  function createErrorMsg(msg) {
+    return "<i class='icon-remove-sign me-1'></i> " + msg
+  }
+
+  var alertTimeOut;
+
+  function displayErrorMsg(msg) {
+    clearTimeout(alertTimeOut);
+    let el = $('#calendar-error-msg');
+    let toast = el.find('.toast');
+    let toastBody = el.find('.toast-body');
+
+    toastBody.html(msg);
+
+    toast.css('background-color', '#f8d7da');
+    toastBody.css('color', '#721c24');
+
+    toast.addClass('show');
+
+    alertTimeOut = setTimeout(function () {
+      toast.removeClass('show')
+    }, 4000);
+
+  }
+
+  function displaySuccessMsg(msg) {
+    clearTimeout(alertTimeOut);
+    let el = $('#calendar-error-msg');
+    let toast = el.find('.toast');
+    let toastBody = el.find('.toast-body');
+
+    toastBody.html(msg);
+
+    toast.css('background-color', '#d4edda');
+    toastBody.css('color', '#155724');
+    toast.addClass('show');
+
+    alertTimeOut = setTimeout(function () {
+      toast.removeClass('show')
+    }, 10000);
+
+  }
+
+  function formatDate(date, forForm = false) {
+    var month = String(Number(date.getMonth()) + 1);
+    var day = String(date.getDate());
+    var year = String(date.getFullYear());
+    let formatted;
+
+    if (month.length == 1) {
+      month = '0' + month;
+    }
+    if (day.length == 1) {
+      day = '0' + day
+    }
+    if (forForm) {
+      formatted = month + '/' + day + '/' + year;
+    } else {
+      formatted = year + '-' + month + '-' + day;
+    }
+    return formatted;
+  };
+
+  function addTodayTitle(calendar) {
+    let today = formatDate(calendar.view.getCurrentData().options.initialDate);
+    let todayEl = $(document).find('[data-date="' + today + '"]');
+    if (todayEl.length) {
+      if (!document.querySelector('.today-title')) {
+        todayEl.find('.fc-daygrid-day-events').append('<p class="w-100 m-auto text-center today-title disabled">Today</p>');
+      }
+    }
+  }
+
+  function validDate(startDate) {
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (startDate < today) {
+      let errorMsg = createErrorMsg('You must select a current or future date (not a past date).');
+      displayErrorMsg(errorMsg);
+      return false;
+    }
+
+    return true;
+  };
+
+  function addToDate(date, numDays) {
+    let initialDate = new Date(date);
+    let newDate = new Date(initialDate);
+    newDate = new Date(newDate);
+    newDate = new Date(
+      newDate.setDate(newDate.getDate() + numDays)
+    );
+    newDate.setHours(0, 0, 0, 0);
+    return newDate;
+  };
+
+  function eventOverlap(events, startDate, minDays, arg) {
+    for (let i = 0; i < events.length; i++) {
+      if (events[i].title.includes('Training')){
+        let eventEnd = events[i].endStr;
+        let dateClicked = formatDate(addToDate(arg.date, 1));
+        if (dateClicked < eventEnd){
+          let reservationType = document.querySelector('.btn-check.valid').value;
+          let errorMsg = createErrorMsg('Please select a date after your currently selected dates for '+getResTypeNameLabel(reservationType)+' Training.');
+          displayErrorMsg(errorMsg);
+          return true;
+        }
+      } 
+      let clickedDate = addToDate(events[i]._context.dateSelection.range.start, 0);
+      let eventStartDate = addToDate(events[i]._instance.range.start, 1);
+      let minEndDate = addToDate(clickedDate, minDays);
+      if (eventStartDate <= minEndDate && clickedDate < eventStartDate) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  function getResTypeNameLabel(reservationType) {
+    let resType = reservationType.split('_')[0];
+    resType = resType[0].toUpperCase() + resType.slice(1, resType.length);
+    return resType;
+  };
+
+  function handleTodayBtn() {
+    let todayIsVisible = document.querySelector('.fc-day-today');
+    let todayBtn = document.querySelector('.fc-customToday-button');
+
+    if (todayBtn) {
+      if (todayIsVisible) {
+        todayBtn.disabled = true;
+      } else {
+        todayBtn.disabled = false;
+      }
+    }
+
+  };
+
+  function getResTypeCost(resType, days, additional) {
+    let cost;
+    if (additional){
+      cost = 25*days;
+    } else {
+      if (resType == 'boarding'){
+        cost = 25*days;
+      }
+      else if (resType == 'boarding_and_training'){
+        cost = 30*days;
+      }
+      else if (resType == 'obedience_training'){
+        cost = 30*days;
+      }
+      else if (resType == 'retriever_training'){
+        cost = 30*days;
+      } 
+    }
+    return cost;
+  };
+
+  function getResTypePrice(resType) {
+    let price;
+    if (resType == 'boarding'){
+      price = 25;
+    }
+    else if (resType == 'boarding_and_training'){
+      price = 30;
+    }
+    else if (resType == 'obedience_training'){
+      price = 30;
+    }
+    else if (resType == 'retriever_training'){
+      price = 30;
+    } 
+    return price;
+  };
+
+  function clearFields(){
+    $('#date-range-overview').text('-----');
+    $('#date-range-overview-mobile').text('-----');
+    $('#initial-cost-overview').text('-----');
+    $('#initial-cost-overview-mobile').text('-----');
+    $('#additional-cost-overview').text('-----');
+    $('#additional-cost-overview-mobile').text('-----');
+    $('#total-cost-overview').text('-----');
+    $('#total-cost-overview-mobile').text('-----');
+    $('#id_start_date').val(null);
+    $('#id_end_date').val(null);
+    $('#id_start_date_additional').val(null);
+    $('#id_end_date_additional').val(null);
+  };
+
+  function handleModalSave(calendar){
+      let events = calendar.getEvents();
+      let eventEndDate;
+      for (let i = 0; i < events.length; i++) {
+        if (events[i].title.includes('Training')){
+          eventEndDate = formatDate(events[i]._instance.range.end);
+          if (calendar.currentData.dateSelection){
+            additionalStartDate = formatDate(calendar.currentData.dateSelection.range.start);
+            if (additionalStartDate == eventEndDate) {
+              $('#calendar-save').click()
+            } else {
+              calendar.unselect();
+              displayErrorMsg(createErrorMsg('Additional days must start the day after training days end.'))
+            }
+          }
+          else {
+            $('#id_start_date_additional').val(null);
+            $('#id_end_date_additional').val(null);
+            $('#calendar-save').click()
+          }
+      }
+    }
+  }
+
+  function getCostDetails(){
+    let fullStart = $('#id_start_date').val();
+    let fullEnd = $('#id_end_date_additional').val() || $('#id_end_date').val();
+    let timeDiff = new Date(fullEnd).getTime() - new Date(fullStart).getTime();
+    let dayDiff = timeDiff / (1000 * 3600 * 24)+1;
+    let initialCost = Number($('#initial-cost-overview').text().split('$')[1]);
+    let additionalCost;
+    if ($('#additional-cost-overview').length){
+      additionalCost = Number($('#additional-cost-overview').text().split('$')[1]);
+    }
+    let totalCost = Number($('#total-cost-overview').text().split('$')[1]);
+    return {
+      'dayDiff':dayDiff,
+      'initialCost':initialCost,
+      'additionalCost':additionalCost,
+      'totalCost':totalCost,
+    }
+  }
+
+  function setCostFields(selection){
+    let fullStart = $('#id_start_date').val();
+    let fullEnd = $('#id_end_date_additional').val() || $('#id_end_date').val();
+    if(selection != null || (fullStart != null && fullStart != '')){
+      $('#date-range-overview').text(fullStart + ' - ' + fullEnd);
+      $('#date-range-overview-mobile').text(fullStart + ' - ' + fullEnd);
+    } else {
+      $('#date-range-overview').text('-----');
+      $('#date-range-overview-mobile').text('-----');
+    }
+
+    let reservationType = $(".btn-check.valid")[0].value;
+    let additionalDays = false;
+
+    if ($('.additional-days-active').length) {
+      additionalDays = true;
+      fullStart = $('#id_start_date_additional').val();
+    } 
+    let timeDiff = new Date(fullEnd).getTime() - new Date(fullStart).getTime();
+    let dayDiff = timeDiff / (1000 * 3600 * 24);
+
+    cost = getResTypeCost(reservationType, dayDiff+1, additionalDays);
+    if (selection){
+      if (!$('.additional-days-active').length) {
+        $('#initial-cost-overview').text('$'+String(cost));
+        $('#initial-cost-overview-mobile').text('$'+String(cost));
+        $('#total-cost-overview').text('$'+String(cost))
+        $('#total-cost-overview-mobile').text('$'+String(cost))
+      } else {
+        let initialCost = Number($('#initial-cost-overview').text().split('$')[1]);
+        $('#additional-cost-overview').text('$'+String(cost))
+        $('#additional-cost-overview-mobile').text('$'+String(cost))
+        $('#total-cost-overview').text('$'+String(initialCost+cost))
+        $('#total-cost-overview-mobile').text('$'+String(initialCost+cost))
+      }
+    }
+  }
+
+  function getCookie(c_name)
+  {
+      if (document.cookie.length > 0)
+      {
+          c_start = document.cookie.indexOf(c_name + "=");
+          if (c_start != -1)
+          {
+              c_start = c_start + c_name.length + 1;
+              c_end = document.cookie.indexOf(";", c_start);
+              if (c_end == -1) c_end = document.cookie.length;
+              return unescape(document.cookie.substring(c_start,c_end));
+          }
+      }
+      return "";
+  }   
+
+  function configureCalendar() {
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // set calendar element
+      var calendarEl = document.getElementById("calendar");
+
+      // configure calendar
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialDate: new Date(),
+        navLinks: false, // can click day/week names to navigate views
+        selectable: true,
+        handleWindowResize: true,
+        showNonCurrentDates: true,
+        unselectAuto: false,
+        height: "auto",
+        eventDisplay: 'background',
+        selectOverlap: false,
+        customButtons: {
+          customToday: {
+            text: 'Today',
+            click: function () {
+              if (calendar.isRendered) {
+                let selection = calendar.currentData.dateSelection;
+                if (!selection) {
+                  calendar.today();
+                  addTodayTitle(calendar);
+                } else {
+                  calendar.today();
+                  addTodayTitle(calendar);
+                  calendar.select(addToDate(selection.range.start, 1), addToDate(selection.range.end, 1));
+                }
+              }
+            }
+          },
+          customPrev: {
+            text: '<',
+            click: function () {
+              let selection = calendar.currentData.dateSelection;
+              calendar.prev();
+              if (selection) {
+                calendar.select(addToDate(selection.range.start, 1), addToDate(selection.range.end, 1));
+              }
+              handleTodayBtn();
+              addTodayTitle(calendar);
+            }
+          },
+          customNext: {
+            text: '>',
+            click: function () {
+              let selection = calendar.currentData.dateSelection;
+              calendar.next();
+              if (selection) {
+                calendar.select(addToDate(selection.range.start, 1), addToDate(selection.range.end, 1));
+              }
+              handleTodayBtn();
+              addTodayTitle(calendar);
+            }
+          },
+        },
+        headerToolbar: {
+          right: 'customToday customPrev,customNext',
+        },
+        dateClick: function (arg) {
+          let startDate = addToDate(arg.dateStr, 1);
+          let events = calendar.getEvents();
+          if (validDate(startDate)) {
+            let reservationType = document.querySelector('.btn-check.valid').value;
+            let minDays = null;
+            if (reservationType == 'obedience_training') {
+              minDays = 30;
+            }
+            if (reservationType == 'retriever_training') {
+              minDays = 60;
+            }
+            for (let i = 0; i < events.length; i++) {
+              if (events[i].title.includes('Training')){
+                minDays = null;
+              }
+            }
+            if (minDays) {
+              let endDate = addToDate(arg.dateStr, minDays + 1);
+              let overlap = eventOverlap(calendar.getEvents(), startDate, minDays, arg);
+              if (!overlap) {
+                calendar.select(startDate, endDate);
+                displaySuccessMsg(createErrorMsg(getResTypeNameLabel(reservationType)+' training requires a minimum of '+String(minDays)+' days so we have preselected the end date for you.  If you would like to add any additional boarding days please click save changes below and see the "Additional Days option."'))
+              } else {
+                let selection = calendar.currentData.dateSelection;
+                calendar.unselect(selection)
+                let errorMsg = createErrorMsg(getResTypeNameLabel(reservationType) + ' training requires a ' + String(minDays) + ' day minimum.  Please select a start date that will not interfere with unavailable times.');
+                displayErrorMsg(errorMsg);
+              }
+            }
+          }
+        },
+        selectAllow: function (selectInfo) {
+          let today = new Date();
+          today.setHours(0, 0, 0, 0);
+          let events = calendar.getEvents();
+          for (let i = 0; i < events.length; i++) {
+            if (events[i].title.includes('Training')){
+              let eventEnd = events[i].endStr;
+              let dateClicked = formatDate(addToDate(selectInfo.start, 1));
+              if (dateClicked < eventEnd){
+                let reservationType = document.querySelector('.btn-check.valid').value;
+                let errorMsg = createErrorMsg('Please select a date after your currently selected dates for '+getResTypeNameLabel(reservationType)+' Training.');
+                displayErrorMsg(errorMsg);
+                return false;
+              }
+            }
+          }
+          if (selectInfo.start < today) {
+            return false;
+          }
+          return true;
+        },
+        eventClick: function(info) {
+          if ($('.additional-days-active').length){
+            let reservationType = document.querySelector('.btn-check.valid').value;
+            let errorMsg = createErrorMsg('Please select a date after your currently selected dates for '+getResTypeNameLabel(reservationType)+' Training.');
+            displayErrorMsg(errorMsg);
+          }
+        }
+      });
+
+      // on reservation type submit (next btn from that tab)
+      function reservationTypeOnSubmit() {
+        $("#submit-reservation-type").click(function (e) {
+          e.preventDefault();
+
+          let btnChecked = $(".btn-check.valid");
+          if (btnChecked.length) {
+            $('#tab-reservation a[href="#tab-reservation-select-dates"]').tab("show");
+            if (!calendar.isRendered) {
+              $("#calendar-row").append($("#calendar"));
+            }
+            if (btnChecked[0].value.includes('obedience') == true || btnChecked[0].value.includes('retriever') == true){
+              $('#additional-days').css('display', 'block'); 
+            } else {
+              $('#additional-days').css('display', 'none'); 
+            }
+          resType = btnChecked.val();
+          resTypeName = getResTypeNameLabel(resType);
+          if (resType.includes('training')){
+            resTypeName = resTypeName + ' Training';
+          }
+          $('#res-type-overview').text(resTypeName)
+          $('#res-type-overview-mobile').text(resTypeName)
+
+          if(!$('#login-modal-btn').hasClass('authenticated-True')){
+            $('#login-modal-btn').click();
+          }
+
+          } else {
+            let errorMsg = createErrorMsg('Please select a reservation type.')
+            displayErrorMsg(errorMsg);
+          }
+          // disable on load
+          handleTodayBtn();
+
+          $('select').find('option').first().prop('disabled', 'true').val(null)
+        });
+      }; reservationTypeOnSubmit();
+
+      // on reservation dates submit (next btn from that tab)
+      function reservationDatesOnSubmit() {
+        $("#submit-reservation-dates").click(function (e) {
+          e.preventDefault();
+          let selection = $('#id_start_date').val();
+          let isFilledOut = true;
+          let data = new FormData();
+          let form_data = $('#reservation-form-builder').serializeArray();
+          if ($('#id_start_date').val()){
+            form_data.push(
+              {name: 'id_start_date', value: $('#id_start_date').val()},
+              {name: 'id_end_date', value: $('#id_end_date').val()},
+              )
+          } else {
+            isFilledOut = false;
+          }
+
+          if ($('#id_start_date_additional').val()){
+            form_data.push(
+              {name: 'id_start_date_additional', value: $('#id_start_date_additional').val()},
+              {name: 'id_end_date_additional', value: $('#id_end_date_additional').val()},
+              )
+          }
+          if($('#id_shot_records').val() == null || $('#id_shot_records').val() == ''){
+              displayErrorMsg(createErrorMsg("Important!  If you do not upload your dog's shot records you will be required to bring them upon arrival."))
+          }
+
+          let formFields = ['start_date', 'end_date', 'end_date_additional', 'start_date_additional', 'first_name', 'last_name', 'email', 'phone', 'street', 'city', 'state', 'postal_code', 'dogs_name', 'dogs_breed', 'dogs_age', 'dogs_sex',]
+          $.each(form_data, function (key, input) {
+            if (formFields.includes(input.name) == true && input.name.includes('comments') == false && (input.value == null || input.value == '')) {
+              isFilledOut = false;
+            }
+            if (!$('#id_dogs_sex').val()){
+              isFilledOut = false;
+            }
+
+          });
+
+
+          if (isFilledOut) {
+
+            $('#tab-reservation a[href="#tab-reservation-payment"]').tab("show");
+          } 
+          else {
+            let errorMsg = createErrorMsg('Please fill out all required fields.')
+            displayErrorMsg(errorMsg);
+          }
+        });
+      }; reservationDatesOnSubmit();
+
+      function paymentOnSubmit() { 
+            // Create an instance of the Stripe object with your publishable API key
+            var stripe = Stripe('{{ stripe_publishable_key }}');
+            var checkoutButton = document.getElementById('booking-registration-submit');
+        
+            checkoutButton.addEventListener('click', function (event) {
+              if($('.payment-options').val() != null){
+                if($('.payment-options').val().includes('pay_now')){
+                  let cc_num = $('#booking-registration-card-no').val();
+                  let cc_cvv = $('#booking-registration-card-cvv').val();
+                  let cc_name = $('#booking-registration-card-name').val();
+                  let cc_exp = $('#booking-registration-card-exp').val();
+    
+                  if (cc_num != '' && cc_cvv != '' && cc_name != '' && cc_exp != ''){
+    
+                    // Create a new Checkout Session using the server-side endpoint you
+                    // created in step 3.
+    
+                    let data = new FormData();
+                    let form_data = $('#reservation-form-builder').serializeArray();
+                    //let price = Number($('#total-cost-overview').text().split('$')[1]);
+                    let price = getResTypePrice($(".btn-check.valid")[0].value);
+                    let paid_amount = Number($('#total-cost-overview').text().split('$')[1]);
+                    if ($('#id_partial_payment_amount').val()){
+                      paid_amount = Number($('#id_partial_payment_amount').val())
+                    }
+                    if(paid_amount == 0){
+                      displayErrorMsg(createErrorMsg('You must enter a payment of greater than 0 to continue with a partial payment.'))
+                    } else if(paid_amount > Number($('#total-cost-overview').text().split('$')[1])){
+                      displayErrorMsg(createErrorMsg('You entered an amount greater than what you owe.'))
+                    } else if(paid_amount == Number($('#total-cost-overview').text().split('$')[1]) && $('.payment-options').val().includes('full') == false){
+                      displayErrorMsg(createErrorMsg('You entered the full payment amount, please select the "Pay Now In Full" option to continue.'))
+                    } else {
+   
+                      let costDetails = getCostDetails();
+                  //    var shot_records = $('#id_shot_records').val()
+                      var shot_records = document.getElementById("id_shot_records")
+                      if (shot_records.value){
+                        shot_records = shot_records.files[0].name
+                      } else {
+                        shot_records = null
+                      }
+                      
+                      form_data.push(
+                        {name: 'id_start_date', value: $('#id_start_date').val()},
+                        {name: 'id_end_date', value: $('#id_end_date').val()}, 
+                        {name: 'price', value: price},
+                        {name: 'paid_amount', value: paid_amount},
+                        {name: 'extended-stay', value: false},
+                        {name: 'day-diff', value: costDetails.dayDiff},
+                        {name: 'initial-cost', value: costDetails.initialCost},
+                        {name: 'total-cost', value: costDetails.totalCost},
+                        {name: 'shot_records', value: shot_records}
+                      )
+
+
+                      if ($('#id_start_date_additional').val()){
+                        form_data.push(
+                          {name: 'id_start_date_additional', value: $('#id_start_date_additional').val()},
+                          {name: 'id_end_date_additional', value: $('#id_end_date_additional').val()},
+                          {name: 'additional-cost', value: costDetails.additionalCost},
+                          {name: 'extended-stay', value: true},
+                          )
+                      }
+ 
+                      let res_form = new FormData(document.getElementById('reservation-form-builder'));
+                      res_form.append('price', price)
+
+                      $.ajaxSetup({
+                        headers: { "X-CSRFToken": getCookie("csrftoken") }
+                      });
+                      $.ajax({
+                        type: 'POST',
+                        url: "/reservations/ajax/get_obj_id/",
+                        data: res_form,
+                        processData: false,
+                        contentType: false,
+
+                        success: function (data) {
+                          var url_mask = "{% url 'api_checkout_session' id=0 %}".replace(/0/, data.obj_id.toString()+'-'+data.res_id.toString());
+                          fetch(url_mask, {
+                            method: 'POST',
+                            body: JSON.stringify(
+                                { 
+                                  form_data: form_data,
+                                }
+                            )
+                        })
+                            .then(function (response) {
+                                return response.json();
+                            })
+                            .then(function (session) {
+                                return stripe.redirectToCheckout({ sessionId: session.sessionId});
+                            })
+                            .then(function (result) {
+                                // If `redirectToCheckout` fails due to a browser or network
+                                // error, you should display the localized error message to your
+                                // customer using `error.message`.
+                                if (result.error) {
+                                    alert(result.error.message);
+                                }
+                            })
+                            .catch(function (error) {
+                                console.error('Error:', error);
+                            });
+                      
+                        },
+                      });
+      
+                    }
+                    
+ 
+                    } else {
+                    displayErrorMsg(createErrorMsg('All fields are required for making a payment.'))
+                  }
+                } else if ($('.payment-options').val().includes('pay_upon')){
+                  let data = new FormData();
+                  let form_data = $('#reservation-form-builder').serializeArray();
+                  let price = Number($('#total-cost-overview').text().split('$')[1]);
+                  let costDetails = getCostDetails();
+                  form_data.push(
+                    {name: 'id_start_date', value: $('#id_start_date').val()},
+                    {name: 'id_end_date', value: $('#id_end_date').val()}, 
+                    {name: 'price', value: price},
+                    {name: 'extended-stay', value: false},
+                    {name: 'day-diff', value: costDetails.dayDiff},
+                    {name: 'initial-cost', value: costDetails.initialCost},
+                    {name: 'total-cost', value: costDetails.totalCost},
+                    {name: 'partial_payment_amount', value:$('#id_partial_payment_amount').val()}
+                  )
+                  if ($('#id_start_date_additional').val()){
+                    form_data.push(
+                      {name: 'id_start_date_additional', value: $('#id_start_date_additional').val()},
+                      {name: 'id_end_date_additional', value: $('#id_end_date_additional').val()},
+                      {name: 'additional-cost', value: costDetails.additionalCost},
+                      {name: 'extended-stay', value: true},
+                      )
+                  }
+                  url = new URL(window.location.origin + '/reservations/successful_registration/')
+                  for(var i = 0;i < form_data.length;i++){
+                    url.searchParams.set(form_data[i].name, form_data[i].value);
+                    url.searchParams.set(form_data, form_data);
+                  }
+                  window.location.href = url 
+                }
+              } else {
+                displayErrorMsg(createErrorMsg('All fields are required for making a payment.'))
+              }
+            });
+      }paymentOnSubmit();
+
+      // inject events into calendar on tab change and get availability
+      function injectEvents() {
+        $('a[data-bs-toggle="list"]').on("shown.bs.tab", function (e) {
+          if (calendar.getEvents().length == 0) {
+            var target = $(e.target).attr("href"); // activated tab
+            var reservationType = $("#reservation-type-btn-container")
+              .find(".btn-check.valid")
+              .attr("id");
+            $.ajax({
+              url: "/reservations/ajax/get_unavailable_dates/",
+              data: {
+                reservationType: reservationType,
+              },
+              dataType: "json",
+              success: function (data) {
+                var unavailable_dates = data.unavailable_dates;
+                for (let i = 0; i < unavailable_dates.length; i++) {
+                  var event = calendar.addEvent({
+                    start: unavailable_dates[i]["start_date"],
+                    end: getEndDate(unavailable_dates[i]),
+                    title: 'Unavailable',
+                    editable: false,
+                    selectable: false,
+                    classNames: ['disabled'],
+                  });
+                }
+                calendar.updateSize();
+                addTodayTitle(calendar);
+              },
+            });
+          }
+        });
+      }; injectEvents();
+
+      function onCalendarViewChange() {
+        $(document).click(function (event) {
+          if ($(event.target).is('.fc-icon-chevron-left, .fc-icon-chevron-right, .fc-prev-button, .fc-next-button, .fc-customToday-button')) {
+            addTodayTitle(calendar);
+            handleTodayBtn();
+          }
+        });
+      }; onCalendarViewChange();
+
+      var clear = false;
+
+      function onClick() {
+        $(document).on('click', function (event) {
+          eTarget = $(event.target);
+          let formerResType = $('#res-type-overview').text()
+          if($(eTarget).hasClass('prev')){
+            clear = false;
+          }
+          if(eTarget.hasClass('btn-check')){
+            if (formerResType.includes('Obedience') == true || formerResType.includes('Retriever') == true){
+              if (getResTypeNameLabel($('.btn-check.valid').val()) != formerResType.split(' ')[0]){
+                clear = true;
+              }
+              else {
+                clear = false;
+              }
+            }
+            else if (formerResType.includes('Boarding')){
+              let formerLength = formerResType.split(' ').length;
+              let currentLength = $('.btn-check.valid').val().split('_').length;
+              if (formerLength == 1 && currentLength > 1){
+                clear = true;
+              }
+              else if (formerLength > 1 && currentLength == 1){
+                clear = true;
+              }
+              else if (formerLength == 2 && currentLength == 2){
+                clear = true;
+              }
+              else { 
+                clear = false; 
+              }
+            }
+          } 
+          if(eTarget.hasClass('submit-reservation-type') && clear == true){
+            let events = calendar.getEvents()
+            for (let i = 0; i < events.length; i++) {
+              if (events[i].title.includes('Training')){
+                events[i].remove();
+              }
+            }
+            clearFields();
+            if($('#id_start_date_additional').val() == '' || $('#id_start_date_additional').val() == null){
+              $('#additional-days-btn').css('display', 'none');
+              $('#additional-days-btn-disabled').css('display', 'block');
+            } else {
+              $('#additional-days-btn').css('display', 'block');
+              $('#additional-days-btn-disabled').css('display', 'none');
+            }
+
+          }
+          let isPastDate = $(event.target).closest('.fc-day-past').attr('class');
+          if (isPastDate) {
+            let errorMsg = createErrorMsg('You must select a current or future date (not a past date).');
+            displayErrorMsg(errorMsg);
+          }
+          
+          if(eTarget.hasClass('fc') == false && $('.modal-open').length > 0 && eTarget.hasClass('ignore-form') == false){
+            let el = $('#calendar-error-msg');
+            let toast = el.find('.toast');
+            toast.removeClass('show');
+          }
+
+          if (eTarget.attr('id') == 'calendar-save-additional' && $('.additional-days-active').length > 0){
+            handleModalSave(calendar);
+          }
+
+          if (eTarget.attr('id')=='additional-days-btn-disabled'){
+            if (!$('#id_start_date').val()){
+              let errorMsg = createErrorMsg('No training dates selected. Please select training dates before adding additional boarding days.');
+              displayErrorMsg(errorMsg);
+            }
+          }
+
+        })
+      }; onClick();
+
+      function paymentOptions(){
+        $(document).on('input', function (event) {
+          if ($(event.target).hasClass('payment-options')){
+            if (event.target.value.includes('pay_now')){
+              $('#booking-registration-card-no').closest('.d-none').removeClass('d-none');
+              $('#booking-registration-card-cvv').closest('.d-none').removeClass('d-none');
+              $('#booking-registration-card-name').closest('.d-none').removeClass('d-none');
+              $('#booking-registration-card-exp').closest('.d-none').removeClass('d-none');
+              if (event.target.value.includes('partial')){
+                $('.partial-payment-amount').removeClass('d-none');
+              }
+              if (event.target.value.includes('full')){
+                $('.partial-payment-amount').addClass('d-none');
+                $('#id_partial_payment_amount').val(null);
+              }
+            } else if (!event.target.value.includes('pay_now')){
+              $('#booking-registration-card-no').closest('.payment-col').addClass('d-none');
+              $('#booking-registration-card-cvv').closest('.payment-col').addClass('d-none');
+              $('#booking-registration-card-name').closest('.payment-col').addClass('d-none');
+              $('#booking-registration-card-exp').closest('.payment-col').addClass('d-none'); 
+              $('.partial-payment-amount').addClass('d-none');
+              $('#id_partial_payment_amount').val(null);
+            } 
+          }
+
+          });
+      };paymentOptions();
+
+      let additionalDaysBtn = $('#additional-days-btn');
+      additionalDaysBtn.css('display', 'none');
+
+      $("#calendar-modal").on('shown.bs.modal', function (event) {
+          $(this).addClass('modal-open');
+          $('#calendar-preloader').show();
+
+          let elId = $(event.relatedTarget).attr('id');
+          calendar.unselect();
+  
+          if (elId == 'date-range-btn'){
+            $('#calendar-save-additional').css('display', 'none');
+            $('#calendar-save').css('display', 'block');
+            if ($('#id_start_date').val()){
+              let events = calendar.getEvents();
+              let reservationType = getResTypeNameLabel($(".btn-check.valid")[0].value);
+  
+              for (let i = 0; i < events.length; i++) {
+                if (events[i].title == reservationType+' Training'){
+                    events[i].remove()
+                }
+              }
+              let startDate = new Date($('#id_start_date').val());
+              let endDate = new Date($('#id_end_date').val());
+              calendar.select(formatDate(startDate), addToDate(formatDate(endDate), 2));
+            } 
+  
+  
+          } else if (elId == 'additional-days-btn'){
+            $("#calendar-modal").addClass('additional-days-active');
+            $('#calendar-save-additional').css('display', 'block');
+            $('#calendar-save').css('display', 'none');
+
+            if ($('#id_start_date_additional').val()){
+              let startDateAdditional = new Date($('#id_start_date_additional').val());
+              let endDateAdditional = new Date($('#id_end_date_additional').val());
+              calendar.select(formatDate(startDateAdditional), addToDate(formatDate(endDateAdditional), 2));
+            } else {
+              calendar.unselect()
+            }
+            if ($('#id_start_date').val()){
+              let startDateEvent = new Date($('#id_start_date').val());
+              let endDateEvent = new Date($('#id_end_date').val());
+              let reservationType = getResTypeNameLabel($(".btn-check.valid")[0].value);
+              let end = addToDate(endDateEvent, 1)
+              let events = calendar.getEvents();
+              for (let i = 0; i < events.length; i++) {
+                if (events[i].title == reservationType+' Training'){
+                    events[i].remove()
+                }
+              }
+              var event = calendar.addEvent({
+                start: formatDate(startDateEvent),
+                end: formatDate(end),
+                title: reservationType+' Training',
+                editable: false,
+                selectable: false,
+                classNames: ['disabled', 'training-date-selection'],
+                backgroundColor: 'rgba(135, 206, 250, 0.527)'
+              });
+            } 
+          }
+  
+          if (!calendar.isRendered) {
+            calendar.render();
+            addTodayTitle(calendar);
+          }
+          setTimeout(function () {
+            $('#calendar-preloader').fadeOut();
+          }, 100);
+        
+
+
+      });
+      $("#calendar-modal").on('hidden.bs.modal', function (event) {
+       
+        $(this).removeClass('modal-open');
+ 
+        let selection = calendar.currentData.dateSelection;
+        if (selection) {
+          let startDate = addToDate(selection.range.start, 1);
+          let endDate = addToDate(selection.range.end, 0);
+
+          let el = $(event.target);
+          if (!el.hasClass('additional-days-active')){
+            if ($('#id_start_date').val()){
+              let originalStartDate = formatDate(new Date($('#id_start_date').val()));
+              if(originalStartDate!=formatDate(startDate)){
+                // clear additional dates
+                $('#id_start_date_additional').val(null);
+                $('#id_end_date_additional').val(null);
+                $('#additional-cost-overview').text('-----');
+                $('#additional-cost-overview-mobile').text('-----');
+              }
+            }
+          }
+          if (!$('.additional-days-active').length){
+            $('#id_start_date').val(formatDate(startDate, forForm = true));
+            $('#id_end_date').val(formatDate(endDate, forForm = true));
+          } else {
+            $('#id_start_date_additional').val(formatDate(startDate, forForm = true));
+            $('#id_end_date_additional').val(formatDate(endDate, forForm = true));
+          }
+
+        } 
+
+        // get and set pricing values
+        setCostFields(selection);
+
+        let additionalDaysBtn = $('#additional-days-btn');
+        let additionalDaysBtnDisabled = $('#additional-days-btn-disabled');
+        if($('#id_start_date').val()){
+          additionalDaysBtn.css('display', 'block');
+          additionalDaysBtnDisabled.css('display', 'none');
+        } else {
+          additionalDaysBtn.css('display', 'none');
+          additionalDaysBtnDisabled.css('display', 'block');
+        }
+
+        $("#calendar-modal").removeClass('additional-days-active');
+
+        calendar.destroy();
+      });
+
+
+      function login(){
+        $('#login-submit').click(function(e){
+          e.preventDefault()
+          let form = document.getElementById('login-form');
+          let data = new FormData(form);
+          $.ajaxSetup({
+            headers: { "X-CSRFToken": $('#login-form input[name=csrfmiddlewaretoken]').val() }
+          });
+          $.ajax({
+            type: 'POST',
+            url: "/accounts/login/",
+            //data: data,
+            data: data,
+            processData: false,
+            contentType: false,
+
+            success: function (data) {
+              $('#login-form').prepend('<p style="background-color: green;color:white;text-align: center;">'+data.msg+'</p>')
+            },
+          });
+        });
+      }login();
+
+    });
+  }; configureCalendar();
+
+</script>
+
+<style>
+  #calendar {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .flex-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #60D7A9;
+    z-index: 1000;
+  }
+
+  .dots .dot {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: 0 10px 0 10px;
+    border-radius: 50%;
+    background: #FFF;
+    -webkit-animation: dot-dot-dot 1.4s linear infinite;
+    animation: dot-dot-dot 1.4s linear infinite;
+  }
+
+  .dots .dot:nth-child(2) {
+    animation-delay: .2s;
+  }
+
+  .dots .dot:nth-child(3) {
+    animation-delay: .4s;
+  }
+
+  @keyframes dot-dot-dot {
+
+    0%,
+    60%,
+    100% {
+      -webkit-transform: initial;
+      -ms-transform: initial;
+      transform: initial;
+    }
+
+    30% {
+      -webkit-transform: translateY(-25px);
+      -ms-transform: translateY(-25px);
+      transform: translateY(-25px);
+    }
+  }
+</style>
+
+
+<div id="calendar"></div>
+
+<div id="calendar-modal" class="modal fade bs-example-modal-fs" tabindex="-1" role="dialog"
+  aria-labelledby="fsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Calendar Selector</h4>
+        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
+      </div>
+      <div class="modal-body">
+        <div id="calendar-preloader" class="preloader js-preloader flex-center">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="row" id="calendar-row">
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button id="calendar-save" type="button" class="btn text-white" data-bs-dismiss="modal" style="background-color: #2C3E50;">Save Changes</button>
+          <button id="calendar-save-additional" type="button" class="btn text-white" style="background-color: #2C3E50;display:none;">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

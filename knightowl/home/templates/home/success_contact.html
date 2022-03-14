@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--===== Meta Tag =====-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Knight Owl Studios - Custom Websites">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="web, devolopment, website, custom, business, agency, blog, cv, creative, html, one page, personal, portfolio, resume, responsive, bootstrap, photography, designer, developer">
+    <!-- <meta name="author" content="root"> -->
+	<meta property="og:image" content="../static/css/images/about/group-pic2.jpg">
+
+
+    <!--	Css Links
+    ==================================================-->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/flaticon.css">
+    <link rel="stylesheet" href="../static/css/plugins.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/color.css" id="color-change">
+
+    <!-- Favicon 
+    ==================================================-->
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon.ico">
+
+    <!--	Title
+    ==================================================-->
+    <title>Knight Owl Studios - Custom Websites</title>
+
+</head>
+
+<body id="top" class="page-load" style="background-color: #2e2e2e;">
+    <!--	Start Back to top
+	=================================================-->
+    <a href="#" id="scroll" style="display: none;"><span></span></a>
+    <!--	End Back to top
+	==================================================-->
+
+    <!--	Preloader
+	==================================================-->
+    <div class="preloader">
+        <div class="lds-css ng-scope">
+            <div class="lds-spinner" style="100%;height:100%">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Wrapper Start 
+==================================================-->
+    <section id="main_banner" class="py_80 bg_black full_row pricing_request" style="margin-bottom: 20%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="section_title_1 text-center mx-auto pb_60 wow animated slideInUp">
+                        <h2 class="title text-uppercase color_white">Success!</h2>
+                        <span class="sub_title color_lightgray">Thanks for reaching out to us, we'll be in touch within the next 48 hours.</span>
+                    </div>
+                </div>
+              
+
+
+                <div class="col-md-8 col-lg-8 text-center" style="margin-left: auto;margin-right: auto;background-color: #2e2e2e;">
+
+                    <a href="{% url 'home' %}" style="margin-left: auto:margin-right:auto;">
+                        <button class="btn btn-default" style="color:rgb(69, 76, 90);">Return Home</button>
+                    </a>            
+            
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--	Wrapper End
+=======================================================-->
+    <!--	Js Links
+	===================================================-->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/plugins.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            //   Smoothscroll js
+            //=====================================
+
+            $("a").on('click', function (event) {
+
+                if (this.hash !== "") {
+                    event.preventDefault();
+
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 1000, function () {
+
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

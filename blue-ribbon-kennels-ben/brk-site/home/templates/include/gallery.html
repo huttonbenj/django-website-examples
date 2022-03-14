@@ -1,0 +1,61 @@
+{% load thumbnail %}
+<section class="section clearfix my-0 pb-0">
+<!-- <div class="heading-block center border-bottom-0 bottommargin topmargin-sm mx-auto" style="max-width: 700px;">
+    <h3 class="nott font-secondary fw-normal" style="font-size: 36px;">Gallery</h3>
+    <span>Blue Ribbon Kennels is a full-time training, boarding and breeding facility. We customize our training
+        program to meet the specific developmental needs, abilities, and progress of each retriever while
+        keeping the owners expectations in mind.</span>
+</div> -->
+<div class="container clearfix">
+    <div class="heading-block center">
+        <h3>Our Latest Works</h3>
+    </div>
+</div>
+
+<div class="masonry-thumbs grid-container grid-6 desktop" data-big="3" data-lightbox="gallery">
+    {% for item in gallery_images %}
+    <a class="grid-item" href="{{item.image.url}}" data-lightbox="gallery-item">
+        <div class="grid-inner">
+            {% thumbnail item.image "600x500" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}
+            <div class="bg-overlay">
+                <div class="bg-overlay-content dark">
+                    <i class="icon-line-plus h4 mb-0" data-hover-animate="fadeIn"></i>
+                </div>
+                <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+<div class="masonry-thumbs grid-container grid-3 mobile" data-big="3" data-lightbox="gallery">
+    {% for item in gallery_images %}
+    <a class="grid-item" href="{{item.image.url}}" data-lightbox="gallery-item">
+        <div class="grid-inner">
+            {% thumbnail item.image "600x500" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}
+            <div class="bg-overlay">
+                <div class="bg-overlay-content dark">
+                    <i class="icon-line-plus h4 mb-0" data-hover-animate="fadeIn"></i>
+                </div>
+                <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+<a href="{% url 'gallery' %}" class="button button-full button-dark center text-end full-width-button-light">
+    <div class="container clearfix">
+        View full <strong> Gallery</strong> <i class="icon-caret-right" style="top:4px;"></i>
+    </div>
+</a>
+<!-- <div class="row text-center">
+    <a href="" class="button button-large button-rounded my-0 view-gallery-button">View Full Gallery</a>
+</div> -->
+</section>

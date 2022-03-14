@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load gallery_tags %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<!-- <section id="page-title" class="page-title-parallax include-header" style="background: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image}}); padding: 120px 0;background-size: cover !important;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h1 data-animate="fadeInUp">{{page_title.title}}</h1>
+      <span data-animate="fadeInUp" data-delay="300">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+      </ol>
+    </div>
+  
+</section> -->
+<!-- #page-title end -->
+
+<section id="page-title" class="page-title-parallax page-title-dark skrollable skrollable-between" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image.cdn_url}}); background-size: cover; padding: 90px 0px; background-position: 0px -176.055px;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h1>{{page_title.title}}</h1>
+      <span class="w-50 mx-sm-auto">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+      </ol>
+    </div>
+
+  </section>
+
+<!-- Content
+============================================= -->
+<section id="content">
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+            <div class="grid-filter-wrap">
+
+                <!-- Portfolio Filter
+                ============================================= -->
+                <ul class="grid-filter" data-container="#portfolio">
+                    <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+                    {% for cat in categories %}
+                    <li><a href="#" data-filter=".{{cat.0}}">{{cat.1}}</a></li>
+                    {% endfor %}
+                </ul><!-- .grid-filter end -->
+
+                <div class="grid-shuffle rounded" data-container="#portfolio">
+                    <i class="icon-random"></i>
+                </div>
+
+            </div>
+            <!-- Portfolio Items
+            ============================================= -->
+            <div id="portfolio" class="portfolio row grid-container no-gutters">
+
+                {% for lst in gallery %}
+                <!-- Portfolio Item: Start -->
+
+                {% if lst.0 %}
+                <article class="portfolio-item col-lg-6 col-md-4 col-sm-6 col-12 wide {{lst.0.category}}">
+                    <!-- Grid Inner: Start -->
+                    <div class="grid-inner">
+                        <!-- Image: Start -->
+                        <div class="portfolio-image">
+                            <a href="#" class="pointer-event-none" style="height: 500px !important;">
+                                <img src="{{lst.0.image.cdn_url}}" style="max-width: 890px !important;width: 150% !important;" alt="Open Imagination">
+                            </a>
+                            <!-- Overlay: Start -->
+                       
+                            <!-- Overlay: End -->
+                        </div>
+                        <!-- Image: End -->
+                    </div>
+                    <!-- Grid Inner: End -->
+                </article>
+                <!-- Portfolio Item: End -->
+                {% endif %}
+
+                {% if lst.1 %}
+                <article class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 {{lst.1.category}}">
+                    <div class="grid-inner">
+                        <div class="portfolio-image" >
+                            <a href="#" class="pointer-event-none" style="height: 250px !important;">
+                                <img src="{{lst.1.image.cdn_url}}" style="max-width: 500px !important;width: 150% !important;" alt="Locked Steel Gate">
+                            </a>
+             
+                        </div>
+                    </div>
+                </article>
+                {% endif %}
+
+                {% if lst.2 %}
+                <article class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 {{lst.2.category}}">
+                    <div class="grid-inner">
+                        <div class="portfolio-image" >
+                            <a href="#" class="pointer-event-none" style="height: 250px !important;">
+                                <img src="{{lst.2.image.cdn_url}}" style="max-width: 500px !important;width: 150% !important;" alt="Locked Steel Gate">
+                            </a>
+           
+                        </div>
+                    </div>
+                </article>
+                {% endif %}
+
+                {% if lst.3%}
+                <article class="portfolio-item col-lg-6 col-md-4 col-sm-6 col-12 wide {{lst.3.category}}">
+                    <div class="grid-inner">
+                        <!-- Image: Start -->
+                        <div class="portfolio-image">
+                            <a href="#" class="pointer-event-none" style="height: 250px !important;">
+                                <img src="{{lst.3.image.cdn_url}}" style="top: -90px;bottom: -90px;max-width: 700px !important;width: 150% !important;" alt="Open Imagination">
+                            </a>
+                            <!-- Overlay: Start -->
+                       
+                            <!-- Overlay: End -->
+                        </div>
+                        <!-- Image: End -->
+                    </div>
+                </article>
+                {% endif %}
+
+                {% if lst.4 %}
+                <article class="portfolio-item col-lg-6 col-md-4 col-sm-6 col-12 wide {{lst.4.category}}">
+                    <div class="grid-inner">
+                        <!-- Image: Start -->
+                        <div class="portfolio-image">
+                            <a href="#" class="pointer-event-none" style="height: 250px !important;">
+                                <img src="{{lst.4.image.cdn_url}}" style="top: -90px;bottom: -90px;max-width: 700px !important;width: 150% !important;" alt="Open Imagination">
+                            </a>
+                            <!-- Overlay: Start -->
+                       
+                            <!-- Overlay: End -->
+                        </div>
+                        <!-- Image: End -->
+                    </div>
+                </article>
+                {% endif %}
+
+                {% if lst.5 %}
+                <article class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 {{lst.5.category}}">
+                    <div class="grid-inner">
+                        <div class="portfolio-image" style="height: 500px !important;">
+                            <a href="#" class="pointer-event-none" >
+                                <img src="{{lst.5.image.cdn_url}}" style="max-width: 890px !important;width: 280% !important;" alt="Backpack Contents">
+                            </a>
+                  
+                        </div>
+                    </div>
+                </article>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+            <!-- #portfolio end -->
+        </div>
+    </div>
+</section>
+{% endblock %}

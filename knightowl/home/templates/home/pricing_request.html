@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--===== Meta Tag =====-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Knight Owl Studios - Custom Websites">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="web, devolopment, website, custom, business, agency, blog, cv, creative, html, one page, personal, portfolio, resume, responsive, bootstrap, photography, designer, developer">
+    <!-- <meta name="author" content="root"> -->
+	<meta property="og:image" content="../static/css/images/about/group-pic2.jpg">
+
+
+    <!--	Css Links
+    ==================================================-->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/flaticon.css">
+    <link rel="stylesheet" href="../static/css/plugins.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/color.css" id="color-change">
+
+    <!-- Favicon 
+    ==================================================-->
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon.ico">
+
+    <!--	Title
+    ==================================================-->
+    <title>Knight Owl Studios - Custom Websites</title>
+
+</head>
+
+<body id="top" class="page-load" style="background-color: #2e2e2e;">
+    <!--	Start Back to top
+	=================================================-->
+    <a href="#" id="scroll" style="display: none;"><span></span></a>
+    <!--	End Back to top
+	==================================================-->
+
+    <!--	Preloader
+	==================================================-->
+    <div class="preloader">
+        <div class="lds-css ng-scope">
+            <div class="lds-spinner" style="100%;height:100%">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Wrapper Start 
+==================================================-->
+
+    <section id="pricing_request" class="py_80 bg_black full_row pricing_request" style="margin-bottom: 20%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="section_title_1 text-center mx-auto pb_60 wow animated slideInUp">
+                        <h2 class="title text-uppercase color_white"><span
+                                class="line_double mx-auto color_default">pricing</span>Free Custom Quotes</h2>
+                        <span class="sub_title color_lightgray">Our custom price quotes will be created specifically for
+                            you based off of the exact design and functionality you desire!</span>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-8" style="margin-left: auto;margin-right: auto;background-color: #2e2e2e;">
+                    <div class="row">
+                        <p style="color: red;margin-left: auto;margin-right:auto;">* required fields</p>
+                    </div>
+
+                    <form class="form " method="post" id="pricing-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="text" name="first_name"
+                                        placeholder="First Name *" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="text" name="last_name"
+                                        placeholder="Last Name *" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="email" name="from_email"
+                                        placeholder="Email Address *" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="tel" name="phone" placeholder="Phone" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="text" name="business_name"
+                                        placeholder="Business Name" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="text" name="business_category"
+                                        placeholder="Business Category" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="text" name="desired_website_name"
+                                        placeholder="Desired Website Name" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control bg_black" type="number" name="num_pages"
+                                        placeholder="Number of Web Pages (Estimation)" />
+                                </div>
+                            </div>
+                            <div class="row"
+                                style="border-bottom: solid 1px #e1e1e1;width:96%;margin-left:2%;padding-bottom: 30px;">
+                                <div class="col-md-3 col-lg-3">
+                                    <div class="inline-field text-center">
+                                        <input type="checkbox" name="google_analytics" />
+                                        <label for="checkbox" style="color: gray;margin-left:5px;width:50%;">Google
+                                            Analytics</label>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-lg-3">
+                                    <div class="inline-field text-center">
+                                        <input type="checkbox" name="google_maps"/>
+                                        <label for="checkbox" style="color: gray;margin-left:5px;width:50%;">Google
+                                            Maps</label>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-lg-3">
+                                    <div class="inline-field text-center">
+                                        <input type="checkbox" name="user_accounts" />
+                                        <label for="checkbox" style="color: gray;margin-left:5px;width:50%;">User
+                                            Accounts</label>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-lg-3">
+                                    <div class="inline-field text-center">
+                                        <input type="checkbox" name="payment_portal" />
+                                        <label for="checkbox" style="color: gray;margin-left:5px;width:50%;">Payment
+                                            Portal</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12" style="margin-top:30px;">
+                                <div class="form-group">
+                                    <textarea class="form-control bg_black" name="message" rows="7"
+                                        placeholder="Description of desired website and functionality *"
+                                        ></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="error-handel">
+                                    <div id="success">Your email sent Successfully, Thank you.</div>
+                                    <div id="error"> Error occurred while sending email. Please try again later.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 text-center" style="margin-bottom: 20%;">
+                                    
+                                    <button class="btn btn-default" name="back" value="back" id="back"
+                                        style="background-color:rgb(69, 76, 90);color:#FFEB69;">BACK</button>
+                                    <input class="btn btn-default" name="submit" type="submit" id="submit" style="color:rgb(69, 76, 90);" />
+
+                               
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!--	Wrapper End
+=======================================================-->
+    <!--	Js Links
+	===================================================-->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/plugins.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            //   Smoothscroll js
+            //=====================================
+
+            $("a").on('click', function (event) {
+
+                if (this.hash !== "") {
+                    event.preventDefault();
+
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 1000, function () {
+
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

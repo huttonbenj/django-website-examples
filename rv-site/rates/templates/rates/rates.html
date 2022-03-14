@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<title>{{seo.title}}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}
+{% block image %}<meta property="og:image" content="https://ucarecdn.com/00f29fa9-0fda-484a-a0b4-3d5425394f23/LogoCobaltandCoralSquare.png">{% endblock %}
+
+{% block analytics %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+
+
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<style>
+    .custom-pricing-price-font-size {
+        font-size: 52px;
+    }
+    .page-title-description {
+            width: 85%;
+        }
+    @media (min-width:992px) {
+        .description-padding {
+            padding: 0 250px !important;
+        }
+    }
+    @media (max-width: 767px) {
+            .page-title-description {
+                font-size: 14px !important;
+                width: 100% !important;
+            }
+        }
+
+</style>
+<section id="page-title" class="page-title-parallax page-title-dark skrollable skrollable-between" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image.cdn_url}}); background-size: cover; padding: 120px 0px; background-position: 0px -176.055px;max-height: 300px;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h2>{{page_title.title}}</h2>
+      <span class="page-title-description">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Rates</li>
+      </ol>
+    </div>
+
+  </section>
+<!-- <section id="page-title" class="page-title-parallax include-header" style="background: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image}}); padding: 120px 0;background-size: cover !important;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h1 data-animate="fadeInUp">{{page_title.title}}</h1>
+      <span data-animate="fadeInUp" data-delay="300">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Rates</li>
+      </ol>
+    </div>
+  
+</section> -->
+<!-- #page-title end -->
+
+{% for package in packages %}
+<div class="container clearfix">
+    <div class="section topmargin mb-0 border-bottom-0">
+        <div class="container clearfix">
+            <div class="heading-block center m-0">
+                <h3>{{package.get_name_display}}</h3>
+                <p class="description-padding">{{package.description|safe}}</p>
+            </div>
+        </div>
+    </div>
+<div class="row pricing col-mb-30 mb-4">
+
+    {% for rate in package.rate_set.all %}
+    <div class="col-md-6 col-xl-4">
+        <div class="pricing-box rounded-lg h-shadow shadow-ts px-4">
+            <div class="pricing-title border-bottom-0 pb-0 bg-transparent">
+                <h3 class="font-weight-medium">{{rate.get_time_frame_display}}</h3>
+                <span class="text-muted text-smaller" style="color: rgb(207, 207, 207) !important;">
+                    {% if not rate.time_frame|lower == 'monthly' %}Spring-Summer/Fall-Winter{% else %}Fall-Winter{% endif %}
+                </span>
+            </div>
+            <div class="pricing-price custom-pricing-price-font-size">
+                <span class="price-unit">$</span>
+                {% if package.get_name_display|lower == 'luxury' and rate.time_frame|lower == 'monthly' %}
+                Call
+                {% endif %}
+                {% if not package.get_name_display|lower == 'luxury' and rate.time_frame|lower == 'monthly' %}
+                {{rate.fall_winter_rate}}
+                {% endif %}
+                {% if not rate.time_frame|lower == 'monthly' %}
+                {{rate.spring_summer_rate}}/{{rate.fall_winter_rate}}
+                {% endif %}
+                <!-- <span class="price-tenure">{{rate.get_time_frame_display}}</span> -->
+            </div>
+            <div class="pricing-features bg-transparent border-bottom-0 pb-1">
+                <ul class="iconlist">
+                    {% for detail in rate.detail_set.all %}
+                        <li><i class="icon-check text-smaller"></i> <strong>{{detail.detail}}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="pricing-action">
+                <a href="{% url 'reserve' %}" class="btn button-coral text-light btn-block btn-lg d-flex justify-content-between">Book Now <i class="icon-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% block pricing %}
+<!--	Start Pricing
+		===================================================-->
+<section id="pricing" class="py_80 bg_black full_row">
+    <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="section_title_0 text-center mx-auto pb_60 wow animated slideInUp">
+                        <h2 class="title text-uppercase color_white"><span class="line_double mx-auto color_default">pricing</span>Custom Pricing</h2>
+                        <span class="sub_title color_lightgray">All prices below are estimations based on common requests.  Don't see what you're looking for?  No worries, feel free to contact us for a fully customized package and we'll create a price just for you.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="price_table">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-4 pricing_col">
+                                <div class="table text-center bg_deepblack color_secondery">
+                                    <h4 class="color_white">Simple</h4>
+                                    <h1 class="color_default font-weight-bold"><sup>$</sup> 499+</h1>
+                                    <h5 class="color_lightgray">one time fee</h5>
+                                    <div class="list">
+                                        <ul>
+                                            <li>Web Design</li>
+                                            <li>Up to 3 Static Web Pages</li>
+                                            <li>Testing/Maintenance</li>
+                                            <li><strike>Google Analytics</strike></li>
+                                            <li><strike>Google Maps</strike></li>
+                                            <li><strike>User Accounts</strike></li>
+                                            <li><strike>Payment Functionality</strike></li>
+                                        </ul>
+                                    </div>
+                                    <a class="btn btn-default w-100 mt_15" style="color:#232323;" href="{% url 'pricing_request' %}">Request an exact quote</a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-4 pricing_col">
+                                <div class="table text-center bg_deepblack color_secondery">
+                                    <h4 class="color_white">Moderate</h4>
+                                    <h1 class="color_default font-weight-bold"><sup>$</sup> 2,999+</h1>
+                                    <h5 class="color_lightgray">one time fee</h5>
+                                    <div class="list">
+                                        <ul>
+                                            <li>Web Design</li>
+                                            <li> 4 - 10 Responsive Pages</li>
+                                            <li>Google Analytics</li>
+                                            <li>Google Maps</li>
+                                            <li>Testing/Maintenance</li>
+                                            <li><strike>User Accounts</strike></li>
+                                            <li><strike>Payment Functionality</strike></li>
+                                        </ul>
+                                    </div>
+                                    <a class="btn btn-default w-100 mt_15" style="color:#232323;" href="{% url 'pricing_request' %}">Request an exact quote</a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-4 pricing_col">
+                                <div class="table text-center bg_deepblack color_secondery">
+                                    <h4 class="color_white">Advanced</h4>
+                                    <h1 class="color_default font-weight-bold"><sup>$</sup> 7,999+</h1>
+                                    <h5 class="color_lightgray">one time fee</h5>
+                                    <div class="list">
+                                        <ul>
+                                            <li>Web Design + Logo</li>
+                                            <li>10+ Responsive Web Pages</li>
+                                            <li>Google Analytics</li>
+                                            <li>Google Maps</li>
+                                            <li>User Accounts</li>
+                                            <li>Payment Functionality</li>
+                                            <li>Testing/Maintenance</li>
+                                        </ul>
+                                    </div>
+                                    <a class="btn btn-default w-100 mt_15" style="color:#232323" href="{% url 'pricing_request' %}">Request an exact quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</section>
+<!--	End Pricing
+        ===================================================-->
+{% endblock %}

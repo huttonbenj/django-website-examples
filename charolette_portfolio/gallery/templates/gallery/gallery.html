@@ -1,0 +1,408 @@
+{% block gallery %}
+
+{% if gallery.0.gallery_columns == 'two_columns' %}
+{% if gallery.0.gallery_style == 'staggered' %}
+<!--====== Portfolio ======-->
+<section id="portfolio" class="portfolio main section-padding" style="border-bottom: 1px solid #eee;">
+    <div class="container">
+        <div class="row">
+            <div class="row text-center" style="margin-bottom:20px;">
+                <div class="uppercase">
+                    <h4>{{ gallery.0.gallery_header }}</h4>
+                </div>
+            </div>
+            <!-- filter links -->
+            <div class="filtering text-center mb-50">
+                <span data-filter='*' class="active">All Recents</span>
+                {% for i in artwork_cats %}
+                <span data-filter='.{{ i }}'>{{ i }}</span>
+                {% endfor %}
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery text-center">
+                {% for i in gallery %}
+                {% with count=forloop.counter %}
+                <!-- gallery item -->
+                <div
+                    class="col-md-6 item-img {{ i.image_category|upper }} {{ i.image_sub_category|upper }} {{ i.framed_unframed|lower }}">
+                    <a id="show_image" class="show_image" href="{{ i.image.cdn_url }}">
+                        <img src="{{ i.image.cdn_url }}-/scale_crop/1024x1024/smart/  alt=" image"
+                            style="height: {% cycle '450px' '490px' '490px' '450px' %};width:100%;">
+                        <div class="item-img-overlay">
+                            <span class="v"></span>
+                            <span class="x"></span>
+                            <div class="overlay-info v-middle text-center">
+                                <h4>{{ i.image_title|upper }}</h4>
+                                <p>{{ i.image_category|upper }}</p>
+                                <p>{{ i.price }}</p>
+                    </a>
+                    <button type="button" class="button btn-bord-light text-center" data-toggle="modal"
+                        data-target="#exampleModal" data-image_url="{{ i.image.cdn_url }}"
+                        data-image_title="{{ i.image_title }}" data-image_price="{{ i.price }}"
+                        data-image_category="{{ i.image_category }}-/scale_crop/300x300/center/"
+                        data-image_sub_category="{{ i.image_sub_category }}"
+                        data-image_description="{{ i.image_description }}">Add
+                        To Cart</button>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Added to cart!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Would you like to keep shopping or checkout?</p>
+                        <form action="{% url 'cart' %}" method="GET">
+                            <input type="hidden" id="image_url" name="image_url" placeholder="XXX">
+                            <input type="hidden" id="image_title" name="image_title" placeholder="XXX">
+                            <input type="hidden" id="image_price" name="image_price" placeholder="XXX">
+                            <input type="hidden" id="image_category" name="image_category" placeholder="XXX">
+                            <input type="hidden" id="image_sub_category" name="image_sub_category" placeholder="XXX">
+                            <input type="hidden" id="image_description" name="image_description" placeholder="XXX">
+
+
+                            <button type="submit" id="keep_shopping" name="keep_shopping" value="True"
+                                class="btn btn-secondary">Keep Shopping</button>
+                            <button type="submit" id="checkout" name="checkout" value="True"
+                                class="btn btn-primary">Checkout</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+
+    </div>
+    <div class="row text-center" style="margin-top: 50px;">
+        <a href="{% url 'artwork' %}">
+            <button id="shop_button" class="button btn-bord-dark">See Full Gallery</button>
+        </a>
+    </div>
+
+</section>
+<!--====== End Portfolio ======-->
+{% endif %}
+{% if gallery.0.gallery_style == 'even' %}
+<!--====== Portfolio ======-->
+<section id="portfolio" class="portfolio main section-padding">
+    <div class="container">
+
+        <div class="row">
+            <div class="row text-center" style="margin-bottom:20px;">
+                <div class="uppercase">
+                    <h4>{{ gallery.0.section_header }}</h4>
+                </div>
+            </div>
+
+            <!-- filter links -->
+            <div class="filtering text-center mb-50">
+                <span data-filter='*' class="active">All</span>
+                {% for i in artwork_cats %}
+                <span data-filter='.{{ i }}'>{{ i }}</span>
+                {% endfor %}
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery text-center">
+                {% for i in gallery %}
+                {% with count=forloop.counter %}
+                {% if count == 1 or count == 3 or count == 5 or count == 7 or count == 9 or count == 11 %}
+
+                <!-- gallery item -->
+                <div
+                    class="col-md-6 item-img {{ i.image_category|upper }} {{ i.image_sub_category|upper }} {{ i.framed_unframed|lower }}" style="min-height:490px;height:490px;margin-bottom:0.5px;">
+                    <a id="show_image" class="show_image" href="{{ i.image.cdn_url }}">
+                        <img src="{{ i.image.cdn_url }}-/scale_crop/1024x1024/center/" alt="image"
+                            style="height: 100%;width: 100%;">
+                        <div class="item-img-overlay">
+                            <span class="v"></span>
+                            <span class="x"></span>
+                            <div class="overlay-info v-middle text-center">
+                                <h4>{{ i.image_title|upper }}</h4>
+                                <p>{{ i.image_category|upper }}</p>
+                                <p>{{ i.price }}</p>
+
+                    </a>
+                    <button type="button" class="button btn-bord-light text-center" data-toggle="modal"
+                        data-target="#exampleModal" data-image_url="{{ i.image.cdn_url }}"
+                        data-image_title="{{ i.image_title }}" data-image_price="{{ i.price }}"
+                        data-image_category="{{ i.image_category }}"
+                        data-image_sub_category="{{ i.image_sub_category }}"
+                        data-image_description="{{ i.image_description }}">Add
+                        To Cart</button>
+                </div>
+                {% endif %}
+
+                {% if count == 2 or count == 4 or count == 6 or count == 8 or count == 10 or count == 12 %}
+
+                <!-- gallery item -->
+                <div
+                    class="col-md-6 item-img {{ i.image_category|upper }} {{ i.image_sub_category|upper }} {{ i.framed_unframed|lower }}" style="min-height:490px;height:490px;margin-bottom:0.5px;">
+                    <a id="show_image" class="show_image" href="{{ i.image.cdn_url }}">
+                        <img src="{{ i.image.cdn_url }}-/scale_crop/1024x1024/center/" alt="image"
+                            style="height: 100%;width: 100%;">
+                        <div class="item-img-overlay">
+                            <span class="v"></span>
+                            <span class="x"></span>
+                            <div class="overlay-info v-middle text-center">
+                                <h4>{{ i.image_title|upper }}</h4>
+                                <p>{{ i.image_category|upper }}</p>
+                                <p>{{ i.price }}</p>
+
+                    </a>
+                    <button type="button" class="button btn-bord-light text-center" data-toggle="modal"
+                        data-target="#exampleModal" data-image_url="{{ i.image.cdn_url }}"
+                        data-image_title="{{ i.image_title }}" data-image_price="{{ i.price }}"
+                        data-image_category="{{ i.image_category }}"
+                        data-image_sub_category="{{ i.image_sub_category }}"
+                        data-image_description="{{ i.image_description }}">Add
+                        To Cart</button>
+
+
+                </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Added to cart!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Would you like to keep shopping or checkout?</p>
+                        <form action="{% url 'cart' %}" method="GET">
+                            <input type="hidden" id="image_url" name="image_url" placeholder="XXX">
+                            <input type="hidden" id="image_title" name="image_title" placeholder="XXX">
+                            <input type="hidden" id="image_price" name="image_price" placeholder="XXX">
+                            <input type="hidden" id="image_category" name="image_category" placeholder="XXX">
+                            <input type="hidden" id="image_sub_category" name="image_sub_category" placeholder="XXX">
+                            <input type="hidden" id="image_description" name="image_description" placeholder="XXX">
+
+
+                            <button type="submit" id="keep_shopping" name="keep_shopping" value="True"
+                                class="btn btn-secondary">Keep Shopping</button>
+                            <button type="submit" id="checkout" name="checkout" value="True"
+                                class="btn btn-primary">Checkout</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% endwith %}
+        {% endfor %}
+    </div>
+    <div class="row text-center" style="margin-top: 30px;">
+        <a href="{% url 'artwork' %}">
+            <button id="shop_button" class="button btn-bord-dark">See Full Gallery</button>
+        </a>
+    </div>
+
+</section>
+<!--====== End Portfolio ======-->
+{% endif %}
+{% endif %}
+
+
+{% if gallery.0.gallery_columns == 'four_columns' %}
+{% if gallery.0.gallery_style == 'staggered' %}
+<!--====== Portfolio ======-->
+<section id="portfolio" class="portfolio main section-padding" style="border-bottom: 1px solid #eee;">
+    <div class="container">
+        <div class="row">
+            <div class="row text-center" style="margin-bottom:20px;">
+                <div class="uppercase">
+                    <h4>{{ gallery.0.gallery_header }}</h4>
+                </div>
+            </div>
+            <!-- filter links -->
+            <div class="filtering text-center mb-50">
+                <span data-filter='*' class="active">All Recents</span>
+                {% for i in artwork_cats %}
+                <span data-filter='.{{ i }}'>{{ i }}</span>
+                {% endfor %}
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery text-center">
+                {% for i in gallery %}
+                {% with count=forloop.counter %}
+                <!-- gallery item -->
+                <div
+                    class="col-md-3 item-img {{ i.image_category|upper }} {{ i.image_sub_category|upper }} {{ i.framed_unframed|lower }}">
+                    <a id="show_image" class="show_image" href="{{ i.image.cdn_url }}">
+                        <img src="{{ i.image.cdn_url }}-/scale_crop/{% cycle '1024x1024' '1024x900' '1024x900' '1024x1024' '1024x1024' '1024x1024' '1024x1024' '1024x1024' '1024x1024' '1024x1024' '1024x900' '1024x900'   %}/smart/"
+                            alt="image"
+                            style="height: {% cycle '280px' '200px' '200px' '280px' '280px' '280px' '280px' '280px' '280px' '280px' '200px' '200px'%};width: 100%;">
+                        <div class="item-img-overlay">
+                            <span class="v"></span>
+                            <span class="x"></span>
+                            <div class="overlay-info v-middle text-center">
+                                <h6>{{ i.image_title|upper }}</h6>
+                                <p style="font-size: 14px;">{{ i.image_category|upper }}</p>
+                                <p style="font-size: 14px;">{{ i.price }}</p>
+                    </a>
+                    <button type="button" class="button btn-bord-light text-center" data-toggle="modal"
+                        data-target="#exampleModal" data-image_url="{{ i.image.cdn_url }}"
+                        data-image_title="{{ i.image_title }}" data-image_price="{{ i.price }}"
+                        data-image_category="{{ i.image_category }}-/scale_crop/300x300/center/"
+                        data-image_sub_category="{{ i.image_sub_category }}"
+                        data-image_description="{{ i.image_description }}"
+                        style="font-size:12px;margin: -7px;position: absolute;left: 23%;top: {% cycle '120%' '98%' '98%' '120%' '120%' '120%' '120%' '120%' '120%' '120%' '98%' '98%' %};">Add
+                        To Cart</button>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Added to cart!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Would you like to keep shopping or checkout?</p>
+                        <form action="{% url 'cart' %}" method="GET">
+                            <input type="hidden" id="image_url" name="image_url" placeholder="XXX">
+                            <input type="hidden" id="image_title" name="image_title" placeholder="XXX">
+                            <input type="hidden" id="image_price" name="image_price" placeholder="XXX">
+                            <input type="hidden" id="image_category" name="image_category" placeholder="XXX">
+                            <input type="hidden" id="image_sub_category" name="image_sub_category" placeholder="XXX">
+                            <input type="hidden" id="image_description" name="image_description" placeholder="XXX">
+
+
+                            <button type="submit" id="keep_shopping" name="keep_shopping" value="True"
+                                class="btn btn-secondary">Keep Shopping</button>
+                            <button type="submit" id="checkout" name="checkout" value="True"
+                                class="btn btn-primary">Checkout</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+
+    </div>
+    <div class="row text-center" style="margin-top: 50px;">
+        <a href="{% url 'artwork' %}">
+            <button id="shop_button" class="button btn-bord-dark">See Full Gallery</button>
+        </a>
+    </div>
+    </div>
+</section>
+<!--====== End Portfolio ======-->
+{% endif %}
+
+{% if gallery.0.gallery_style == 'even' %}
+<!--====== Portfolio ======-->
+<section id="portfolio" class="portfolio main section-padding" style="border-bottom: 1px solid #eee;">
+    <div class="container">
+        <div class="row">
+            <div class="row text-center" style="margin-bottom:20px;">
+                <div class="uppercase">
+                    <h4>{{ gallery.0.gallery_header }}</h4>
+                </div>
+            </div>
+            <!-- filter links -->
+            <div class="filtering text-center mb-50">
+                <span data-filter='*' class="active">All Recents</span>
+                {% for i in artwork_cats %}
+                <span data-filter='.{{ i }}'>{{ i }}</span>
+                {% endfor %}
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery text-center">
+                {% for i in gallery %}
+                {% with count=forloop.counter %}
+                <!-- gallery item -->
+                <div
+                    class="col-md-3 item-img {{ i.image_category|upper }} {{ i.image_sub_category|upper }} {{ i.framed_unframed|lower }}">
+                    <a id="show_image" class="show_image" href="{{ i.image.cdn_url }}">
+                        <img src="{{ i.image.cdn_url }}-/scale_crop/1024x1024/smart/" alt="image"
+                            style="height: 240px;width: 100%;">
+                        <div class="item-img-overlay">
+                            <span class="v"></span>
+                            <span class="x"></span>
+                            <div class="overlay-info v-middle text-center">
+                                <h6>{{ i.image_title|upper }}</h6>
+                                <p>{{ i.image_category|upper }}</p>
+                                <p>{{ i.price }}</p>
+                    </a>
+                    <button type="button" class="button btn-bord-light text-center" data-toggle="modal"
+                        data-target="#exampleModal" data-image_url="{{ i.image.cdn_url }}"
+                        data-image_title="{{ i.image_title }}" data-image_price="{{ i.price }}"
+                        data-image_category="{{ i.image_category }}-/scale_crop/300x300/center/"
+                        data-image_sub_category="{{ i.image_sub_category }}"
+                        data-image_description="{{ i.image_description }}"
+                        style="margin: -7px;position: absolute;left: 20%;">Add To Cart</button>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Added to cart!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Would you like to keep shopping or checkout?</p>
+                        <form action="{% url 'cart' %}" method="GET"><input type="hidden" id="image_url"
+                                name="image_url" placeholder="XXX">
+                            <input type="hidden" id="image_title" name="image_title" placeholder="XXX">
+                            <input type="hidden" id="image_price" name="image_price" placeholder="XXX">
+                            <input type="hidden" id="image_category" name="image_category" placeholder="XXX">
+                            <input type="hidden" id="image_sub_category" name="image_sub_category" placeholder="XXX">
+                            <input type="hidden" id="image_description" name="image_description" placeholder="XXX">
+
+
+                            <button type="submit" id="keep_shopping" name="keep_shopping" value="True"
+                                class="btn btn-secondary">Keep
+                                Shopping</button>
+                            <button type="submit" id="checkout" name="checkout" value="True"
+                                class="btn btn-primary">Checkout</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+
+    </div>
+    <div class="row text-center" style="margin-top: 50px;">
+        <a href="{% url 'artwork' %}">
+            <button id="shop_button" class="button btn-bord-dark">See Full Gallery</button>
+        </a>
+    </div>
+    </div>
+</section>
+<!--====== End Portfolio ======-->
+{% endif %}
+{% endif %}
+
+{% endblock %}

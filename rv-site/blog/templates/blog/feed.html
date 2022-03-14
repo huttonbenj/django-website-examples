@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<title>{{seo.title}}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}
+{% block image %}<meta property="og:image" content="https://ucarecdn.com/00f29fa9-0fda-484a-a0b4-3d5425394f23/LogoCobaltandCoralSquare.png">{% endblock %}
+{% block analytics %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .page-title-description {
+            width: 85%;
+        }
+        @media (max-width: 767px) {
+            .page-title-description {
+                font-size: 14px !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<section id="page-title" class="page-title-parallax page-title-dark skrollable skrollable-between" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image.url}}); background-size: cover; padding: 120px 0px; background-position: 0px -176.055px;max-height: 300px;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h2>{{page_title.title}}</h2>
+      <span class="mx-auto mx-md-0 mx-lg-0 page-title-description">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+      </ol>
+    </div>
+
+  </section>
+<!-- #page-title end -->
+
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+
+            <!-- Posts
+            ============================================= -->
+            <div id="posts" class="row grid-container gutter-40">
+                {% for blog in blogs %}
+                <div class="entry col-12">
+                    <div class="grid-inner row no-gutters">
+                        <div class="entry-image col-md-4">
+                            <a href="{% url 'blog_single' slug=blog.seo_set.last.slug %}" data-lightbox=""><img src="{{blog.image.url}}" alt="Standard Post with Image"></a>
+                        </div>
+                        <div class="col-md-8 pl-md-4">
+                            <div class="entry-title title-sm">
+                                <h2><a href="{% url 'blog_single' slug=blog.seo_set.last.slug %}">{{blog.title}}</a></h2>
+                            </div>
+                            <div class="entry-meta">
+                                <ul>
+                                    <li><i class="icon-calendar3"></i>{{blog.datetime}}</li>
+                                    <li><a href="#" class="pointer-event-none"><i class="icon-user"></i> {{blog.user.first_name}} {{blog.user.last_name}}</a></li>
+                                    <li><i class="icon-folder-open"></i> 
+                                    {% for category in blog.categories_set.all %}
+                                    <a href="#" class="pointer-event-none">{{category.category}}</a>{% if not forloop.counter == blog.categories_set.all|length %},{% endif %}
+                                    {% endfor %}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="entry-content">
+                                <p>{{blog.story|safe|truncatewords:"80"}}</p>
+                                <a href="{% url 'blog_single' slug=blog.seo_set.last.slug %}" class="more-link">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div><!-- #posts end -->
+
+            <!-- Pager
+            ============================================= -->
+            <!-- <div class="d-flex justify-content-between mt-5">
+                <a href="#" class="btn btn-outline-secondary">&larr; Older</a>
+                <a href="#" class="btn btn-outline-dark">Newer &rarr;</a>
+            </div> -->
+            <!-- .pager end -->
+
+        </div>
+    </div>
+</section><!-- #content end -->
+{% if success_message == True %}
+<div class="alert alert-success fixed-bottom" style="max-width: 400px; left: auto; right: 20px;" data-animate="fadeInRight faster">
+    <div class="row justify-content-between align-items-center">
+        <div class="col-12">
+            <strong><i class="icon-gift"></i> Success!</strong> Your form was successfully submitted <a href="#" class="alert-link"><u>Thank You!</u></a> 
+        </div>
+        <div class="col-12 mt-3">
+            <!-- <a href="#" class="btn btn-success">Shop Now</a> -->
+            <button id='success-close' type="button" class="close btn btn-link text-dark ml-md-3 d-none" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    if ($('#success-close').attr('id') != 'undefined') {
+        setTimeout(function(){ $('#success-close').click() }, 6000);
+    }
+
+</script>
+{% endblock %}

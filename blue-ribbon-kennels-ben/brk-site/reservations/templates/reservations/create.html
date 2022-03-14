@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/bs-select.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/components/datepicker.css' %}" type="text/css" />
+<link href="{% static 'reservations/fullcalendar/lib/main.css' %}" rel='stylesheet' />
+<script src="{% static 'reservations/fullcalendar/lib/main.js' %}"></script>
+<style>
+    .desktop {
+        display: block;
+    }
+    .mobile {
+        display: none;
+    }
+    @media (max-width: 992px){
+        .desktop {
+            display: none !important;
+        }
+        .mobile {
+            display: block !important;
+        }
+        .mobile-flex {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .ta-l {
+            text-align: center !important;
+        }
+        .ta-r {
+            text-align: center !important;
+        }
+        .mobile-form {
+            padding: 0 !important;
+        }
+        .mobile-btn {
+            width: 100% !important;
+            text-align: center !important;
+        }
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'include/reservation-form.html' %}
+{% include 'include/calendar-widget.html' %}
+<!-- <a id="calendar-error-msg" href="#" class="d-none" data-notify-type="error" data-notify-msg="" onclick="" >Show Error</a> -->
+<div id="calendar-error-msg" class="position-fixed top-0 end-0 p-3" style="z-index: 999999;"><div id="toast" class="toast p-2 text-white border-0 fade " role="alert" aria-live="assertive" aria-atomic="true"><div class="d-flex"><div class="toast-body"></div><button type="button" class="btn-close btn-close btn-sm me-2 mt-2 ms-auto" data-bs-dismiss="toast" aria-label="Close"></button></div></div></div>
+<!-- <div id="calendar-error-msg-container"></div> -->
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/components/bs-select.js' %}"></script>
+<script src="{% static 'js/components/selectsplitter.js' %}"></script>
+
+<script>
+    function prevNextReservationBtns(){
+        $('#submit-reservation-select-dates').click(function(e){
+            e.preventDefault();
+            $('#tab-reservation a[href="#tab-reservation-payment"]').tab('show');
+        });
+        $('.prev').on('click', function(e) {
+            e.preventDefault();
+            let activeTabIndex = $('#tab-reservation').find('.active').index();
+            $('#tab-reservation').children().eq(activeTabIndex-1).tab('show');
+        });
+    };prevNextReservationBtns();
+
+    function removePreviousReservationTypeSelection(){
+        $('.btn-check').on('click', function(){
+            var newSelectedId = $(this).attr('id')
+            $('.btn-check.valid').each(function(index){
+                if($(this).attr('id') != newSelectedId) {
+                    $(this).removeClass('valid');
+                    $('label[for="'+$(this).attr('id')+'"]').removeClass('perm-focus');
+                } else {
+                    $('label[for="'+$(this).attr('id')+'"]').addClass('perm-focus');
+                }
+            });
+        });
+    };removePreviousReservationTypeSelection();
+</script>
+{% endblock %}
+
+
+

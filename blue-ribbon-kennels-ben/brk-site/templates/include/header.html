@@ -1,0 +1,72 @@
+{% load static %}
+<!-- Header
+		============================================= -->
+<header id="header" class="full-header transparent-header semi-transparent dark sticky-header sticky-header-shrink">
+    <div id="header-wrap" class="">
+        <div class="container">
+            <div class="header-row top-search-parent">
+
+                <!-- Logo
+                ============================================= -->
+                <div id="logo" class="custom-logo my-3">
+                    <a href="/" class="standard-logo" data-dark-logo="{{logo.image.url}}"><img class="custom-logo-img" src="{{logo.image.url}}" alt="Logo" height="60px" width="100%"></a>
+                    <a href="/" class="retina-logo" data-dark-logo="{{logo.image.url}}"><img class="custom-logo-img" src="{{logo.image.url}}" alt="Logo" height="60px" width="100%"></a>
+                </div><!-- #logo end -->
+
+            
+
+                <div id="primary-menu-trigger">
+                    <svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+                </div>
+
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav class="primary-menu">
+
+                    <ul class="menu-container border-none">
+                        <!-- <li class="menu-item sub-menu">
+                            <a class="menu-link" href="/" style="padding-top: 39px; padding-bottom: 39px;"><div>Home<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li> -->
+                        <li class="menu-item sub-menu">
+                            <a class="menu-link" href="{% url 'create' %}" style="padding-top: 39px; padding-bottom: 39px;"><div>Book Now<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li>
+                        <li class="menu-item sub-menu" id="boarding-and-training-btn"> 
+                            <a class="menu-link" href="#" style="padding-top: 39px; padding-bottom: 39px;pointer-events: none;"><div>Services<i class="icon-angle-down"></i></div></a>
+                            <ul class="sub-menu-container" >
+                                <li class="menu-item sub-menu">
+                                    <a class="menu-link has-href" href="{% url 'service' 'Boarding' %}"><div><img class="custom-icon" src="{% static 'images/icons/brk-icons/calendar-check-regular.svg' %}"/>Boarding</div></a>
+                                <button class="sub-menu-trigger "></button></li>
+                                <li class="menu-item sub-menu" >
+                                    <a class="menu-link has-href" href="{% url 'service' 'Obedience Training' %}"><div><img class="custom-icon" src="{% static 'images/icons/brk-icons/obedience-training.svg' %}"/>Obedience Training</div></a>
+                                <button class="sub-menu-trigger "></button></li>
+                                <li class="menu-item sub-menu" >
+                                    <a class="menu-link has-href" href="{% url 'service' 'Retriever Training' %}"><div><img class="custom-icon" src="{% static 'images/icons/brk-icons/retriever-training.svg' %}"/>Retriever Training</div></a>
+                                <button class="sub-menu-trigger "></button></li>
+                            </ul>
+                        <button class="sub-menu-trigger icon-chevron-right"></button></li>
+                        <li class="menu-item sub-menu">
+                            <a class="menu-link" href="{% url 'about' %}" style="padding-top: 39px; padding-bottom: 39px;"><div>About<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li>
+                        <li class="menu-item sub-menu">
+                            <a class="menu-link" href="{% url 'facility' %}" style="padding-top: 39px; padding-bottom: 39px;"><div>Facility<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li>
+                        <li class="menu-item sub-menu">
+                            <a class="menu-link" href="{% url 'gallery' %}" style="padding-top: 39px; padding-bottom: 39px;"><div>Gallery<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li>
+                        <li class="menu-item sub-menu">
+                            <a class="menu-link" href="{% url 'faqs' %}" style="padding-top: 39px; padding-bottom: 39px;"><div>FAQs<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li>
+                        <li class="menu-item sub-menu">
+                            <a class="menu-link" href="{% url 'contact' %}" style="padding-top: 39px; padding-bottom: 39px;"><div>Contact<i class="icon-angle-down"></i></div></a>
+                        <button class="sub-menu-trigger "></button></li>                        
+
+                    </ul>
+
+                </nav><!-- #primary-menu end -->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="header-wrap-clone" style="height: 101px;"></div>
+</header>

@@ -1,0 +1,382 @@
+<div class="card-body dark" style="padding: 60px">
+
+    <div class="form-widget" data-alert-type="inline">
+        <div class="form-result"></div>
+
+        <form id="reservation-form-builder" class="row mb-0" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-12 bottommargin">
+                <div id="tab-reservation" class="list-group list-group-horizontal d-flex justify-content-center"
+                    role="tablist">
+                    <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3 active disabled-link"
+                        data-bs-toggle="list" href="#tab-reservation-type" role="tab">1. Select Reservation Type</a>
+                    <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3 disabled-link"
+                        data-bs-toggle="list" href="#tab-reservation-select-dates" role="tab" id="select-dates">2.
+                        Reservation Details</a>
+                    <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3 disabled-link"
+                        data-bs-toggle="list" href="#tab-reservation-payment" role="tab">4. Payment Options</a>
+                </div>
+            </div>
+            <div class="col-12 mobile">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Reservation Type: <span id="res-type-overview-mobile"
+                                class="room-type-value fw-semibold fcolor ms-1">-----</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Duration: <span id="date-range-overview-mobile"
+                                class="time-value fw-semibold fcolor ms-1">-----</span>
+                        </h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Initial Cost: <span id="initial-cost-overview-mobile"
+                                class="rooms-value fw-semibold fcolor ms-1">-----</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Additional Cost: <span id="additional-cost-overview-mobile"
+                                class="persons-value fw-semibold fcolor ms-1">-----</span>
+                        </h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Total Cost: <span id="total-cost-overview-mobile"
+                                class="persons-value fw-semibold fcolor ms-1">-----</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+
+                <div class="tab-content" id="nav-tabContent">
+
+                    <div class="tab-pane fade show active" id="tab-reservation-type" role="tabpanel"
+                        aria-labelledby="tab-reservation-select-room">
+                        <div class="row">
+                            <div class="col-12 ">
+
+                                <div id="reservation-type-btn-container" class="list-group btn-group-vertical mb-3"
+                                    role="group">
+
+                                    <input class="btn-check" type="radio" name="boarding" data-item="boarding"
+                                        id="boarding" value="boarding">
+                                    <label for="boarding"
+                                        class="btn list-group-item d-flex justify-content-between align-items-center mb-0 mobile-flex">
+                                        <div class="col-lg-5 ta-l">
+                                            <span class="d-block">
+                                                <h4 class="my-0">Boarding</h4>
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <small class="text-muted">No Minimum</small>
+                                        </div>
+                                        <div class="col-lg-3 ta-r">
+                                            <h4 class="mb-0 fcolor">$25/day</h4>
+                                        </div>
+
+                                    </label>
+
+                                    <input class="btn-check" type="radio" name="boarding_and_training"
+                                        data-item="boarding_and_training" id="boarding_and_training"
+                                        value="boarding_and_training">
+                                    <label for="boarding_and_training"
+                                        class="btn list-group-item d-flex justify-content-between align-items-center mb-0 mobile-flex">
+                                        <div class="col-lg-5 ta-l">
+
+                                            <span class="d-block">
+                                                <h4 class="my-0">Boarding and General Training</h4>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-lg-4">
+
+                                            <small class="text-muted">No Minimum</small>
+                                        </div>
+
+                                        <div class="col-lg-3 ta-r">
+
+                                            <h4 class="mb-0 fcolor">$30/day</h4>
+                                        </div>
+
+                                    </label>
+
+                                    <input class="btn-check" type="radio" name="obedience_training"
+                                        data-item="obedience_training" id="obedience_training"
+                                        value="obedience_training">
+                                    <label for="obedience_training"
+                                        class="btn list-group-item d-flex justify-content-between align-items-center mb-0 mobile-flex">
+                                        <div class="col-lg-5 ta-l">
+
+                                            <span class="d-block">
+                                                <h4 class="my-0">Obedience Training</h4>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <small class="text-muted">30 Day Minimum</small>
+                                        </div>
+
+                                        <div class="col-lg-3 ta-r">
+                                            <h4 class="mb-0 fcolor">$30/day</h4>
+                                        </div>
+
+                                    </label>
+
+                                    <input class="btn-check" type="radio" name="retriever_training"
+                                        data-item="retriever_training" id="retriever_training"
+                                        value="retriever_training">
+                                    <label for="retriever_training"
+                                        class="btn list-group-item d-flex justify-content-between align-items-center mb-0 mobile-flex">
+                                        <div class="col-lg-5 ta-l">
+
+                                            <span class="d-block">
+                                                <h4 class="my-0">Retriever Training</h4>
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <small class="text-muted">60 Day Minimum</small>
+                                        </div>
+
+                                        <div class="col-lg-3 ta-r">
+
+                                            <h4 class="mb-0 fcolor">$30/day</h4>
+                                        </div>
+
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <a id="submit-reservation-type" href="#"
+                                    class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-end submit-reservation-type">Next
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-reservation-select-dates" role="tabpanel"
+                        aria-labelledby="tab-reservation-select-dates">
+                        <div class="row">
+                            <div class="col-12 mb-4 mobile-form">
+                                <label for="">Date Range</label>
+                                <div class="input-daterange component-datepicker input-group">
+                                    {{form.start_date}}
+                                    <div class="input-group-text">to</div>
+                                    {{form.end_date}}
+                                    <a id="date-range-btn"
+                                        class="button button-rounded button-light bg-white text-dark my-0 mobile-btn"
+                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-fs"
+                                        style="border-radius: 1px !important;">Open Calendar</a>
+                                </div>
+                            </div>
+                            <div id="additional-days" class="col-12 mb-4  mobile-form" style="display: none;">
+                                <label for="">Additional Boarding Days</label>
+                                <div class="input-daterange component-datepicker input-group">
+                                        {{form.start_date_additional}}
+                                    <div class="input-group-text">to</div>
+                                        {{form.end_date_additional}}
+                                    <a id="additional-days-btn"
+                                        class="button button-rounded button-light bg-white text-dark my-0"
+                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-fs"
+                                        style="border-radius: 1px !important;">Open Calendar</a>
+                                    <a id="additional-days-btn-disabled"
+                                        class="button button-rounded button-light bg-white text-dark my-0"
+                                        style="border-radius: 1px !important;">Open Calendar</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4 mobile-form">
+                                <label>First Name:</label>
+                                    {{form.first_name}}
+                            </div>
+                            <div class="col-lg-6 mb-4 mobile-form">
+                                <label>Last Name:</label>
+                                {{form.last_name}}
+                            </div>
+                            <div class="col-lg-6 mb-4 mobile-form">
+                                <label>Email Address:</label>
+                                    {{form.email}}
+                            </div>
+                            <div class="col-lg-6 mb-4 mobile-form">
+                                <label>Phone:</label><br>
+                                    {{form.phone}}
+                            </div>
+                            <div class="col-12 mb-4 mobile-form">
+                                <label>Street Address:</label>
+                                    {{form.street}}
+                            </div>
+                            <div class="col-lg-5 mb-4 mobile-form">
+                                <label>City:</label>
+                                    {{form.city}}
+                            </div>
+                            <div class="col-lg-5 mb-4 mobile-form">
+                                <label>State:</label>
+                                    {{form.state}}
+                            </div>
+                            <div class="col-lg-2 mb-4 mobile-form">
+                                <label>Postal Code:</label>
+                                    {{form.postal_code}}
+                            </div>
+                            <div class="col-lg-6 mb-4 mobile-form">
+                                <label>Dog's Name:</label><br>
+                                    {{form.dogs_name}}
+                            </div>
+                            <div class="col-lg-6 mb-4 mobile-form">
+                                <label>Dog's Breed:</label><br>
+                                    {{form.dogs_breed}}
+                            </div>
+                            <div class="col-lg-4 mb-4 mobile-form">
+                                <label>Dog's Age:</label><br>
+                                    {{form.dogs_age}}
+                            </div>
+                            <div class="col-lg-4 mb-4 mobile-form">
+                                <label>Dog's Sex:</label><br>
+                                {{form.dogs_sex}}
+                            </div>
+                            <div class="col-lg-4 mb-4 mobile-form">
+                                <label>Dog's Shot Records:</label><br>
+                                    {{form.shot_records}}
+                            </div>
+                            <div class="col-12 mb-4 mobile-form">
+                                <label>Additional Comments:</label><br>
+                                    {{form.comments}}
+                            </div>
+                        </div>
+                
+                        <a id="submit-reservation-dates" href="#"
+                            class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-end">Next
+                        </a>
+                        <a id="prev" href="#"
+                            class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-end prev">Prev
+                        </a>
+                    </div>
+            
+                    <div class="tab-pane fade" id="tab-reservation-payment" role="tabpanel"
+                        aria-labelledby="tab-reservation-payment">
+                        <div class="row">
+                            <div class="col-lg-12 mb-4 mobile-form">
+                                <label>Payment Options:</label><br>
+                                <select name="id_pay_now" id="id_pay_now"
+                                    class="sm-form-control border-form-control required payment-options">
+                                    <option value="" disabled selected>-------</option>
+                                    <option value="pay_upon_arrival">Pay Upon Arrival</option>
+                                    <option value="pay_now_partial">Pay Now In Partial</option>
+                                    <option value="pay_now_full">Pay Now In Full</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-8 mb-4 payment-col d-none">
+                                <label>Credit Card number:</label>
+                                <input type="number" placeholder="xxxx xxxx xxxx xxxx"
+                                    name="booking-registration-card-no" id="booking-registration-card-no"
+                                    class="sm-form-control border-form-control" value="">
+                            </div>
+                            <div class="col-lg-4 mb-4 payment-col d-none">
+                                <label>CVV:</label>
+                                <input type="password" name="booking-registration-card-cvv" maxlength="3" pattern="\d*"
+                                    id="booking-registration-card-cvv" class="sm-form-control border-form-control"
+                                    value="">
+                            </div>
+                            <div class="col-lg-8 mb-4 payment-col d-none">
+                                <label>Name on Credit Card:</label>
+                                <input type="text" name="booking-registration-card-name"
+                                    id="booking-registration-card-name"
+                                    class="sm-form-control border-form-control required" value="">
+                                <small class="text-muted">Full name as displayed on card</small>
+                            </div>
+                            <div class="col-lg-4 mb-4 payment-col d-none">
+                                <label>Expiration Date (MM/YYYY):</label>
+                                <input type="text" value="" id="booking-registration-card-exp"
+                                    class="sm-form-control required border-form-control text-start"
+                                    name="booking-registration-card-exp" placeholder="MM/YYYY">
+                            </div>
+                            <div class="col-lg-4 mb-4 d-none partial-payment-amount">
+                                <label>Partial Payment Amount:</label>
+                                <input type="text" value="" id="id_partial_payment_amount"
+                                    class="sm-form-control required border-form-control text-start"
+                                    name="partial_payment_amount"
+                                    placeholder="Partial Payment Amount">
+                            </div>
+                            <div class="col-12">
+                                <button id="booking-registration-submit" name="booking-registration-submit"
+                                    class="button button-rounded button-light bg-white text-dark float-end">Book
+                                    Now</button>
+                                <a id="prev" href="#"
+                                    class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-end prev">Prev
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 desktop">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Reservation Type: <span id="res-type-overview"
+                                class="room-type-value fw-semibold fcolor ms-1">-----</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Duration: <span id="date-range-overview"
+                                class="time-value fw-semibold fcolor ms-1">-----</span>
+                        </h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Initial Cost: <span id="initial-cost-overview"
+                                class="rooms-value fw-semibold fcolor ms-1">-----</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Additional Cost: <span id="additional-cost-overview"
+                                class="persons-value fw-semibold fcolor ms-1">-----</span>
+                        </h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5 class="mb-0">Total Cost: <span id="total-cost-overview"
+                                class="persons-value fw-semibold fcolor ms-1">-----</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <button id="login-modal-btn" class="btn btn-primary me-2 ignore-form d-none authenticated-{{request.user.is_authenticated}}" data-bs-toggle="modal" data-bs-target=".login-modal">Large modal</button>
+
+    <div id="login-modal" class="modal fade bs-example-modal-lg login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="loginModal">Login</h4>
+                    <button type="button" class="btn-close btn-sm ignore-form" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <p>Log in to prefill your personal info on this reservation.</p>
+                    </div>
+                    <form id="login-form" action="" method="POST" class="px-lg-4">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token_html}}">
+                      <input type="hidden"id="next" name="next" value="/reservations/create" />
+                      <div class="col-lg-12 mb-4">
+                        <label>Username:</label><br>
+                            <input type="text" name="username" placeholder="Username" class="form-control border-left-0 pl-0" placeholder="Username">
+                        </div>  
+                      <div class="col-lg-12 mb-4">
+                        <label>Password:</label><br>
+                        <input type="password" name="password" placeholder="Password" class="form-control border-left-0 pl-0" placeholder="Password">
+                        </div>  
+                      <div class="d-md-flex justify-content-between my-4">
+                        <label class="ec-checkbox check-sm my-2 clearfix">
+                          <input type="checkbox" name="checkbox">
+                          <span class="ec-checkbox__control"></span>
+                          <span class="ec-checkbox__lebel">Remember Me</span>
+                        </label>
+                        <a href="{% url 'password_reset' %}" class="text-primary my-2 d-block">Forgot password?</a>
+                      </div>
+                      <button id="login-submit" type="submit" name="send" class="btn btn-block btn-primary">Log In</button>
+                      <p class="my-5 text-center">
+                        Don’t have an account? <a href="/accounts/register/" class="text-primary">Register</a>
+                      </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

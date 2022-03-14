@@ -1,0 +1,7 @@
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-treeview {
+    background-color: currentColor !important;
+}
+
+/* .nav-link[aria-controls="general-tab"] {
+    display: none !important;
+} */

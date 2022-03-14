@@ -1,0 +1,26 @@
+
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"> <h4 style="margin-top: auto;margin-bottom: auto;">Reservation Number:&nbsp;</h4> <p style="margin-top: auto;margin-bottom: auto;">{{reservation_number}}</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Email:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{email}}</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Phone:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{phone}}</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Coach Make:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{coach_make}}</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Coach Model:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{coach_model}}</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Coach Year:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{coach_year}}</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Coach Length:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{coach_length}}</p></div>
+
+
+{% if trailer == True %}
+<di style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"v><h4 style="margin-top: auto;margin-bottom: auto;">Trailer:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">Yes</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Trailer Length:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{trailer_length}}</p></div>
+{% else %}
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Trailer:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">No</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Trailer Length:&nbsp;</h4>><p style="margin-top: auto;margin-bottom: auto;">N/A</p></div>
+{% endif %}
+
+{% if pets == True %}
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Pets:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">Yes</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Pet Breed:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">{{pet_breed}}</p></div>
+{% else %}
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Pets:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">No</p></div>
+<div style="display: flex !important;flex-wrap: nowrap;flex-direction: row;"><h4 style="margin-top: auto;margin-bottom: auto;">Pet Breed:&nbsp;</h4><p style="margin-top: auto;margin-bottom: auto;">N/A</p></div>
+{% endif %}
+

@@ -1,0 +1,99 @@
+{% load static %}
+
+{% block header %}
+{% if header.style == 'simple' %}
+<!-- ====== Header ======  -->
+<header id="home" class="header" data-stellar-background-ratio="0.5"
+    style="background-image: url({{ header.bg.cdn_url }})">
+    <div class="header-overlay">
+        <a class="button btn-lg btn-bg-dark btn-rdus mb-10" href="/">learn more</a>
+        <!-- header content -->
+        <div class="caption v-middle text-center">
+
+            <div class="owl-carousel owl-theme">
+                <div class="main">
+                    <div class="sub">
+                        <h6>{{ header.intro }}</h6>
+                        <h1>{{ header.name }}</h1>
+                                
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-scroll" data-scrollTo="shop"><span></span></div>
+    </div>
+</header>
+<!-- ====== End Header ======  -->
+{% endif %}
+
+{% if header.style == 'textbox' %}
+<!-- ====== Header ======  -->
+<header id="home" class="header demo-3" data-stellar-background-ratio="0.5"
+    style="background-image: url({{ header.bg.cdn_url }})">
+    <div class="header-overlay">
+        <!-- header content -->
+        <div class="caption v-middle text-center">
+
+            <div class="owl-carousel owl-theme">
+                <div class="main">
+                    <div class="sub">
+                        <h6>{{ header.intro }}</h6>
+                        <h1>{{ header.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-scroll" data-scrollTo="shop"><span></span></div>
+    </div>
+</header>
+<!-- ====== End Header ======  -->
+{% endif %}
+
+{% if header.style == 'animated' %}
+<!-- ====== Header ======  -->
+<header id="home" class="header" data-stellar-background-ratio="0.5"
+    style="background-image: url({{ header.bg.cdn_url }})">
+    <div class="header-overlay">
+        
+        <!-- header content -->
+        <div class="caption v-middle text-center">
+            <h6>{{ header.intro }}</h6>
+            <h1 class="tlt" data-out-effect="rotateOut">{{ header.name }}</h1>
+            <a href="#">
+            <button class="button btn-bord-light" data-scrollTo="shop" style="width:120px;">Shop</button>
+            </a>
+            <a>
+            <button class="button btn-bord-light" data-scrollTo="portfolio" style="width:120px;"><span></span>Gallery</button>
+            </a>
+        </div>
+        <div class="button-scroll" data-scrollTo="shop"><span></span></div>
+    </div>
+</header>
+<!-- ====== End Header ======  -->
+{% endif %}
+
+{% if header.style == 'logo' %}
+<!-- ====== Header ======  -->
+<header id="home" class="header" data-stellar-background-ratio="0.5"
+    style="background-image: url({{ header.bg.cdn_url }});">
+    <div class="header-overlay">
+        <!-- header content -->
+        <div class="caption v-middle text-center" style="width:40%;height:auto;margin-left:28%;margin-top:0px;">
+
+            <div class="owl-carousel owl-theme">
+                <div class="main">
+                    <div class="sub">
+                        <img src="{{ header.logo.cdn_url }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-scroll" data-scrollTo="shop"><span></span></div>
+    </div>
+</header>
+<!-- ====== End Header ======  -->
+{% endif %}
+{% endblock %}

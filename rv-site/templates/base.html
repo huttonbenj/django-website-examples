@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	{% block title %}{% endblock %}
+	{% block description %}{% endblock %}
+	{% block image %}{% endblock %}
+	{% block keywords %}{% endblock %}
+	<meta name="author" content="Ben Hutton" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
+	{% block analytics_home %}{% endblock %}
+	{% block analytics %}{% endblock %}
+
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	{% block extra_css %}{% endblock %}
+	<!-- Document Title
+	============================================= -->
+	
+	<style>
+		#floating-panel {
+		  position: absolute;
+		  top: 10px;
+		  left: 25%;
+		  z-index: 5;
+		  background-color: #fff;
+		  padding: 5px;
+		  border: 1px solid #999;
+		  text-align: center;
+		  font-family: "Roboto", "sans-serif";
+		  line-height: 30px;
+		  padding-left: 10px;
+		}
+		
+		#right-panel {
+		  font-family: "Roboto", "sans-serif";
+		  line-height: 30px;
+		  padding-left: 10px;
+		}
+		
+		#right-panel select,
+		#right-panel input {
+		  font-size: 15px;
+		}
+		
+		#right-panel select {
+		  width: 100%;
+		}
+		
+		#right-panel i {
+		  font-size: 12px;
+		}
+		
+		#right-panel {
+		  height: 100%;
+		  float: right;
+		  width: 390px;
+		  overflow: auto;
+		}
+		
+		#map {
+		  margin-right: 400px;
+		}
+		
+		#floating-panel {
+		  background: #fff;
+		  padding: 5px;
+		  font-size: 14px;
+		  font-family: Arial;
+		  border: 1px solid #ccc;
+		  box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+		  display: none;
+		}
+		
+		@media print {
+		  #map {
+			height: 500px;
+			margin: 0;
+		  }
+		
+		  #right-panel {
+			float: none;
+			width: auto;
+		  }
+		}
+	</style>
+
+</head>
+
+<!-- <div class="bootstrap-main-iso">
+	<div class="style-main-iso"> -->
+		<!-- <div class="style-main-helpers-iso"> -->
+<body class="stretched dark">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		{% include 'top-bar.html' %}
+		{% block header %}
+		{% endblock %}
+		{% block slider %}{% endblock %}
+		{% block content %}{% endblock %}
+		{% include 'footer.html' %}
+
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<a id="gotoTop" class="btn btn-lg btn-dark button-coral p-0" style="width: 110px;font-size: 17px;" href="{% url 'reserve' %}">Book Now</a>
+
+	<!-- JavaScripts
+	============================================= -->
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/plugins.min.js' %}"></script>
+	<script src="{% static 'js/functions.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+	{% block extra_js %}{% endblock %}
+
+	<script>
+		$('.about_scroll').on('click', function(e) { 
+		e.preventDefault()
+		var pages = ['rates', 'reserve', 'ownership', 'gallery', 'blog', 'specials', 'lots', 'events']
+		if (pages.indexOf(String(window.location).split('/')[3]) != -1) {
+			window.location = '/?#about_us'
+
+		}
+		else {
+			document.getElementById('about_us').scrollIntoView({
+			behavior: "smooth",
+			block: "center",
+			inline: "center",
+		})
+		}
+	 });
+	</script>
+	<script>
+	$('.contact_scroll').on('click', function(e) { 
+		e.preventDefault()
+		var pages = ['rates', 'reserve', 'ownership', 'gallery', 'blog', 'specials', 'lots', 'events']
+		if (pages.indexOf(String(window.location).split('/')[3]) != -1) {
+			window.location = '/?#contact_us'
+
+		}
+		else {
+			document.getElementById('contact_us').scrollIntoView({
+			behavior: "smooth",
+			block: "center",
+			inline: "center",
+		})
+		}
+	 });
+	</script>
+
+
+
+    
+</body>
+
+</html>
+
+<!-- </div> -->
+
+

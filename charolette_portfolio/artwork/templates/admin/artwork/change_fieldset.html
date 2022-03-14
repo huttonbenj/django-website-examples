@@ -1,0 +1,58 @@
+<fieldset class="module aligned {{ fieldset.classes }}">
+    {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+    {% if fieldset.description %}
+    <div class="description">{{ fieldset.description|safe }}</div>
+    {% endif %}
+    {% for line in fieldset %}
+    <div
+        class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+        {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+        {% for field in line %}
+        <div{% if not line.fields|length_is:'1' %}
+            class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"
+            {% elif field.is_checkbox %} class="checkbox-row" {% endif %}>
+            {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+            {% if field.is_checkbox %}
+            {{ field.field }}{{ field.label_tag }}
+            {% else %}
+            {{ field.label_tag }}
+            {% if field.is_readonly %}
+            <div class="readonly">{{ field.contents }}</div>
+            {% else %}
+
+            <!-- {% if fieldset.name == 'All Gallery Images' or 'Home Page Gallery' or 'Artwork Main Page Header' or 'Originals Page Header' or 'Oil Page Header' or 'Watercolor Page Header' or 'Prints Page Header' or 'Framed Page Header' or 'Unframed Page Header' or 'Header Title' or 'Your Contact Info' %} -->
+            <div class="row" style="border: solid rgba(255, 255, 255, 0) 1px;">
+                <div class="col" style="display: flex;border: solid rgba(255, 255, 255, 0) 1px;">
+
+
+                    {% if field.field.help_text %}
+                    {{ field.field }}
+                </div>
+                <div class="col">
+                    <div class="row" style="display: flex;">
+                        <div class="col" style="display: flex;">
+                            <h5 style="margin-top:2px;diplay:flex;margin: 8px 0 0;font-size: 9px;"></h5>
+                        </div>
+                        <div class="col" style="display: flex;">
+                            <div class="help"
+                                style="display: flex;margin-top: 5.5px;margin-left: 172px;font-size: 10px;"><a
+                                    style="margin-right:0px;"></a>{{ field.field.help_text|safe }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- {% endif %} -->
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            <!-- {% if field.field.help_text %} 
+                        <div class="row" style="position:relative;right:-5%;">
+                            <div class="help" style="border: solid black 1px;width:500px;">{{ field.field.help_text|safe }}</div>
+                        </div>
+                    {% endif %} -->
+    </div>
+    {% endfor %}
+    </div>
+    {% endfor %}
+</fieldset>

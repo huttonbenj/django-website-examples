@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load gallery_tags %}
+{% block title %}<title>{{seo.title}}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}
+{% block image %}<meta property="og:image" content="https://ucarecdn.com/00f29fa9-0fda-484a-a0b4-3d5425394f23/LogoCobaltandCoralSquare.png">{% endblock %}
+{% block analytics %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .page-title-description {
+            width: 85%;
+        }
+        @media (max-width: 767px) {
+            .page-title-description {
+                font-size: 14px !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<!-- <section id="page-title" class="page-title-parallax include-header" style="background: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image}}); padding: 120px 0;background-size: cover !important;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h1 data-animate="fadeInUp">{{page_title.title}}</h1>
+      <span data-animate="fadeInUp" data-delay="300">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+      </ol>
+    </div>
+  
+</section> -->
+<!-- #page-title end -->
+
+<section id="page-title" class="page-title-parallax page-title-dark skrollable skrollable-between" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image.cdn_url}}); background-size: cover; padding: 90px 0px; background-position: 0px -176.055px;max-height: 300px;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h2>{{page_title.title}}</h2>
+      <span class="mx-auto mx-md-0 mx-lg-0 page-title-description">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+      </ol>
+    </div>
+
+  </section>
+
+<!-- Content
+============================================= -->
+<section id="content">
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+            <div class="grid-filter-wrap">
+
+                <!-- Portfolio Filter
+                ============================================= -->
+                <ul class="grid-filter" data-container="#portfolio">
+                    <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+                    {% for cat in categories %}
+                    <li><a href="#" data-filter=".{{cat.0}}">{{cat.1}}</a></li>
+                    {% endfor %}
+                </ul><!-- .grid-filter end -->
+
+                <div class="grid-shuffle rounded" data-container="#portfolio">
+                    <i class="icon-random"></i>
+                </div>
+
+            </div>
+            <!-- Portfolio Items
+            ============================================= -->
+            <div id="portfolio" class="portfolio row grid-container no-gutters">
+                {% for item in gallery %}
+                    {% include item.0 %}
+                {% endfor %}
+            </div>
+            <!-- #portfolio end -->
+        </div>
+    </div>
+</section>
+{% endblock %}

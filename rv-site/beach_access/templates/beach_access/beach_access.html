@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container p-3">
+    <div class="row">
+        <a href="{% static 'images/buena-vista/beach_access/beach_access.png' %}" >
+            <img class="m-auto px-1" src="{% static 'images/buena-vista/beach_access/beach_access.png' %}" />
+        </a>
+    </div>
+</div>
+{% endblock %}
+

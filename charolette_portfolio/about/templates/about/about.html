@@ -1,0 +1,22 @@
+{% block about %}
+        <div id="about" class="serv-us"  style="background-image: url({{ about.0.background_image.cdn_url }});background-blend-mode: overlay;">
+            <div class="container">
+                <div class="row" style="display:flex;">
+                    <div class="col-md-4 col-sm-6 us-content" style="display:flexbox;margin-top:auto;margin-bottom:auto;">
+                       
+                        <h5>{{ about.0.section_title }}</h5>
+                        <p>{{ about.0.description }}</p>
+                        <!-- <button class="button btn-bord-light">See More</button> -->
+
+                    </div>
+        
+                    <!-- our video -->
+                    <div class="col-md-offset-2 col-md-6 col-sm-6">
+                        <div class="our-video">
+                            <img src="{{ about.0.professional_photo }}" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

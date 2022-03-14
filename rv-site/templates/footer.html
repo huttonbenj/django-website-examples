@@ -1,0 +1,233 @@
+{% load static %}
+<style>
+    .custom-contact-form {
+        height: 142px !important;
+    }
+</style>
+<footer id="footer" class="dark">
+    <div class="container">
+        <!-- Footer Widgets
+        ============================================= -->
+        <div class="footer-widgets-wrap">
+
+            <div class="row col-mb-50">
+                <div class="col-lg-6">
+
+                    <div class="widget clearfix">
+
+                        <img class="custom-footer-logo" src="{{footer.logo.url}}" alt="Image" class="footer-logo">
+                         
+                        <p>Come experience <strong>The</strong> <strong>New</strong> <strong> Standard</strong> of high-end luxury motor coach resort experiences. We offer larger lots, beautifully landscaped for increased privacy, with gorgeous full-featured coach houses.</p>
+
+                        <div class="py-2" style="background: url('{% static 'images/world-map.png') no-repeat center center;">
+                            <div class="row col-mb-30">
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <address class="mb-0">
+                                        <abbr title="Headquarters" style="display: inline-block;margin-bottom: 7px;"><strong>Location:</strong></abbr><br>
+                                        23601 Perdido Beach Blvd<br>
+                                        Orange Beach, AL 36561, USA<br>
+                                        
+
+                                    </address>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> (251)-980-1855<br>
+                                    <abbr title="Email Address"><strong>Email:</strong></abbr> info@buenavistaorangebeach.com
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://www.facebook.com/BuenaVistaCoastalRVResort" class="social-icon si-small si-rounded topmargin-sm si-facebook">
+                            <i class="icon-facebook"></i>
+                            <i class="icon-facebook"></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/channel/UCwqNqIOkq4y54fjK4s_gfoQ" class="social-icon si-small si-rounded topmargin-sm si-youtube">
+                            <i class="icon-youtube"></i>
+                            <i class="icon-youtube"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/buenavistarvresort/" class="social-icon si-small si-rounded topmargin-sm si-instagram">
+                            <i class="icon-instagram"></i>
+                            <i class="icon-instagram"></i>
+                        </a>
+
+
+                        <a href="tel:251-980-1855" class="social-icon si-small si-rounded topmargin-sm si-call">
+                            <i class="icon-call"></i>
+                            <i class="icon-call"></i>
+                        </a>
+
+                        <a href="mailto:info@buenavistaorangebeach.com" class="social-icon si-small si-rounded topmargin-sm si-email3">
+                            <i class="icon-email3"></i>
+                            <i class="icon-email3"></i>
+                        </a>              
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <div class="widget clearfix">
+                        <!-- <div id="instagram" class="widget">
+
+                            <h4 class="highlight-me">Instagram Photos</h4>
+                            <div id="instagram-photos" class="instagram-photos masonry-thumbs grid-container grid-4 customjs" data-user="blog.canvastemplate"></div>
+
+                        </div> -->
+                        <h4>Recent Posts</h4>
+
+                        <div class="posts-sm row col-mb-30" id="post-list-footer">
+
+                            {% for blog in blogs %}
+                            {% if forloop.counter <= 3 %}
+                            <div class="entry col-12">
+                                <div class="grid-inner row">
+                                    <div class="col">
+                                        <div class="entry-title">
+                                            <h4><a href="{% url 'blog_single' slug=blog.seo_set.last.slug %}">{{blog.title}}</a></h4>
+                                        </div>
+                                        <div class="entry-meta">
+                                            <ul>
+                                                <li>{{blog.datetime}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <div class="widget quick-contact-widget form-widget clearfix">
+
+                        <h4>Send Message</h4>
+
+                        <!-- <div class="form-result"></div> -->
+
+                        <form id="footer-form"   class=" mb-0">
+                            {% csrf_token %}
+                            
+                
+                            <!-- <div class="form-process">
+                                <div class="css3-spinner">
+                                    <div class="css3-spinner-scaler"></div>
+                                </div>
+                            </div> -->
+
+                            <div class="input-group mx-auto">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="icon-user"></i></div>
+                                </div>
+                                {{contact_form.name}}
+                                <!-- <input type="text" class="required form-control" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Full Name" /> -->
+                            </div>
+                            <div class="input-group mx-auto">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="icon-email2"></i></div>
+                                </div>
+                                {{contact_form.email}}
+                                <!-- <input type="text" class="required form-control email" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email Address" /> -->
+                            </div>
+                            <div class="input-group mx-auto">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="icon-phone"></i></div>
+                                </div>
+                            {{contact_form.phone}}
+                            </div>
+                            {{contact_form.message}}
+                            <!-- <textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea> -->
+                            <!-- <input type="text" class="d-none" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
+                            <input type="hidden" name="prefix" value="quick-contact-form-">  -->
+                            <button type="submit" class="btn btn-dark button-coral m-0 form-submit" onclick="sendEmailFooter();" >Send Email</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- .footer-widgets-wrap end -->
+    </div>
+
+    <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights">
+        <div class="container">
+
+            <div class="w-100 text-center">
+                <div class="copyrights-menu copyright-links clearfix">
+                    <a href="/">Home</a>/<a class="about_scroll" href="#">About</a>/<a class="contact_scroll" href="#">Contact</a>/<a href="{% url 'gallery' %}">Gallery</a>
+                </div>
+                Copyrights &copy; 2021 Buena-Vista Coastal RV Resort.
+            </div>
+
+        </div>
+    </div><!-- #copyrights end -->
+</footer><!-- #footer end -->
+
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+
+<script>
+
+    function sendEmailFooter() {
+
+   
+    event.preventDefault();
+    // event.stopPropagation();
+     
+
+    if ($('#footer-form').find('#id_name').val() == '' || $('#footer-form').find('#id_email').val() == '' || $('#footer-form').find('#id_phone').val() == '' || $('#footer-form').find('#id_message').val() == '' ) {
+        alert('Please fill out all required fields')
+    }
+    else {
+        var data = new FormData();
+
+//Form data
+var form_data = $('#footer-form ').serializeArray();
+$.each(form_data, function (key, input) {
+    data.append(input.name, input.value);
+});
+$.ajax({
+        type: 'POST',
+        url: '/contact/footer/',
+        csrfmiddlewaretoken: $('#footer-form input[name=csrfmiddlewaretoken]').val(),
+        dataType: "html",
+        action: 'post',
+        processData: false,
+        contentType: false,
+        data: data,
+
+        success: function (data) {
+            $('#footer-form')[0].reset();
+        alert('Form Submitted')
+
+
+        },
+        error: function (data) {
+            // alert('hey')
+            // $('label[class="error"]').remove();
+            // document.getElementById('id_title').blur()
+            // var errors = Object.keys(JSON.parse(data['responseText'])['errors'])
+            // for (var field in errors) {
+            //     $('label[for="id_' + errors[field] + '"').parent().append('<label class="error">' + JSON.parse(data['responseText'])['errors'][errors[field]] + '</label>')
+            // }
+        },
+    });
+
+    }
+
+
+}
+
+</script>
+{% endblock %}

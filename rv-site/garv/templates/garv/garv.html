@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container p-6">
+    <div class="row py-4">
+        {{garv_rules.rules|safe}}
+    </div>
+</div>
+{% endblock %}

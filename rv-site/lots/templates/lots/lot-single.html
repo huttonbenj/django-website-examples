@@ -1,0 +1,384 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<title>{{seo.title}}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}
+{% block image %}<meta property="og:image" content="{{lot.image_set.first.image.cdn_url}}">{% endblock %}
+
+{% block analytics %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'lots/css/bootstrap-iso.css' %}">
+<link rel="stylesheet" href="{% static 'lots/css/style-iso.css' %}">
+<link rel="stylesheet" href="{% static 'lots/css/color.css' %}">
+<link rel="stylesheet" href="{% static 'lots/css/custom.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/bootstrap-main-iso.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'style-main-iso.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+
+<style>
+	.custom-white {
+		color: #EEE !important;
+	}
+
+	.custom-coral {
+		color: #da7f70 !important;
+	}
+
+	.property-price-title {
+		color: #EEE !important;
+	}
+
+	.sub-price {
+		color: rgb(219, 217, 217) !important;
+	}
+
+	ul.property-features li {
+		color: whitesmoke !important;
+	}
+
+	ul.property-features span {
+		color: rgb(190, 189, 189) !important;
+	}
+
+	.cloned {
+		display: none !important;
+	}
+
+	#titlebar {
+		background: transparent !important;
+	}
+
+	.back-to-listings {
+		background-color: transparent !important;
+	}
+
+	.back-to-listings:hover {
+		background-color: #2c4c62 !important;
+	}
+
+	.back-to-listings:before {
+		color: #da7f70 !important;
+	}
+
+	.show-more::after {
+		background: linear-gradient(rgba(255, 255, 255, 0), #35657a 88%) !important;
+	}
+
+	.property-badge {
+		color: #EEE !important;
+		background-color: #da7f70 !important;
+	}
+
+	.property-title a {
+		color: #EEE !important;
+	}
+
+	.csm-trigger {
+		background-color: #da7f70 !important;
+	}
+
+	.csm-content h4 {
+		background-color: #2c4c62 !important;
+	}
+
+	.listing-compact-title {
+		background-color: rgb(53, 101, 122, .7) !important;
+	}
+
+	.property-features.checkboxes li:before {
+		background-color: #da7f70 !important;
+	}
+
+	.style-iso button {
+		font-family: 'Poppins', sans-serif !important;
+
+	}
+	.mw-100 {
+		max-width: 100%;
+	}
+	.book-now-badge {
+		margin: 0 !important;
+		padding: 4px 11px !important;
+		line-height: 24px !important;
+		border-radius: 3px !important;
+		font-size: 13px !important;
+		position: relative !important;
+		top: -4px !important;
+		margin-left: 4px !important;
+	}
+	.custom-contact-form {
+		height: 130px !important;
+	}
+	.lot-slider-thumb {
+		min-height: 141px;
+	}
+
+	.pending-sale-img {
+		position: absolute;
+		
+	}
+
+	@media (max-width:411px) {
+		.lot-slider-thumb {
+			min-height: 120px !important;
+		}
+	}
+</style>
+{% endblock %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="bootstrap-iso">
+	<div class="style-iso">
+		<div id="wrapper">
+
+
+			<!-- Titlebar
+================================================== -->
+			<div id="titlebar" class="property-titlebar margin-bottom-0 section margin-top-0">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+
+							<a href="{% url 'lot-map' %}" class="back-to-listings"></a>
+							<div class="property-title">
+								<h2>Lot {{lot.number}} <span class="property-badge">
+									{% if lot.package == 'standard' %}Standard - Starting at $65/night{% endif %}
+									{% if lot.package == 'moderate' %}Moderate - Starting at $95/night{% endif %}
+									{% if lot.package == 'deluxe' %}Deluxe - Starting at $120/night{% endif %}
+									{% if lot.package == 'luxury' %}Luxury - Starting at $190/night{% endif %}
+								</span>
+								<span class=""><a class="book-now-badge button-coral" href="https://www.rvresortmanagement.com/">Book Now</a></span>
+							</h2>
+								<span>
+									<a href="#" class="listing-address">
+										<i class="fa fa-map-marker"></i>
+										23601 Perdido Beach Blvd, Orange Beach, AL 36561
+									</a>
+								</span>
+							</div>
+
+							{% if lot_price %}
+							<div class="property-pricing">
+								<div class="property-price-title">${{lot_price}}</div>
+								<div class="sub-price"><i>Sale Price</i></div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Content
+================================================== -->
+			<div class="container">
+				<div class="row margin-bottom-50">
+					<div class="col-md-12">
+
+						<!-- Slider -->
+						<div class="property-slider default">
+							{% for image in lot.image_set.all %}
+							<a href="{{image.image.cdn_url}}" data-background-image="{{image.image.cdn_url}}"
+								class="item mfp-gallery">
+							</a>
+							{% endfor %}
+						</div>
+
+						<!-- Slider Thumbs -->
+						<div class="property-slider-nav mw-100 ">
+							{% for image in lot.image_set.all %}
+							<div class="item lot-slider-thumb"><img src="{{image.image.cdn_url}}-/scale_crop/200x141/center/" 
+									alt=""></div>
+							{% endfor %}
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<div class="container">
+				<div class="row">
+
+					<!-- Property Description -->
+					<div class="col-lg-8 col-md-7 sp-content">
+						<div class="property-description">
+
+							<!-- Main Features -->
+							<!-- <ul class="property-main-features">
+					{% for feature in lot.features_set.all %}
+					<li>{{feature.label}} <span>{{feature.value}}</span></li>
+					{% endfor %}
+				</ul> -->
+
+
+							<!-- Description -->
+							<h3 class="desc-headline text-white">Description</h3>
+							<div class="text-white">
+
+								<p>{{lot.description|safe}}</p>
+
+								<!-- <a href="#" class="show-more-button">Show More <i class="fa fa-angle-down"></i></a> -->
+							</div>
+
+
+							<!-- Features -->
+							<h3 class="desc-headline text-white">Features</h3>
+							<ul class="property-features checkboxes margin-top-0">
+								{% for feature in lot.features_set.all %}
+								<li>{{feature.label}}</li>
+								{% endfor %}
+				
+							</ul>
+
+
+							<!-- Video -->
+							{% if lot.video %}
+							<h3 class="desc-headline no-border  text-white">Video</h3>
+							<div class="responsive-iframe">
+								<iframe width="560" height="315" src="{{lot.video.cdn_url}}" frameborder="0"
+									allowfullscreen></iframe>
+							</div>
+							{% endif %}
+
+						</div>
+					</div>
+					<!-- Property Description / End -->
+
+
+					<!-- Sidebar -->
+					<div class="col-lg-4 col-md-5 sp-sidebar">
+						<div class="sidebar sticky right">
+
+
+							<!-- Widget -->
+							<div class="widget">
+
+								<!-- Agent Widget -->
+								<div class="agent-widget  custom-background-dark">
+									<div class="agent-title">
+										<div class="agent-photo"><img src="https://ucarecdn.com/d436de5f-e1f1-4410-897d-6dac7a747858/BulletCoralandCobalt.png"
+												alt="" /></div>
+										<div class="agent-details">
+											<h4><a href="#">Buena Vista</a></h4>
+											<span class="text-white"><i class="sl sl-icon-call-in"></i>(251) 980-1855</span>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<form id="lot_single_contact" method="POST">
+										{% csrf_token %}
+										{{contact_form.name}}
+										{{contact_form.email}}
+										{{contact_form.phone}}
+										{{contact_form.message}}
+									<button type="submit" class="button fullwidth margin-top-5 button-coral text-white" onclick="sendEmail();">Send
+										Message</button>
+									</form>
+								</div>
+								<!-- Agent Widget / End -->
+
+							</div>
+							<!-- Widget / End -->
+
+						</div>
+					</div>
+					<!-- Sidebar / End -->
+
+				</div>
+			</div>
+
+
+			<!-- Footer
+================================================== -->
+			<div class="margin-top-55"></div>
+
+			<!-- Back To Top Button -->
+			<!-- <div id="backtotop"><a href="#"></a></div> -->
+
+
+
+
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'lots/scripts/chosen.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lots/scripts/magnific-popup.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lots/scripts/owl.carousel.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lots/scripts/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lots/scripts/tooltips.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lots/scripts/masonry.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'lots/scripts/custom.js' %}"></script>
+<script>
+
+    function sendEmail() {
+
+   
+    event.preventDefault();
+    // event.stopPropagation();
+    if ($('#lot_single_contact').find('#id_name').val() == '' || $('#lot_single_contact').find('#id_email').val() == '' || $('#lot_single_contact').find('#id_phone').val() == '' || $('#lot_single_contact').find('#id_message').val() == '' ) {
+        alert('Please fill out all required fields')
+    }
+    else {
+        var data = new FormData();
+
+//Form data
+var form_data = $('#lot_single_contact ').serializeArray();
+$.each(form_data, function (key, input) {
+    data.append(input.name, input.value);
+});
+$.ajax({
+        type: 'POST',
+        url: '/contact/lot/',
+        csrfmiddlewaretoken: $('#lot_single_contact input[name=csrfmiddlewaretoken]').val(),
+        dataType: "html",
+        action: 'post',
+        processData: false,
+        contentType: false,
+        data: data,
+
+        success: function (data) {
+            $('#lot_single_contact')[0].reset();
+        alert('Form Submitted')
+
+
+        },
+        error: function (data) {
+            // alert('hey')
+            // $('label[class="error"]').remove();
+            // document.getElementById('id_title').blur()
+            // var errors = Object.keys(JSON.parse(data['responseText'])['errors'])
+            // for (var field in errors) {
+            //     $('label[for="id_' + errors[field] + '"').parent().append('<label class="error">' + JSON.parse(data['responseText'])['errors'][errors[field]] + '</label>')
+            // }
+        },
+    });
+
+    }
+
+
+}
+
+</script>
+{% endblock %}

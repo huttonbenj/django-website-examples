@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}<title>{{seo.title}}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}
+{% block image %}<meta property="og:image" content="https://ucarecdn.com/00f29fa9-0fda-484a-a0b4-3d5425394f23/LogoCobaltandCoralSquare.png">{% endblock %}
+
+{% block analytics %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .page-title-description {
+            width: 85%;
+        }
+        .custom-coral {
+            background-color: #da7f70 !important;
+        }
+        @media (max-width: 767px) {
+            .page-title-description {
+                font-size: 14px !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<section id="page-title" class="page-title-parallax page-title-dark skrollable skrollable-between" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image.cdn_url}}); background-size: cover; padding: 120px 0px; background-position: 0px -176.055px;max-height: 300px;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+      <h2>{{page_title.title}}</h2>
+      <span class="page-title-description">{{page_title.description}}</span>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ownership</li>
+      </ol>
+    </div>
+
+  </section>
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+
+            <!-- Posts
+            ============================================= -->
+            <div id="posts" class="row grid-container gutter-40">
+
+                {% for lot in lots %}
+                <div class="entry col-12">
+                    <div class="grid-inner row no-gutters">
+                        <div class="entry-image col-md-4">
+                            <a href="{% url 'lot_single' id=lot.lot.id %}" data-lightbox=""><img src="{{lot.lot.image_set.first.image}}" alt="Standard Post with Image"></a>
+                        </div>
+                        <div class="col-md-8 pl-md-4">
+                            <div class="entry-title title-sm d-flex">
+                                <h2><a href="{% url 'lot_single' id=lot.lot.id %}">Lot {{lot.lot.number}}</a></h2>
+                                {% if lot.pending_sale %}
+                                <p class="ml-3"><span class="badge px-2 py-1 custom-coral ">Sale Pending</span></p>
+                                {% endif %}
+                            </div>
+                            <div class="entry-meta">
+                                <ul>
+                                    <li><i class="icon-line-package"></i> {{lot.lot.get_package_display}}</li>
+                                    <li><i class="icon-et-pricetags"></i>$ {{lot.price}}</li>
+                                    {% if lot.lot.package == 'standard' %}
+                                    <li><i class="icon-et-pricetags"></i> Rents for $65 - $120 /night</li>
+                                    {% endif %}                                    
+                                    {% if lot.lot.package == 'moderate' %}
+                                    <li><i class="icon-et-pricetags"></i> Rents for $95 - $165 /night</li>
+                                    {% endif %}                                    
+                                    {% if lot.lot.package == 'deluxe' %}
+                                    <li><i class="icon-et-pricetags"></i> Rents for $120 - $185 /night</li>
+                                    {% endif %}                                    
+                                    {% if lot.lot.package == 'luxury' %}
+                                    <li><i class="icon-et-pricetags"></i> Rents for $190 - $335 /night</li>
+                                    {% endif %}
+
+                                    <!-- <li><a href="#"><i class="icon-user"></i> admin</a></li>
+                                    <li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
+                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+                                    <li><a href="#"><i class="icon-camera-retro"></i></a></li> -->
+                                </ul>
+                            </div>
+                            <div class="entry-content">
+                                <p>{{lot.lot.description|safe|truncatewords:"60"}}</p>
+                                <a href="{% url 'lot_single' id=lot.lot.id %}" class="more-link">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div><!-- #posts end -->
+
+            <!-- Pager
+            ============================================= -->
+            <!-- <div class="d-flex justify-content-between mt-5">
+                <a href="#" class="btn btn-outline-secondary">&larr; Older</a>
+                <a href="#" class="btn btn-outline-dark">Newer &rarr;</a>
+            </div> -->
+            <!-- .pager end -->
+
+        </div>
+    </div>
+</section><!-- #content end -->
+{% endblock %}

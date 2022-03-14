@@ -1,0 +1,45 @@
+{% extends 'user_base.html' %}
+{% block content %}
+    <!-- ====== Login ======  -->
+    <section class="login messages">
+        <div class="container">
+              
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                    <div class="login-box">
+                        <div class="login-info text-center mb-50">
+                            <h4>Login</h4>
+                        </div>
+
+                        <form method="POST" action="{% url 'login' %}">
+   
+                            {% csrf_token %}
+                            <input type="hidden" name="previous_url" value="{{ previous_url }}">
+                            <input type="hidden" name="keep_shopping" value="{{ keep_shopping }}">
+                            <input type="hidden" name="checkout" value="{{ checkout }}">
+                            <input type="hidden" name="item" value="{{ item }}">
+                            <input type="hidden" name="cart_link" value="{{ cart_link }}">
+                            <input type="hidden" name="login_link" value="{{ login_link }}">
+                            <input type="hidden" name="referrer" value="{{ referrer }}">
+                            <input type="hidden" name="reset" value="{{ reset }}">
+
+                            <input type="text" name="username" placeholder="Username" style='width: 100%;margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;'>
+                            <input type="password" name="password" placeholder="Password" style='width: 100%;margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;'>
+                            <input type="submit" name="send" value="Login"> 
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                    <div class="login-link">
+                        <p>Don't have an account yet? <span><a href="/register/?previous_url={{ previous_url }}&keep_shopping={{ keep_shopping }}&checkout={{ checkout }}&item={{ item }}&cart_link={{ cart_link }}&login_link={{ login_link }}&referrer={{ referrer }}">Create Account</a></span></p>
+                        <p>Forgot your username or password? <span><a href="{% url 'password_reset' %}">Recover Account</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== End Login ======  -->
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'admin/index.html' %}
+
+{% block content %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <canvas id="myChart" width="400" height="200"></canvas>
+
+        <script>
+        $.ajax({
+            url: "/reservations/ajax/get_monthly_sum_info/",
+            data: {
+            price: 'price',
+            },
+            dataType: "json",
+            success: function (data) {
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data['date_keys'],
+                        datasets: [
+                        {
+                            label: 'Daily Revenue',
+                            data: data['daily_rev'],
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.2)',
+                         
+                            ],
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                  
+                            ],
+                            borderWidth: 1
+                        }, 
+                        {
+                            label: 'Daily Amount Paid',
+                            data: data['daily_paid'],
+                            backgroundColor: [
+                                'rgba(29, 215, 16, 0.86)',
+                         
+                            ],
+                            borderColor: [
+                                'rgba(29, 215, 16, 0.86)',
+                  
+                            ],
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Daily Amount Owed',
+                            data: data['daily_owed'],
+                            backgroundColor: [
+                                'rgba(215, 16, 16, 0.86)',
+                         
+                            ],
+                            borderColor: [
+                                'rgba(215, 16, 16, 0.86)',
+                  
+                            ],
+                            borderWidth: 1
+                        },
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+               
+            },
+        });
+
+    </script>
+{% endblock %}

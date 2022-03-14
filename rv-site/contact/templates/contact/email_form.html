@@ -1,0 +1,172 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	{% block title %}<title>{{seo.title}}</title>{% endblock %}
+	{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+	{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}	
+	<meta name="author" content="Ben Hutton" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ucarecdn.com/libs/widget/3.7.4/uploadcare.full.min.js" charset="utf-8"></script>
+
+
+	<style>
+		.dotted-bg {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 30%;
+			height: 100%;
+			background: url('{% static 'images/blocks/preview/dot-grid-light.svg' %}');
+			z-index: 0;
+		}
+        .w-50px {
+            width: 50px !important;
+        }
+
+	</style>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Hero Section
+		============================================= -->
+		<section id="slider" class="slider-element" style="background-image: -webkit-linear-gradient(to bottom, #35657a, #2c4c62 ); background-image: linear-gradient(to bottom, #35657a, #2c4c62);">
+
+			<div class="dotted-bg"></div>
+
+			<div class="vertical-middle min-vh-lg-100">
+				<div class="container py-5 py-lg-0">
+					<div class="row align-items-center">
+						<div class="col-lg-7 dark py-5">
+							<h6 class="text-uppercase ls4 font-weight-normal op-05">Skillfully Catering To</h6>
+							<h1 class="display-4 font-weight-bold">Class A / Super C Motor Coaches</h1>
+							<p class="lead mb-5 op-06">Experience the ultimate luxury motor coach resort in Orange Beach, Alabama.</p>
+							<!-- <a href="#" class="btn btn-lg btn-outline-light">Learn More</a> -->
+						</div>
+						<div class="col-lg-5 mt-5 mt-lg-0">
+							<div class="card bg-white">
+								<div class="card-header p-4">
+									<h3 class="mb-1">RV Specifications</h3>
+								</div>
+								<div class="card-body p-4">
+
+									<form id="email-form" name="email-form" class="row mb-0" action="{% url 'caldera_forms_preview' %}" method="post"  enctype="multipart/form-data">
+                                        {% csrf_token %}
+										<div class="col-12 form-group">
+                                            {{form.reservation_number}}
+										</div>
+
+										<div class="col-12 form-group">
+                                            {{form.email}}
+										</div>
+
+										<div class="col-12 form-group">
+                                            {{form.phone}}
+										</div>
+						
+										<div class="col-6 form-group">
+                                            {{form.coach_make}}
+										</div>
+
+                                        <div class="col-6 form-group">
+                                            {{form.coach_model}}
+										</div>
+
+                                        <div class="col-6 form-group">
+                                            {{form.coach_year}}
+										</div>
+
+                                        <div class="col-6 form-group">
+                                            {{form.coach_length}}
+										</div>
+
+                                        <div class="col-5 form-group text-left">
+                                            <label for="id_trailer">Trailer?</label>
+                                            {{form.trailer}}
+										</div>
+ 
+                                        <div class="col-7 form-group">
+                                            <label for="id_trailer_length">If yes:</label>
+                                            {{form.trailer_length}}
+										</div>
+
+                                        <div class="col-5 form-group">
+                                            <label for="id_pets">Pets?</label>
+                                            {{form.pets}}
+										</div>
+ 
+                                        <div class="col-7 form-group">
+                                            <label for="id_pet_breed">If yes:</label>
+                                            {{form.pet_breed}}
+										</div>
+
+                                        <div id="email-image" class="col-12 form-group">
+                                            <label for="id_image" class="mb-0">RV Photo</label>
+                                            <p class="mb-2">Upload image if your RV is 15 years old or over.</p>
+                                            {{form.image}}
+										</div>
+
+										<div class="col-12">
+											<button class="button m-0 btn-block rounded" id="email-form-submit" name="email-form-submit" value="submit">Submit</button>
+										</div>
+
+									</form>
+								</div>
+						
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap py-0">
+				
+			</div>
+		</section><!-- #content end -->
+
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/plugins.min.js' %}"></script>
+
+	<script src="{% static 'js/jquery.hotspot.js' %}"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{% static 'js/functions.js' %}"></script>
+
+</body>
+</html>

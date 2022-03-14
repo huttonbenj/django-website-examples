@@ -1,0 +1,17 @@
+/* Particle */
+#particle {
+	/* background-image: url(../images/about/01.jpg); */
+	width:100%;
+	height:100%;
+}
+
+#particles-js {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index:999;
+}
+
+.backgroundowl{
+	background-image: url(../images/slider/owl.jpg);
+  }

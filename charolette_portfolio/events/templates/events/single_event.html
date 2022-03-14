@@ -1,0 +1,68 @@
+{% extends 'events_base.html' %}
+{% block content %}
+
+
+    <!-- ====== Header ======  -->
+    <header id="home" class="header" style="background-image: url({{ event.background_image.cdn_url }});min-height:70vh;">
+        <div class="header-overlay">
+ 
+            <div class="caption v-middle text-center">
+                <h1>{{ event.title }}</h1>
+                <!-- <span>{{ event.date }}</span> -->
+
+                <span style="margin-left:35px;margin-right:35px;text-transform: initial;">{{ event.description }}</span>
+
+            </div>
+        </div>
+    </header>
+    <!-- ====== End Header ======  -->
+
+    <!--====== Portfolio ======-->
+    <section id="portfolio" class="portfolio main section-padding">
+        <div class="container">
+    
+            <div class="row">
+    
+                <!-- gallery -->
+                <div class="gallery text-center">
+    
+
+                    {% if no_images > 0 %}
+                    {% for i in images %}
+                    <!-- gallery item -->
+                    <div class="col-md-6 item-img video" style="min-height:450px;margin-bottom:1px">
+                        <a href="{{ i.image.cdn_url }}">
+                            <img src="{{ i.image.cdn_url }}-/scale_crop/1024x1024/smart/" alt="image" style="height: 450px
+			     width:100%;display:block;position:relative;min-height:450px;">
+                            <div class="item-img-overlay">
+                                <span class="v"></span>
+                                <span class="x"></span>
+                                <div class="overlay-info v-middle text-center">
+                                    <h6>Click image to enlarge</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                    {% elif no_images == 0 %}
+                    
+                    <div class="row text-center">    
+                        <div class="col-md-12">
+                                <h2>Whoops!</h2>
+                                <h4>There are no images available for this event yet.
+                                    <br>
+                                    Check back again soon, thank you!
+                                </h4>
+                                
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="clear-fix" style="margin-bottom:5%;"></div>
+    <!--====== End Portfolio ======-->
+
+    {% endblock %}

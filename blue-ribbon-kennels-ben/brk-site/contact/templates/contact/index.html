@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<style>
+    .dotted-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%;
+        height: 100%;
+        background: url('{% static "images/blocks/preview/dot-grid-light.svg" %}');
+        z-index: 0;
+    }
+    .form-header {
+        color: #444 !important;
+    }
+    .form-control {
+        color: black !important;
+    }
+
+    #register-form-submit {
+        background-color: #001878 !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section id="slider" class="slider-element" style="background-image: -webkit-linear-gradient(to bottom, #001878, #070e2c ); background-image: linear-gradient(to bottom, #001878, #070e2c);">
+
+    <div class="dotted-bg"></div>
+
+    <div class="vertical-middle min-vh-lg-100">
+        <div class="container py-5 py-lg-0">
+            <div class="row align-items-center">
+                <div class="col-lg-7 dark py-5">
+                    <h6 class="text-uppercase ls4 fw-normal op-05">Blue Ribbon Kennels</h6>
+                    <h1 class="display-4 fw-bold">How Can We Help You Today?</h1>
+                    <p class="lead mb-5 op-06">Submit your information and we will call you at our earliest convenience.</p>
+                    <a href="/" class="btn btn-lg btn-outline-light">Return Home</a>
+                </div>
+                <div class="col-lg-5 mt-5 mt-lg-0">
+                    <div class="card bg-white">
+                        <div class="card-header p-4">
+                            <h2 class="mb-1 form-header">Contact Us</h2>
+                        </div>
+                        <div class="card-body p-4 pt-0">
+                            <!-- <div class="d-flex">
+                                <a href="#" class="btn btn-dark me-1 flex-fill border px-3 si-colored si-google"><i class="icon-google me-2"></i> Sign Up with Google</a>
+                                <a href="#" class="btn btn-dark ms-1 flex-fill border px-3 si-colored si-appstore"><i class="icon-apple me-2"></i> Sign Up with Facebook</a>
+                            </div> -->
+                            <hr>
+                      
+                            <form id="quick-contact-form" name="quick-contact-form" class="row mb-0" action="#" method="post">
+                                {% csrf_token %}
+                                <div class="col-12 form-group">
+                                    <input type="text" id="name" name="name" autocomplete="off" value="" class="quick-contact-form form-control" placeholder="Full Name" />
+                                </div>
+
+                                <div class="col-12 form-group">
+                                    <input type="email" id="email" name="email" autocomplete="off" value="" class="required email form-control" placeholder="Email Address" />
+                                </div>
+
+                                <div class="col-12 form-group">
+                                    <input type="text" id="phone" name="phone" autocomplete="off" value="" class="required form-control" placeholder="Phone Number" />
+                                </div>
+                                
+                                <div class="col-12 form-group">
+                                    <textarea class="required form-control input-block-level short-textarea" id="message" name="message" rows="5" cols="30" placeholder="How can we help you?"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="button m-0 w-100 rounded" id="register-form-submit" name="register-form-submit" value="register" onclick="submitContactForm(event);">Submit Form</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <!-- <div class="card-footer p-4">
+                            <p class="text-black-50 mb-0">By creating account, you agree to accept our <a href="#">Privacy Policy</a>, <a href="#">Terms &amp; Condition</a> and <a href="#">Notfication Settings</a>.</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    function createErrorMsg(msg){
+        return "<i class='icon-remove-sign me-1'></i> "+msg
+    };
+
+    var alertTimeOut;
+
+    function displayErrorMsg(msg){
+        clearTimeout( alertTimeOut );
+        let el = $('#custom-error-msg');
+        let toast = el.find('.toast');
+        let toastBody = el.find('.toast-body');
+        toastBody.html(msg);
+        toast.addClass('show');
+        alertTimeOut = setTimeout(function(){
+          toast.removeClass('show')
+        }, 3000);
+      }
+
+    var formAlertTimeOuts = new Array();
+
+    function submitContactForm(event){
+        event.preventDefault();
+
+        // clear timeout
+        for(timeOut of formAlertTimeOuts){
+            clearTimeout( timeOut );
+        }
+
+        let form = document.getElementById('quick-contact-form');
+        let data = new FormData(form);
+        let emptyFields = new Array();
+
+        // check for empty fields
+        for (entry of data.entries()){
+            if (!entry[1].replace(/\s/g, '').length) {
+                $('#'+entry[0]).val(null)
+                emptyFields.push(entry[0])
+              }
+        }
+
+        if (!emptyFields.length){
+
+            $.ajax({
+                type: 'POST',
+                url: "/contact/ajax/submit/",
+                csrfmiddlewaretoken: $('#quick-contact-form input[name=csrfmiddlewaretoken]').val(),
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    if(!data['errors']){
+                        document.getElementById('quick-contact-form').reset()
+                    } else {
+                        $.each(data['errors'], function(index){
+                            displayErrorMsg(createErrorMsg(data['errors'][index]));
+                        });
+                        
+                    }
+                },
+              });
+        
+         } else {
+             $.each(emptyFields, function(index){
+                $('#'+emptyFields[index]).css('border-color', 'red');
+                displayErrorMsg(createErrorMsg('Please fill out all required fields.'));
+                formAlertTimeOut = setTimeout(function(){
+                    $('#'+emptyFields[index]).css('border-color', 'rgba(255,255,255,0.15)');
+                }, 3000);
+                formAlertTimeOuts.push(formAlertTimeOut)
+             })
+         }
+    };
+
+</script>
+{% endblock %}

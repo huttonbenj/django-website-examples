@@ -1,0 +1,1776 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'include/rs-plugin/css/settings.css' %}" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{% static 'include/rs-plugin/css/layers.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'include/rs-plugin/css/navigation.css' %}">
+
+	<!-- Document Title
+	============================================= -->
+	<title>Dark - Canvas | The Multi-Purpose HTML5 Template</title>
+
+	<style>
+
+		.revo-slider-emphasis-text {
+			font-size: 64px;
+			font-weight: 700;
+			letter-spacing: -1px;
+			font-family: 'Poppins', sans-serif;
+			padding: 15px 20px;
+			border-top: 2px solid #FFF;
+			border-bottom: 2px solid #FFF;
+		}
+
+		.revo-slider-desc-text {
+			font-size: 20px;
+			font-family: 'Lato', sans-serif;
+			width: 650px;
+			text-align: center;
+			line-height: 1.5;
+		}
+
+		.revo-slider-caps-text {
+			font-size: 16px;
+			font-weight: 400;
+			letter-spacing: 3px;
+			font-family: 'Poppins', sans-serif;
+		}
+		.tp-video-play-button { display: none !important; }
+
+		.tp-caption { white-space: nowrap; }
+
+	</style>
+
+</head>
+
+<body class="stretched dark">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Header
+		============================================= -->
+		<div id="top-bar">
+			<div class="container clearfix">
+
+				<div class="row justify-content-between">
+					<div class="col-12 col-md-auto">
+
+						<!-- Top Links
+						============================================= -->
+						<div class="top-links on-click">
+							<ul class="top-links-container">
+							
+								<li class="top-links-item"><a href="faqs.html">About</a></li>
+								<li class="top-links-item"><a href="contact.html">Contact</a></li>
+								<!-- <li class="top-links-item"><a href="contact.html">Blog</a></li> -->
+								<!-- <li class="top-links-item"><a href="index.html">Specials</a>
+									<ul class="top-links-sub-menu">
+										<li class="top-links-item"><a href="about.html">Good Sam Club Discount</a></li>
+										<li class="top-links-item"><a href="faqs.html">FMCA Discount</a></li>
+										<li class="top-links-item"><a href="contact.html">Military Discount</a></li>
+										<li class="top-links-item"><a href="sitemap.html">Rally Central</a></li>
+									</ul>
+								</li> -->
+								<li class="top-links-item"><a href="login-register.html">Login</a>
+									<div class="top-links-section">
+										<form id="top-login" autocomplete="off">
+											<div class="form-group">
+												<label>Username</label>
+												<input type="email" class="form-control" placeholder="Email address">
+											</div>
+											<div class="form-group">
+												<label>Password</label>
+												<input type="password" class="form-control" placeholder="Password" required="">
+											</div>
+											<div class="form-group form-check">
+												<input class="form-check-input" type="checkbox" value="" id="top-login-checkbox">
+												<label class="form-check-label" for="top-login-checkbox">Remember Me</label>
+											</div>
+											<button class="btn btn-danger btn-block" type="submit">Sign in</button>
+										</form>
+									</div>
+								</li>
+							</ul>
+						</div><!-- .top-links end -->
+
+					</div>
+
+					<div class="col-12 col-md-auto">
+
+						<!-- Top Social
+						============================================= -->
+						<ul id="top-social">
+							<li><a href="#" class="si-facebook"><span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a></li>
+							<li><a href="#" class="si-twitter"><span class="ts-icon"><i class="icon-twitter"></i></span><span class="ts-text">Twitter</span></a></li>
+							<li class="d-none d-sm-flex"><a href="#" class="si-dribbble"><span class="ts-icon"><i class="icon-dribbble"></i></span><span class="ts-text">Dribbble</span></a></li>
+							<li><a href="#" class="si-github"><span class="ts-icon"><i class="icon-github-circled"></i></span><span class="ts-text">Github</span></a></li>
+							<li class="d-none d-sm-flex"><a href="#" class="si-pinterest"><span class="ts-icon"><i class="icon-pinterest"></i></span><span class="ts-text">Pinterest</span></a></li>
+							<li><a href="#" class="si-instagram"><span class="ts-icon"><i class="icon-instagram2"></i></span><span class="ts-text">Instagram</span></a></li>
+							<li><a href="tel:+1.11.85412542" class="si-call"><span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">+1.11.85412542</span></a></li>
+							<li><a href="mailto:info@canvas.com" class="si-email3"><span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">info@canvas.com</span></a></li>
+						</ul><!-- #top-social end -->
+
+					</div>
+
+				</div>
+
+			</div>
+		</div><!-- #top-bar end -->
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="transparent-header">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row justify-content-lg-between">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo" class="order-lg-2 col-auto px-0 mr-lg-0">
+							<a href="index.html" class="standard-logo" data-dark-logo="{% static 'images/logo-dark.png' %}"><img src="{% static 'images/logo.png' %}" alt="Canvas Logo"></a>
+							<a href="index.html" class="retina-logo" data-dark-logo="{% static 'images/logo-dark@2x.png' %}"><img src="{% static 'images/logo@2x.png' %}" alt="Canvas Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc d-flex d-lg-none">
+
+							<!-- Top Cart
+							============================================= -->
+							<div id="top-cart" class="header-misc-icon">
+								<a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i><span class="top-cart-number">5</span></a>
+								<div class="top-cart-content">
+									<div class="top-cart-title">
+										<h4>Shopping Cart</h4>
+									</div>
+									<div class="top-cart-items">
+										<div class="top-cart-item">
+											<div class="top-cart-item-image">
+												<a href="#"><img src="{% static 'images/shop/small/1.jpg' %}" alt="Blue Round-Neck Tshirt" /></a>
+											</div>
+											<div class="top-cart-item-desc">
+												<div class="top-cart-item-desc-title">
+													<a href="#">Blue Round-Neck Tshirt with a Button</a>
+													<span class="top-cart-item-price d-block">$19.99</span>
+												</div>
+												<div class="top-cart-item-quantity">x 2</div>
+											</div>
+										</div>
+										<div class="top-cart-item">
+											<div class="top-cart-item-image">
+												<a href="#"><img src="{% static 'images/shop/small/6.jpg' %}" alt="Light Blue Denim Dress" /></a>
+											</div>
+											<div class="top-cart-item-desc">
+												<div class="top-cart-item-desc-title">
+													<a href="#">Light Blue Denim Dress</a>
+													<span class="top-cart-item-price d-block">$24.99</span>
+												</div>
+												<div class="top-cart-item-quantity">x 3</div>
+											</div>
+										</div>
+									</div>
+									<div class="top-cart-action">
+										<span class="top-checkout-price">$114.95</span>
+										<a href="#" class="button button-3d button-small m-0">View Cart</a>
+									</div>
+								</div>
+							</div><!-- #top-cart end -->
+
+						</div>
+
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<nav class="primary-menu order-lg-1 col-lg-5 px-0" style="position:inherit;">
+
+							<ul class="menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="#"><div>Galleries</div></a>
+								</li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Events</div></a>
+								</li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Blog</div></a>
+								</li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Directions</div></a>
+								</li>
+							</ul>
+
+						</nav>
+
+						<nav class="primary-menu order-lg-3 col-lg-5 px-0" style="position:inherit;">
+
+							<div class="menu-container justify-content-lg-end">
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Rates</div></a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="shop.html"><div>Reserve</div></a>
+								</li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Ownership</div></a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><div>Specials</div></a>
+									<ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div><i class="icon-stack"></i>Good Sam Club Discount</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div><i class="icon-stack"></i>FMCA Discount</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div><i class="icon-stack"></i>Military Discount</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div><i class="icon-stack"></i>Rally Central Discount</div></a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+
+						</nav><!-- #primary-menu end -->
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+
+				<!-- Slider
+		============================================= -->
+		<section id="slider" class="slider-element revslider-wrap slider-parallax min-vh-100 include-header">
+			<div class="slider-inner">
+				<div id="rev_slider_579_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="default-slider" style="padding:0px;">
+					<!-- START REVOLUTION SLIDER 5.1.4 fullscreen mode -->
+					<div id="rev_slider_579_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.1.4">
+						<ul>   <!-- SLIDE  -->
+							<li class="dark" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="{% static 'images/slider/rev/main/s1-thumb.jpg' %}"  data-saveperformance="off"  data-title="Welcome to Canvas">
+								<!-- MAIN IMAGE -->
+								<img src="{% static 'images/videos/explore-poster.jpg' %}"  alt="Image"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+								<!-- LAYERS -->
+
+								<!-- LAYER NR. 1 -->
+								<div class="tp-fade fadeout fullscreenvideo rs-background-video-layer"
+									data-forcerewind="on"
+									data-volume="mute"
+									data-videowidth="100%"
+									data-videoheight="100%"
+									data-videomp4="{% static 'images/videos/explore.mp4' %}"
+									data-videopreload="preload"
+									data-videoloop="none"
+									data-forceCover="1"
+									data-aspectratio="16:9"
+									data-autoplay="true"
+									data-autoplayonlyfirsttime="false"
+									data-nextslideatend="true"
+									>
+								</div>
+
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text text-uppercase"
+								data-x="center" data-hoffset="0"
+								data-y="top" data-voffset="235"
+								data-width="none"
+								data-height="none"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+								data-speed="800"
+								data-start="1000"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-textAlign="center"
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;">The Best Multipurpose HTML5 Template</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0"
+								data-x="center" data-hoffset="0"
+								data-y="top" data-voffset="260"
+								data-width="none"
+								data-height="none"
+								data-fontsize="['60','50','40','28']"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+								data-speed="800"
+								data-start="1200"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-textAlign="center"
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;">Welcome to the World of Canvas</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-desc-text"
+								data-x="center" data-hoffset="0"
+								data-y="top" data-voffset="370"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+								data-speed="800"
+								data-lineheight="['30','30','34','26']"
+								data-width="['750','750','480','360']"
+								data-fontsize="['20','20','20','16']"
+								data-start="1400"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-textAlign="center"
+								data-endeasing="Power4.easeIn" style="z-index: 3; width: 750px; max-width: 750px; white-space: normal;">Create a website that you are gonna be proud of. Be it Business, Portfolio, Agency, Photography, e-Commerce &amp; much more..</div>
+
+								<div class="tp-caption ltl tp-resizeme"
+								data-x="center" data-hoffset="0"
+								data-y="top" data-voffset="478"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+								data-speed="800"
+								data-start="1550"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;"><a href="#" class="button button-border button-white button-light button-large button-rounded text-right m-0"><span>Start Tour</span> <i class="icon-angle-right"></i></a></div>
+
+							</li>
+							<li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1000" data-thumb="{% static 'images/slider/rev/main/s2-thumb.jpg' %}"  data-fstransition="fade" data-fsmasterspeed="1000" data-fsslotamount="7" data-saveperformance="off"  data-title="Unlimited Homepages">
+								<!-- MAIN IMAGE -->
+								<img src="{% static 'images/slider/rev/main/s2-bg.jpg' %}"  alt="video_woman_cover3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+								<!-- LAYERS -->
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-8"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutQuad;"
+								data-speed="700"
+								data-start="2600"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;"><img src="{% static 'images/slider/rev/main/s2-1.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-7"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutQuad;"
+								data-speed="700"
+								data-start="2800"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 4;"><img src="{% static 'images/slider/rev/main/s2-2.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-6"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutCubic;"
+								data-speed="700"
+								data-start="3000"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 5;"><img src="{% static 'images/slider/rev/main/s2-3.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-5"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutCubic;"
+								data-speed="700"
+								data-start="3200"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 6;"><img src="{% static 'images/slider/rev/main/s2-4.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-4"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutCubic;"
+								data-speed="700"
+								data-start="3400"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 7;"><img src="{% static 'images/slider/rev/main/s2-5.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-3"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutCubic;"
+								data-speed="700"
+								data-start="3600"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 8;"><img src="{% static 'images/slider/rev/main/s2-6.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-2"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutCubic;"
+								data-speed="700"
+								data-start="3800"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 9;"><img src="{% static 'images/slider/rev/main/s2-7.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme rs-parallaxlevel-1"
+								data-x="center" data-hoffset="200"
+								data-y="middle" data-voffset="107"
+								data-transform_in="x:0;y:-250;z:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;s:700;e:Power4.easeOutCubic;"
+								data-speed="700"
+								data-start="4000"
+								data-easing="easeOutCubic"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 10;"><img src="{% static 'images/slider/rev/main/s2-8.png' %}" alt="Image"></div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text"
+								data-x="left" data-hoffset="40"
+								data-y="top" data-voffset="120"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1200"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 11; white-space: nowrap;">Speaking of Customization?</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0 text-uppercase"
+								data-x="left" data-hoffset="37"
+								data-y="top" data-voffset="140"
+								data-transform_in="x:5;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:5;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1400"
+								data-easing="easeOutQuad"
+								data-splitin="chars"
+								data-splitout="none"
+								data-elementdelay="0.1"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 11; font-size: 56px;white-space: nowrap;">25+ Homepages</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-desc-text text-left"
+								data-x="left" data-hoffset="40"
+								data-y="top" data-voffset="240"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1600"
+								data-lineheight="30"
+								data-width="['550','550','480','360']"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 11; max-width: 550px; white-space: normal;">Amazing Homepages Custom Designed &amp; Ready to use at your Disposal. And we'll always add more..</div>
+
+								<div class="tp-caption ltl tp-resizeme"
+								data-x="left" data-hoffset="40"
+								data-y="top" data-voffset="345"
+								data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1800"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1300"
+								data-endeasing="Power4.easeIn" style="z-index: 11;"><a href="#" class="button button-border button-white button-light button-large button-rounded text-right m-0"><span>Check Now</span> <i class="icon-angle-right"></i></a></div>
+
+							</li>
+							<li data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-thumb="{% static 'images/slider/rev/main/s3-thumb.jpg' %}" data-delay="10000"  data-saveperformance="off"  data-title="Responsive &amp; Retina">
+							<!-- MAIN IMAGE -->
+								<img src="{% static 'images/slider/rev/main/s3.jpg' %}"  alt="kenburns6"  data-bgposition="left top" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="130" data-scaleend="100" data-bgpositionend="right bottom">
+								<!-- LAYERS -->
+
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text text-uppercase"
+								data-x="['left','left','left','left']" data-hoffset="['40','40','40','40']"
+								data-y="['top','top','top','top']" data-voffset="['150','150','130','100']"
+								data-transform_in="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1500"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap; color: #222;">Bootstrap 3+ Compatible</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0"
+								data-x="['left','left','left','left']" data-hoffset="37"
+								data-y="['top','top','top','top']" data-voffset="['180','180','150','120']"
+								data-transform_in="x:10;y:0;z:0;rotationY:120;rotationZ:0;scaleX:0.8;scaleY:0.8;skewX:0;s:600;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 50%;"
+								data-speed="600"
+								data-start="1700"
+								data-easing="easeOutCubic"
+								data-splitin="chars"
+								data-splitout="none"
+								data-elementdelay="0.1"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap; color: #222; line-height: 1.2; max-width: 450px; width: 450px; white-space: normal;">Responsive Retina Graphics</div>
+							</li>
+						</ul>
+					</div>
+				</div><!-- END REVOLUTION SLIDER -->
+			</div>
+		</section>
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+					<div class="row align-items-center">
+
+						<div class="col-lg-5">
+							<div class="heading-block">
+								<h1 style="color: #515875 !important;">Welcome to Canvas.<br>MultiPurpose Template.</h1>
+							</div>
+							<p class="lead">Create a website that you are gonna be proud of. Be it Business, Portfolio, Agency, Photography, eCommerce &amp; much more.</p>
+						</div>
+
+						<div class="col-lg-7 align-self-end">
+
+							<div class="position-relative overflow-hidden">
+								<img src="{% static 'images/services/main-fbrowser.png' %}" data-animate="fadeInUp" data-delay="100" alt="Chrome">
+								<img src="{% static 'images/services/main-fmobile.png' %}" style="top: 0; left: 0; min-width: 100%; min-height: 100%;" data-animate="fadeInUp" data-delay="400" alt="iPhone" class="position-absolute">
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section my-0">
+					<div class="container">
+
+						<div class="row mt-4 col-mb-50">
+
+							<div class="col-lg-4">
+								<i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 15px;"></i>
+								<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+									<span class="before-heading">Scalable on Devices.</span>
+									<h4>Responsive &amp; Retina</h4>
+								</div>
+								<p class="soft-white">Employment respond committed meaningful fight against oppression social challenges rural legal aid governance. Meaningful work, implementation, process cooperation, campaign inspire.</p>
+							</div>
+
+							<div class="col-lg-4">
+								<i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 15px;"></i>
+								<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+									<span class="before-heading">Smartly Coded &amp; Maintained.</span>
+									<h4>Powerful Performance</h4>
+								</div>
+								<p class="soft-white">Medecins du Monde Jane Addams reduce child mortality challenges Ford Foundation. Diversification shifting landscape advocate pathway to a better life rights international. Assessment.</p>
+							</div>
+
+							<div class="col-lg-4">
+								<i class="i-plain color i-large icon-line2-equalizer inline-block" style="margin-bottom: 15px;"></i>
+								<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+									<span class="before-heading">Flexible &amp; Customizable.</span>
+									<h4>Truly Multi-Purpose</h4>
+								</div>
+								<p class="soft-white">Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.</p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container clearfix">
+
+					<div class="heading-block topmargin-lg center">
+						<h2 style="color: #515875 !important;">Even more Feature Rich</h2>
+						<span class="mx-auto">Philanthropy convener livelihoods, initiative end hunger gender rights local. John Lennon storytelling; advocate, altruism impact catalyst.</span>
+					</div>
+
+					<div class="row col-mb-50 mb-4">
+						<div class="col-lg-4 col-md-6">
+
+							<div class="feature-box flex-md-row-reverse text-md-right" data-animate="fadeIn">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-heart"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Boxed &amp; Wide Layouts</h3>
+									<p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+								</div>
+							</div>
+
+							<div class="feature-box flex-md-row-reverse text-md-right mt-5" data-animate="fadeIn" data-delay="200">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-paper"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Extensive Documentation</h3>
+									<p>We have covered each &amp; everything in our Docs including Videos &amp; Screenshots.</p>
+								</div>
+							</div>
+
+							<div class="feature-box flex-md-row-reverse text-md-right mt-5" data-animate="fadeIn" data-delay="400">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-layers"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Parallax Support</h3>
+									<p>Display your Content attractively using Parallax Sections with HTML5 Videos.</p>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-lg-4 d-md-none d-lg-block text-center">
+							<img src="{% static 'images/services/iphone7.png' %}" alt="iphone 2">
+						</div>
+
+						<div class="col-lg-4 col-md-6">
+
+							<div class="feature-box" data-animate="fadeIn">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-power"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>HTML5 Video</h3>
+									<p>Canvas provides support for Native HTML5 Videos that can be added to a Background.</p>
+								</div>
+							</div>
+
+							<div class="feature-box mt-5" data-animate="fadeIn" data-delay="200">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-check"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Endless Possibilities</h3>
+									<p>Complete control on each &amp; every element that provides endless customization.</p>
+								</div>
+							</div>
+
+							<div class="feature-box mt-5" data-animate="fadeIn" data-delay="400">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-bulb"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Light &amp; Dark Color Schemes</h3>
+									<p>Change your Website's Primary Scheme instantly by simply adding the dark class.</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row clearfix align-items-stretch">
+
+					<div class="col-lg-6 center col-padding" style="background: url('{% static 'images/services/main-bg.jpg' %}') center center no-repeat; background-size: cover;">
+						<div>&nbsp;</div>
+					</div>
+
+					<div class="col-lg-6 center col-padding" style="background-color: #2c4c62;">
+						<div>
+							<div class="heading-block border-bottom-0">
+								<span class="before-heading color">Easily Understandable &amp; Customizable.</span>
+								<h3>Walkthrough Videos &amp; Demos</h3>
+							</div>
+
+							<div class="center bottommargin">
+								<a class="d-block position-relative" href="https://vimeo.com/101373765" data-lightbox="iframe">
+									<img src="{% static 'images/services/video.jpg' %}" alt="Video">
+									<div class="bg-overlay">
+										<div class="bg-overlay-content dark">
+											<span class="overlay-trigger-icon size-lg op-ts op-07 bg-light text-dark" data-hover-animate="op-1" data-hover-animate-out="op-07" data-hover-parent=".row"><i class="icon-line-play"></i></span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<p class="lead mb-0">Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row clearfix bottommargin-lg align-items-stretch">
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #515875;">
+						<div>
+							<i class="i-plain i-xlarge mx-auto icon-line2-directions"></i>
+							<div class="counter counter-lined" style="color: #eee;"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000" style="color: #eee;"></span>K</div>
+							<h5 style="color: #eee;">Lines of Codes</h5>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #576F9E;">
+						<div>
+							<i class="i-plain i-xlarge mx-auto icon-line2-graph"></i>
+							<div class="counter counter-lined"><span data-from="3000" data-to="21500" data-refresh-interval="100" data-speed="2500" style="color: #eee;"></span></div>
+							<h5 style="color: #eee;">KBs of HTML Files</h5>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #6697B9;">
+						<div>
+							<i class="i-plain i-xlarge mx-auto icon-line2-layers"></i>
+							<div class="counter counter-lined"><span data-from="10" data-to="408" data-refresh-interval="25" data-speed="3500" style="color: #eee;"></span></div>
+							<h5 style="color: #eee;">No. of Templates</h5>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #88C3D8;">
+						<div>
+							<i class="i-plain i-xlarge mx-auto icon-line2-clock"></i>
+							<div class="counter counter-lined"><span data-from="60" data-to="1400" data-refresh-interval="30" data-speed="2700" style="color: #eee;"></span></div>
+							<h5 style="color: #eee;">Hours of Coding</h5>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="container clearfix">
+
+					<div class="row col-mb-50">
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-monitor"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Responsive Layout</h3>
+									<p>Powerful Layout with Responsive functionality that can be adapted to any screen size.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="200">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-eye"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Retina Ready Graphics</h3>
+									<p>Looks beautiful &amp; ultra-sharp on Retina Displays with Retina Icons, Fonts &amp; Images.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="400">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-star"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Powerful Performance</h3>
+									<p>Optimized code that are completely customizable and deliver unmatched fast performance.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="600">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-play"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>HTML5 Video</h3>
+									<p>Canvas provides support for Native HTML5 Videos that can be added to a Full Width Background.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="800">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-params"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Parallax Support</h3>
+									<p>Display your Content attractively using Parallax Sections that have unlimited customizable areas.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="1000">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line-circle-check"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Endless Possibilities</h3>
+									<p>Complete control on each &amp; every element that provides endless customization possibilities.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="600">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-bulb"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Light &amp; Dark Color Schemes</h3>
+									<p>Change your Website's Primary Scheme instantly by simply adding the dark class to the body.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="800">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-heart2"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Boxed &amp; Wide Layouts</h3>
+									<p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-lg-4">
+							<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="1000">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-note"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Extensive Documentation</h3>
+									<p>We have covered each &amp; everything in our Documentation including Videos &amp; Screenshots.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="section topmargin mb-0 border-bottom-0">
+					<div class="container clearfix">
+						<div class="heading-block center m-0">
+							<h3>Our Latest Works</h3>
+						</div>
+					</div>
+				</div>
+
+				<div id="portfolio" class="portfolio row no-gutters portfolio-reveal grid-container">
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-media pf-icons">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{% static 'images/portfolio/4/1.jpg' %}" alt="Open Imagination">
+								</a>
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="{% static 'images/portfolio/full/1.jpg' %}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single.html">Open Imagination</a></h3>
+								<span><a href="#">Media</a>, <a href="#">Icons</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-illustrations">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{% static 'images/portfolio/4/2.jpg' %}" alt="Locked Steel Gate">
+								</a>
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="{% static 'images/portfolio/full/2.jpg' %}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single.html">Locked Steel Gate</a></h3>
+								<span><a href="#">Illustrations</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-graphics pf-uielements">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="{% static 'images/portfolio/4/3.jpg' %}" alt="Mac Sunglasses">
+								</a>
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="https://vimeo.com/89396394" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single-video.html">Mac Sunglasses</a></h3>
+								<span><a href="#">Graphics</a>, <a href="#">UI Elements</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-icons pf-illustrations">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{% static 'images/portfolio/4/4.jpg' %}" alt="Open Imagination">
+								</a>
+								<div class="bg-overlay" data-lightbox="gallery">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="{% static 'images/portfolio/full/4.jpg' %}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+										<a href="{% static 'images/portfolio/full/4-1.jpg' %}" class="d-none" data-lightbox="gallery-item"></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single-gallery.html">Morning Dew</a></h3>
+								<span><a href="#">Icons</a>, <a href="#">Illustrations</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-uielements pf-media">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{% static 'images/portfolio/4/5.jpg' %}" alt="Console Activity">
+								</a>
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="{% static 'images/portfolio/full/5.jpg' %}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single.html">Console Activity</a></h3>
+								<span><a href="#">UI Elements</a>, <a href="#">Media</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-graphics pf-illustrations">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{% static 'images/portfolio/4/6.jpg' %}" alt="Open Imagination">
+								</a>
+								<div class="bg-overlay" data-lightbox="gallery">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="{% static 'images/portfolio/full/6.jpg' %}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+										<a href="{% static 'images/portfolio/full/6-1.jpg' %}" class="d-none" data-lightbox="gallery-item"></a>
+										<a href="{% static 'images/portfolio/full/6-2.jpg' %}" class="d-none" data-lightbox="gallery-item"></a>
+										<a href="{% static 'images/portfolio/full/6-3.jpg' %}" class="d-none" data-lightbox="gallery-item"></a>
+										<a href="portfolio-single-gallery.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single-gallery.html">Shake It!</a></h3>
+								<span><a href="#">Illustrations</a>, <a href="#">Graphics</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-uielements pf-icons">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single-video.html">
+									<img src="{% static 'images/portfolio/4/7.jpg' %}" alt="Backpack Contents">
+								</a>
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="https://www.youtube.com/watch?v=kuceVNBTJio" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single-video.html">Backpack Contents</a></h3>
+								<span><a href="#">UI Elements</a>, <a href="#">Icons</a></span>
+							</div>
+						</div>
+					</article>
+
+					<article class="portfolio-item col-6 col-md-4 col-lg-3 pf-graphics">
+						<div class="grid-inner">
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{% static 'images/portfolio/4/8.jpg' %}" alt="Sunset Bulb Glow">
+								</a>
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+										<a href="{% static 'images/portfolio/full/8.jpg' %}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="icon-line-ellipsis"></i></a>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+								</div>
+							</div>
+							<div class="portfolio-desc">
+								<h3><a href="portfolio-single.html">Sunset Bulb Glow</a></h3>
+								<span><a href="#">Graphics</a></span>
+							</div>
+						</div>
+					</article>
+
+				</div>
+
+				<a href="portfolio.html" class="button button-full button-dark center text-right bottommargin-lg">
+					<div class="container clearfix">
+						More than 100+ predefined Portfolio Grid Layouts. <strong>See More</strong> <i class="icon-caret-right" style="top:4px;"></i>
+					</div>
+				</a>
+
+				<div class="container clearfix">
+
+					<div class="row align-items-center col-mb-50">
+						<div class="col-md-4 center">
+							<img data-animate="fadeInLeft" src="{% static 'images/services/iphone6.png' %}" alt="Iphone">
+						</div>
+
+						<div class="col-md-8 text-center text-md-left">
+							<div class="heading-block">
+								<h3 style="color: #515875 !important;">Optimized for Mobile &amp; Touch Enabled Devices.</h3>
+							</div>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam.</p>
+
+							<a href="#" class="button button-border button-dark button-rounded button-large ml-0 topmargin-sm">Learn more</a>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="section parallax dark mb-0" style="background-image: url('{% static 'images/services/home-testi-bg.jpg' %}'); padding: 100px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+					<div class="heading-block center">
+						<h3>What Clients Say?</h3>
+					</div>
+
+					<div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+						<div class="flexslider">
+							<div class="slider-wrap">
+								<div class="slide">
+									<div class="testi-image">
+										<a href="#"><img src="{% static 'images/testimonials/3.jpg' %}" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p style="color: #eee !important;">Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
+										<div class="testi-meta">
+											Steve Jobs
+											<span>Apple Inc.</span>
+										</div>
+									</div>
+								</div>
+								<div class="slide">
+									<div class="testi-image">
+										<a href="#"><img src="{% static 'images/testimonials/2.jpg' %}" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p style="color: #eee !important;">Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+										<div class="testi-meta">
+											Collis Ta'eed
+											<span>Envato Inc.</span>
+										</div>
+									</div>
+								</div>
+								<div class="slide">
+									<div class="testi-image">
+										<a href="#"><img src="{% static 'images/testimonials/1.jpg' %}" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p style="color: #eee !important;">Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!</p>
+										<div class="testi-meta">
+											John Doe
+											<span>XYZ Inc.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="section mt-0 border-top-0">
+					<div class="container clearfix">
+						<div class="heading-block center m-0">
+							<h3>Latest from the Blog</h3>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row posts-md col-mb-30">
+
+						<div class="col-lg-3 col-md-6">
+							<div class="entry">
+								<div class="entry-image">
+									<a href="#"><img src="{% static 'images/magazine/thumb/1.jpg' %}" alt="Image"></a>
+								</div>
+								<div class="entry-title title-xs nott">
+									<h3><a href="blog-single.html">Bloomberg smart cities; change-makers economic security</a></h3>
+								</div>
+								<div class="entry-meta">
+									<ul>
+										<li><i class="icon-calendar3"></i> 13th Jun 2021</li>
+										<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 53</a></li>
+									</ul>
+								</div>
+								<div class="entry-content">
+									<p>Prevention effect, advocate dialogue rural development lifting people up community civil society. Catalyst, grantees leverage.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6">
+							<div class="entry">
+								<div class="entry-image">
+									<a href="#"><img src="{% static 'images/magazine/thumb/2.jpg' %}" alt="Image"></a>
+								</div>
+								<div class="entry-title title-xs nott">
+									<h3><a href="blog-single.html">Medicine new approaches communities, outcomes partnership</a></h3>
+								</div>
+								<div class="entry-meta">
+									<ul>
+										<li><i class="icon-calendar3"></i> 24th Feb 2021</li>
+										<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 17</a></li>
+									</ul>
+								</div>
+								<div class="entry-content">
+									<p>Cross-agency coordination clean water rural, promising development turmoil inclusive education transformative community.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6">
+							<div class="entry">
+								<div class="entry-image">
+									<a href="#"><img src="{% static 'images/magazine/thumb/3.jpg' %}" alt="Image"></a>
+								</div>
+								<div class="entry-title title-xs nott">
+									<h3><a href="blog-single.html">Significant altruism planned giving insurmountable challenges liberal</a></h3>
+								</div>
+								<div class="entry-meta">
+									<ul>
+										<li><i class="icon-calendar3"></i> 30th Dec 2021</li>
+										<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+									</ul>
+								</div>
+								<div class="entry-content">
+									<p>Micro-finance; vaccines peaceful contribution citizens of change generosity. Measures design thinking accelerate progress medical initiative.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6">
+							<div class="entry">
+								<div class="entry-image">
+									<a href="#"><img src="{% static 'images/magazine/thumb/4.jpg' %}" alt="Image"></a>
+								</div>
+								<div class="entry-title title-xs nott">
+									<h3><a href="blog-single.html">Compassion conflict resolution, progressive; tackle</a></h3>
+								</div>
+								<div class="entry-meta">
+									<ul>
+										<li><i class="icon-calendar3"></i> 15th Jan 2021</li>
+										<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 54</a></li>
+									</ul>
+								</div>
+								<div class="entry-content">
+									<p>Community health workers best practices, effectiveness meaningful work The Elders fairness. Our ambitions local solutions globalization.</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="container clearfix">
+
+						<div class="heading-block topmargin-sm center">
+							<h3>Meet Our Team</h3>
+						</div>
+
+						<div class="row">
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="{% static 'images/team/3.jpg' %}" alt="John Doe">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>John Doe</h4><span>CEO</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="{% static 'images/team/2.jpg' %}" alt="Josh Clark">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Josh Clark</h4><span>Co-Founder</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="{% static 'images/team/8.jpg' %}" alt="Mary Jane">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Mary Jane</h4><span>Sales</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-lg-3 col-md-6 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="{% static 'images/team/4.jpg' %}" alt="Nix Maxwell">
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Nix Maxwell</h4><span>Support</span></div>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container clearfix">
+
+					<div id="oc-clients" class="owl-carousel image-carousel carousel-widget" data-margin="60" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="6">
+
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/1.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/2.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/3.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/4.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/5.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/6.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/7.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/8.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/9.png' %}" alt="Clients"></a></div>
+						<div class="oc-item"><a href="#"><img src="{% static 'images/clients/10.png' %}" alt="Clients"></a></div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">
+			<div class="container">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap">
+
+					<div class="row col-mb-50">
+						<div class="col-lg-8">
+
+							<div class="row col-mb-50">
+								<div class="col-md-4">
+
+									<div class="widget clearfix">
+
+										<img src="{% static 'images/footer-widget-logo.png' %}" alt="Image" class="footer-logo">
+
+										<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
+
+										<div style="background: url('{% static 'images/world-map.png') no-repeat center center; background-size: 100%;">
+											<address>
+												<strong>Headquarters:</strong><br>
+												795 Folsom Ave, Suite 600<br>
+												San Francisco, CA 94107<br>
+											</address>
+											<abbr title="Phone Number"><strong>Phone:</strong></abbr> (1) 8547 632521<br>
+											<abbr title="Fax"><strong>Fax:</strong></abbr> (1) 11 4752 1433<br>
+											<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<div class="widget widget_links clearfix">
+
+										<h4>Blogroll</h4>
+
+										<ul>
+											<li><a href="https://codex.wordpress.org/">Documentation</a></li>
+											<li><a href="https://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
+											<li><a href="https://wordpress.org/extend/plugins/">Plugins</a></li>
+											<li><a href="https://wordpress.org/support/">Support Forums</a></li>
+											<li><a href="https://wordpress.org/extend/themes/">Themes</a></li>
+											<li><a href="https://wordpress.org/news/">Canvas Blog</a></li>
+											<li><a href="https://planet.wordpress.org/">Canvas Planet</a></li>
+										</ul>
+
+									</div>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<div class="widget clearfix">
+										<h4>Recent Posts</h4>
+
+										<div class="posts-sm row col-mb-30" id="post-list-footer">
+											<div class="entry col-12">
+												<div class="grid-inner row">
+													<div class="col">
+														<div class="entry-title">
+															<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+														</div>
+														<div class="entry-meta">
+															<ul>
+																<li>10th July 2021</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="entry col-12">
+												<div class="grid-inner row">
+													<div class="col">
+														<div class="entry-title">
+															<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
+														</div>
+														<div class="entry-meta">
+															<ul>
+																<li>10th July 2021</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="entry col-12">
+												<div class="grid-inner row">
+													<div class="col">
+														<div class="entry-title">
+															<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
+														</div>
+														<div class="entry-meta">
+															<ul>
+																<li>10th July 2021</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-lg-4">
+
+							<div class="row col-mb-50">
+								<div class="col-md-4 col-lg-12">
+									<div class="widget clearfix" style="margin-bottom: -20px;">
+
+										<div class="row">
+											<div class="col-lg-6 bottommargin-sm">
+												<div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+												<h5 class="mb-0">Total Downloads</h5>
+											</div>
+
+											<div class="col-lg-6 bottommargin-sm">
+												<div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
+												<h5 class="mb-0">Clients</h5>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="col-md-5 col-lg-12">
+									<div class="widget subscribe-widget clearfix">
+										<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+										<div class="widget-subscribe-form-result"></div>
+										<form id="widget-subscribe-form" action="{% static 'include/subscribe.php' %}" method="post" class="mb-0">
+											<div class="input-group mx-auto">
+												<div class="input-group-prepend">
+													<div class="input-group-text"><i class="icon-email2"></i></div>
+												</div>
+												<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+												<div class="input-group-append">
+													<button class="btn btn-success" type="submit">Subscribe</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-lg-12">
+									<div class="widget clearfix" style="margin-bottom: -20px;">
+
+										<div class="row">
+											<div class="col-6 col-md-12 col-lg-6 clearfix bottommargin-sm">
+												<a href="#" class="social-icon si-dark si-colored si-facebook mb-0" style="margin-right: 10px;">
+													<i class="icon-facebook"></i>
+													<i class="icon-facebook"></i>
+												</a>
+												<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+											</div>
+											<div class="col-6 col-md-12 col-lg-6 clearfix">
+												<a href="#" class="social-icon si-dark si-colored si-rss mb-0" style="margin-right: 10px;">
+													<i class="icon-rss"></i>
+													<i class="icon-rss"></i>
+												</a>
+												<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+				<div class="container">
+
+					<div class="row col-mb-30">
+
+						<div class="col-md-6 text-center text-md-left">
+							Copyrights &copy; 2020 All Rights Reserved by Canvas Inc.<br>
+							<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+						</div>
+
+						<div class="col-md-6 text-center text-md-right">
+							<div class="d-flex justify-content-center justify-content-md-end">
+								<a href="#" class="social-icon si-small si-borderless si-facebook">
+									<i class="icon-facebook"></i>
+									<i class="icon-facebook"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-twitter">
+									<i class="icon-twitter"></i>
+									<i class="icon-twitter"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-gplus">
+									<i class="icon-gplus"></i>
+									<i class="icon-gplus"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-pinterest">
+									<i class="icon-pinterest"></i>
+									<i class="icon-pinterest"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-vimeo">
+									<i class="icon-vimeo"></i>
+									<i class="icon-vimeo"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-github">
+									<i class="icon-github"></i>
+									<i class="icon-github"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-yahoo">
+									<i class="icon-yahoo"></i>
+									<i class="icon-yahoo"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-borderless si-linkedin">
+									<i class="icon-linkedin"></i>
+									<i class="icon-linkedin"></i>
+								</a>
+							</div>
+
+							<div class="clear"></div>
+
+							<i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +1-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+						</div>
+
+					</div>
+
+				</div>
+			</div><!-- #copyrights end -->
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/plugins.min.js' %}"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{% static 'js/functions.js' %}"></script>
+
+		<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+		<script src="{% static 'include/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+	
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.video.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.actions.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.migration.min.js' %}"></script>
+		<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+	
+		<script>
+			var tpj = jQuery,
+				sliderHeight = 0;
+			var $ = jQuery.noConflict();
+	
+			var revapi202;
+			tpj(document).ready(function() {
+				if (tpj("#rev_slider_579_1").revolution == undefined) {
+					revslider_showDoubleJqueryError("#rev_slider_579_1");
+				} else {
+					revapi202 = tpj("#rev_slider_579_1").show().revolution({
+						sliderType: "standard",
+						jsFileLocation: "include/rs-plugin/js/",
+						sliderLayout: "fullscreen",
+						dottedOverlay: "none",
+						delay: 9000,
+						responsiveLevels: [1140, 1024, 778, 480],
+						visibilityLevels: [1140, 1024, 778, 480],
+						gridwidth: [1140, 1024, 778, 480],
+						gridheight: [728, 768, 960, 720],
+						lazyType: "none",
+						shadow: 0,
+						spinner: "off",
+						stopLoop: "off",
+						stopAfterLoops: 0,
+						stopAtSlide: 1,
+						shuffle: "off",
+						autoHeight: "off",
+						fullScreenAutoWidth: "off",
+						fullScreenAlignForce: "off",
+						fullScreenOffsetContainer: "",
+						fullScreenOffset: "",
+						disableProgressBar: "on",
+						hideThumbsOnMobile: "off",
+						hideSliderAtLimit: 0,
+						hideCaptionAtLimit: 0,
+						hideAllCaptionAtLilmit: 0,
+						debugMode: false,
+						fallbacks: {
+							simplifyAll:"off",
+							disableFocusListener:false,
+						},
+						parallax: {
+							type:"mouse",
+							origo:"slidercenter",
+							speed:300,
+							levels:[2,4,6,8,10,12,14,16,18,20,22,24,49,50,51,55],
+						},
+						navigation: {
+							keyboardNavigation:"off",
+							keyboard_direction: "horizontal",
+							mouseScrollNavigation:"off",
+							onHoverStop:"off",
+							touch:{
+								touchenabled:"on",
+								swipe_threshold: 75,
+								swipe_min_touches: 1,
+								swipe_direction: "horizontal",
+								drag_block_vertical: false
+							},
+							arrows: {
+								style: "hermes",
+								enable: true,
+								hide_onmobile: false,
+								hide_onleave: false,
+								tmp: '<div class="tp-arr-allwrapper">	<div class="tp-arr-imgholder"></div>	<div class="tp-arr-titleholder">{{title}}</div>	</div>',
+								left: {
+									h_align: "left",
+									v_align: "center",
+									h_offset: 10,
+									v_offset: 0
+								},
+								right: {
+									h_align: "right",
+									v_align: "center",
+									h_offset: 10,
+									v_offset: 0
+								}
+							}
+						}
+					});
+					revapi202.on("revolution.slide.onloaded",function (e) {
+						setTimeout( function(){
+							SEMICOLON.slider.sliderDimensions();
+							sliderHeight = jQuery('#slider').outerHeight();
+						}, 200 );
+					});
+	
+					revapi202.on("revolution.slide.onchange",function (e,data) {
+						SEMICOLON.slider.revolutionSliderMenu();
+					});
+				}
+			}); /*ready*/
+		</script>
+</body>
+</html>
+
+

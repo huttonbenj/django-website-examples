@@ -1,0 +1,147 @@
+{% load static %}
+<footer id="footer" class="dark">
+	<div class="container">
+
+		<!-- Footer Widgets
+		============================================= -->
+		<div class="footer-widgets-wrap">
+
+			<div class="row">
+				<div class="col-lg-10">
+					<div class="widget clearfix">
+
+						<img src="{{logo.image.url}}" alt="Image" class="alignleft"
+							style="margin-top: 8px; padding-right: 18px; border-right: 1px solid #4A4A4A;width:200px;">
+
+						<p>Blue Ribbon Kennels is a full-time training, boarding and breeding facility. We customize our training program to meet the specific developmental needs, abilities, and progress of each retriever while keeping the owners expectations in mind.</p>
+
+						<div class="line" style="margin: 30px 0;"></div>
+
+						<div class="row col-mb-30">
+							<div class="col-lg-3 col-6 widget_links">
+								<ul>
+									<li><a href="/">
+											<div>Home</div>
+										</a></li>
+									<!-- <li><a href="{% url 'create' %}"><div>Book Now</div></a></li> -->
+									<!-- <li><a href="{% url 'service' 'Boarding' %}"><div>Boarding</div></a></li> -->
+									<li>
+										<div class="btn-group">
+											<a type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												Services
+											</a>
+											<div class="dropdown-menu" >
+												<a class="dropdown-item" href="{% url 'service' 'Boarding' %}">Boarding</a>
+												<a class="dropdown-item" href="{% url 'service' 'Obedience Training' %}">Obedience Training</a>
+												<a class="dropdown-item" href="{% url 'service' 'Retriever Training' %}">Retriever Training</a>
+											</div>
+										</div>
+										<!-- <a href="{% url 'gallery' %}">
+											<div>Boarding & Training</div>
+										</a></li> -->
+
+
+								</ul>
+							</div>
+
+							<div class="col-lg-3 col-6 widget_links">
+								<ul>
+									<!-- <li><a href="{% url 'service' 'Obedience Training' %}"><div>Obedience Training</div></a></li>
+									<li><a href="{% url 'service' 'Retriever Training' %}"><div>Retriever Training</div></a></li> -->
+									<li><a href="{% url 'about' %}">
+											<div>About</div>
+										</a></li>
+									<li><a href="{% url 'facility' %}">
+											<div>Facility</div>
+										</a></li>
+
+
+								</ul>
+							</div>
+
+							<div class="col-lg-3 col-6 widget_links">
+								<ul>
+									<li><a href="{% url 'gallery' %}">
+											<div>Gallery</div>
+										</a></li>
+									<li><a href="{% url 'faqs' %}">
+											<div>FAQs</div>
+										</a></li>
+								</ul>
+							</div>
+
+							<div class="col-lg-3 col-6 widget_links">
+								<ul>
+									<li><a href="{% url 'contact' %}">
+											<div>Contact</div>
+										</a></li>
+									<li><a href="{% url 'create' %}">
+											<div>Book Now</div>
+										</a></li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-lg-2 mt-5 mt-lg-0">
+					<div class="widget clearfix">
+
+						<div class="row col-mb-30">
+							<div class="col-12">
+								<div class="footer-big-contacts">
+									<span>Call Us:</span>
+									(601)-981-0183
+								</div>
+							</div>
+
+	
+						</div>
+
+					</div>
+
+					<div class="widget subscribe-widget clearfix">
+
+						<div class="row col-mb-30">
+							<div class="col-12 col-lg-12 col-sm-6 clearfix">
+								<a href="#" class="social-icon si-dark si-colored si-facebook mb-0 "
+									style="margin-right: 10px;">
+									<i class="icon-facebook"></i>
+									<i class="icon-facebook"></i>
+								</a>
+								<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like
+											us</strong><br>on Facebook</small></a>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div><!-- .footer-widgets-wrap end -->
+	</div>
+
+	<!-- Copyrights
+	============================================= -->
+	<div id="copyrights">
+		<div class="container">
+
+			<div class="row justify-content-between col-mb-30">
+				<div class="col-12 col-md-auto text-center text-md-start">
+					Copyrights © 2020 All Rights Reserved by Canvas Inc.<br>
+					<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+				</div>
+
+				<div class="col-12 col-md-auto text-center text-md-end">
+					<div class="copyrights-menu copyright-links clearfix">
+						<a href="#">Home</a>/<a href="#">About Us</a>/<a href="#">Team</a>/<a href="#">Clients</a>/<a
+							href="#">FAQs</a>/<a href="#">Contact</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div><!-- #copyrights end -->
+</footer>

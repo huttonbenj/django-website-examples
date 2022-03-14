@@ -1,0 +1,136 @@
+{% load thumbnail %}
+<div class="section my-0 py-0">
+
+<!-- <div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-6">
+            <div class="heading-block border-bottom-0 topmargin-sm mb-0">
+                <h2 class="font-secondary ls1 nott fw-normal">{{testimonials_section_obj.title}}</h2>
+                <span>{{testimonials_section_obj.description}}</span>
+                <a href="{{testimonials_section_obj.button_link}}" class="button button-large button-rounded topmargin-sm ms-0">{{testimonials_section_obj.button_text}}</a>
+                <div class="line line-sm"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-4">
+                    <div>
+                        <div class="counter counter-small" style="color: #1af7cbce;"><span data-from="0" data-to="{{testimonials_section_obj.fancy_item_1_count}}" data-refresh-interval="50" data-speed="1000"></span>+</div>
+                        <h5 class="fw-semibold nott mt-0" style="font-size: 16px;color:#1af7cbce;">{{testimonials_section_obj.fancy_item_1_label}}</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div>
+                        <div class="counter counter-small" style="color: #22c1c3;"><span data-from="0" data-to="{{testimonials_section_obj.fancy_item_2_count}}" data-refresh-interval="50" data-speed="1000"></span>+</div>
+                        <h5 class="fw-semibold nott mt-0" style="color: #22c1c3; font-size: 16px;">{{testimonials_section_obj.fancy_item_2_label}}</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div>
+                        <div class="counter counter-small" style="color: #77e9e3da;"><span data-from="0" data-to="{{testimonials_section_obj.fancy_item_3_count}}" data-refresh-interval="50" data-speed="1000"></span>+</div>
+                        <h5 class="fw-semibold nott mt-0" style="color: #77e9e3da; font-size: 16px;">{{testimonials_section_obj.fancy_item_3_label}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div id="oc-testi" class="owl-carousel testimonials-carousel carousel-widget" data-nav="false" data-animate-in="slideInUp" data-animate-out="slideOutUp" data-autoplay="5000" data-loop="true" data-stage-padding="5" data-margin="10" data-items-sm="1" data-items-md="1" data-items-xl="1">
+        
+                <div class="oc-item">
+                    {% for testi in testimonials %}
+                    {% if forloop.counter|divisibleby:2 %}
+                    <div class="testimonial topmargin-sm">
+                        <div class="testi-image">
+                            <a href="#">
+                                {% thumbnail testi.thumbnail "500x500" crop="center" as im %}
+                                <img src="{{im.url}}" alt="Customer Testimonails">
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+                        <div class="testi-content">
+                            <p>{{testi.description}}</p>
+                            <div class="testi-meta">
+                                {{testi.name}}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+        
+                <div class="oc-item">
+                    {% for testi in testimonials %}
+                    {% if not forloop.counter|divisibleby:2 %}
+                    <div class="testimonial topmargin-sm">
+                        <div class="testi-image">
+                            <a href="#">
+                                {% thumbnail testi.thumbnail "500x500" crop="center" as im %}
+                                <img src="{{testi.thumbnail.url}}" alt="Customer Testimonails">
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+                        <div class="testi-content">
+                            <p>{{testi.description}}</p>
+                            <div class="testi-meta">
+                                {{testi.name}};
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+        
+            </div>
+        </div>
+
+    </div>
+</div> -->
+{% thumbnail testimonials_section_obj.background_image "1600" crop="center" as im %}
+
+<div class="section parallax dark mb-0 skrollable skrollable-between mt-0" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{im.url}}); padding: 100px 0px; background-position: 0px -73.4579px;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="heading-block center">
+        <h3>What Clients Say?</h3>
+    </div>
+
+    <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+        <div class="flexslider" style="height: 221px;">
+            <div class="slider-wrap">
+                {% for testi in testimonials %}
+
+                <div class="slide flex-active-slide" data-thumb-alt="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
+                    <div class="testi-image">
+                        <a href="{{testi.thumbnail.url}}">
+                            {% thumbnail testi.thumbnail "200x200" crop="center" as im %}
+                            <img src="{{im.url}}" alt="Customer Testimonails" draggable="false">
+                            {% endthumbnail %}
+                        </a>
+                    </div>
+                    <div class="testi-content">
+                        <p>{{testi.description}}</p>
+                        <div class="testi-meta">
+                            {{testi.name}}
+                            <!-- <span>Apple Inc.</span> -->
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        <!-- <ol class="flex-control-nav flex-control-paging"><li><a href="#" class="flex-active">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li></ol></div> -->
+    </div>
+
+</div>
+</div>
+</div>
+
+{% endthumbnail %}
+
+
+<a href="{% url 'create' %}" class="button button-full button-dark center text-end full-width-button">
+    <div class="container clearfix">
+        Your dog deserves to be trained by the best professionals around <strong> Book Now</strong> <i class="icon-caret-right" style="top:4px;"></i>
+    </div>
+</a>

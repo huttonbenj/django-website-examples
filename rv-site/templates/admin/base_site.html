@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block extrahead %}
+<!-- <style>
+    /* UPLOADCARE */
+    .uploadcare--widget__button.uploadcare--widget__button_type_remove {
+        display: inline !important;
+    }
+</style>
+<script src="{% static 'js/jquery.js' %}"></script> -->
+{% endblock %}
+
+{% block title %}{{ title }} | {% trans 'Buena-Vista' %}{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">{% trans 'Buena-Vista' %}</h1>
+
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock %}

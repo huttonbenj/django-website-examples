@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+	@media (max-width: 992px){
+        .mobile {
+            width: 80% !important;
+        }
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center my-5 py-5 w-50 mx-auto mobile" style="background-color: transparent;">
+        <h1 class="text-danger">Payment Failed {{request.META.HTTP_REFERER}}</h1>
+        <p>Whoops!  It looks like your payment did not go through.  Please click<input type=button value="go back" onClick="javascript:history.go(-1);" style="background:none;border:none;color:lightskyblue;">to try again, or ou can now close this window or use the
+            link below to visit
+            <a href="/">home page</a>.
+        </p>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'admin/index.html' %}
+
+{% block content %}
+<div class="container my-3">
+    <div class="row show-grid">
+ 
+        {% for kennel in kennels %}
+            {% if not kennel.booked %}
+                <a href="{% url 'admin:reservations_reservation_add' %}?kennel={{kennel.id}}" class="col-lg-1 text-center" style="height: 80px;background-color:green;border: 1px solid black;display: table; width:100%;color:white;"><div class="" style="display: table-cell; vertical-align: middle;">{{kennel.number}}</div></a>
+                {% else %}
+                <a href="{% url 'admin:reservations_reservation_add' %}?kennel={{kennel.id}}" class="col-lg-1 text-center" style="height: 80px;background-color:red;border: 1px solid black;display: table; width:100%;color:white;"><div class="" style="display: table-cell; vertical-align: middle;">{{kennel.number}}</div></a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

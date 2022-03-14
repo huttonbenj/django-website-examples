@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<style>
+
+    .block-expand-categories h1,
+    .block-expand-categories h2,
+    .block-expand-categories h3 { font-family: Playfair Display, serif !important; }
+
+    .block-expand-categories .expand-category {
+        --height: 50vh;
+        --responsive-height: 60px;
+        --hover-flex: 10;
+
+        position: relative;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 20px;
+        margin: 10px 0;
+        min-height: var(--responsive-height);
+        cursor: pointer;
+    }
+
+    .block-expand-categories .expand-category h4 {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin: 0;
+        transform: translateY(-50%);
+    }
+
+    /* Larger Device */
+    @media (min-width: 992px) {
+
+        .block-expand-categories .expand-category {
+            height: var(--height);
+            flex: 1;
+            margin: 0 10px;
+            transition: flex 1s ease;
+            -webkit-backface-visibility: hidden;
+            transform: translate3d(0,0,0);
+        }
+
+        .block-expand-categories:not(.on-click) .expand-category:hover,
+        .block-expand-categories.on-click .expand-category.active { flex: var(--hover-flex); }
+
+        .block-expand-categories .expand-category h4 {
+            opacity: 1;
+            top: auto;
+            bottom: 10px;
+            transform: none;
+            transition: opacity .4s ease;
+        }
+
+        .block-expand-categories:hover .expand-category:not(.active):not(:hover) h4,
+        .block-expand-categories.on-click .expand-category:not(.active) h4 { opacity: 0; }
+
+    }
+
+    .custom-heading-description {
+        font-weight: 100 !important;
+        font-family: 'Lato', sans-serif !important;
+        color: rgba(255,255,255,0.65) !important;
+    }
+
+</style>
+
+
+<section id="content">
+    <div class="content-wrap">
+
+        <section class="">
+                <div class="container clearfix mb-5">
+                    <div class="heading-block center m-0">
+                        <h3>Considering Making This Your Personal Paradise?</h3>
+                        <p class="custom-heading-description mt-3">Our lush RV sites are the perfect place to kick back and relax with your friends and loved ones. Owners at Buena Vista RV Resort enjoy expansive 4,350 square foot RV sites with optional, elegantly crafted coach houses and an abundance of other amenity options. Entertain guests in your outdoor kitchen and dining area, relax in your living room, or take in the salty sea air on your spacious screened patio. Our luxury coach houses come in five different floor plans, each with customizable options to meet your every desire.</p>
+                    </div>
+            </div>
+
+            <div class="col-md-8 mx-auto">
+
+            <div id="faqs" class="faqs">
+
+                {% for faq in faqs %}
+                <div class="toggle faq pb-3 mb-3 faq-marketplace faq-authors">
+                    <div class="toggle-header">
+                        <div class="toggle-icon">
+                            <i class="toggle-closed icon-ok"></i>
+                            <i class="toggle-open icon-ok"></i>
+                        </div>
+                        <div class="toggle-title pl-1">
+                            {{faq.title}}
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="toggle-closed icon-line-chevron-down text-white-50"></i>
+                            <i class="toggle-open icon-line-chevron-up text-white-50"></i>
+                        </div>
+                    </div>
+                    <div class="toggle-content text-white-50 pl-4">{{faq.description|safe}}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div class="section">
+        <div class="container clearfix">
+            <div class="heading-block topmargin-lg center">
+                <h2>Step 1: Pick a Luxury RV Lot</h2>
+                <!-- <span class="mx-auto">Experience the ultimate luxury motor coach resort in Orange Beach, Alabama!</span> -->
+            </div>
+            <div class="block-expand-categories flex-column flex-lg-row d-flex justify-content-center">
+                {% for lot in lots %}
+                
+                <div class="expand-category bg-light" style="background-image: url({{lot.lot.image_set.first.image.cdn_url}});">
+                    <h4><a href="#" class="text-light">Lot {{lot.lot.number}}</a></h4>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+        <section class="">
+            <div class="container clearfix mb-5">
+                <div class="heading-block center m-0">
+                    <h3>Step 2: Design Your Coach House</h3>
+                    <p class="custom-heading-description">Our lush RV sites are the perfect place to kick back and relax with your friends and loved ones. Owners at Buena Vista RV Resort enjoy expansive 4,350 square foot RV sites with optional, elegantly crafted coach houses and an abundance of other amenity options. Entertain guests in your outdoor kitchen and dining area, relax in your living room, or take in the salty sea air on your spacious screened patio. Our luxury coach houses come in five different floor plans, each with customizable options to meet your every desire.</p>
+                </div>
+        </div>
+
+        <div class="col-md-8 mx-auto">
+
+        <div id="faqs" class="faqs">
+
+            {% for faq in faqs %}
+            <div class="toggle faq pb-3 mb-3 faq-marketplace faq-authors">
+                <div class="toggle-header">
+                    <div class="toggle-icon">
+                        <i class="toggle-closed icon-ok"></i>
+                        <i class="toggle-open icon-ok"></i>
+                    </div>
+                    <div class="toggle-title pl-1">
+                        {{faq.title}}
+                    </div>
+                    <div class="toggle-icon">
+                        <i class="toggle-closed icon-line-chevron-down text-white-50"></i>
+                        <i class="toggle-open icon-line-chevron-up text-white-50"></i>
+                    </div>
+                </div>
+                <div class="toggle-content text-white-50 pl-4">{{faq.description|safe}}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+  
+        
+</section>
+
+</section><!-- #content end -->
+
+<script>
+
+    $(document).ready(function() {
+
+        jQuery('.block-expand-categories').find('.expand-category').on( 'click', function() {
+            let category = $(this);
+
+            category.siblings().removeClass('active');
+            category.addClass('active');
+        });
+
+    });
+
+</script>
+{% endblock %}

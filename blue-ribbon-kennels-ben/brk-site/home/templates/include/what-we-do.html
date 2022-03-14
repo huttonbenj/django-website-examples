@@ -1,0 +1,42 @@
+<section>
+<div class="section m-0 clearfix">
+	<div class="container clearfix">
+
+		<div class="heading-block center border-bottom-0 bottommargin topmargin-sm mx-auto" style="max-width: 700px;">
+			<h3 class="nott font-secondary fw-normal" style="font-size: 36px;">What we Do</h3>
+			<span>Blue Ribbon Kennels is a full-time training, boarding and breeding facility. We customize our training
+				program to meet the specific developmental needs, abilities, and progress of each retriever while
+				keeping the owners expectations in mind.</span>
+		</div>
+
+		<div class="row clearfix">
+			<!-- Features colomns
+							============================================= -->
+			<div class="row clearfix">
+				{% for service in services %}
+				<a class="p-0 m-0 w-auto" href="{% url 'service' service=service.title %}" >
+				<div class="col-lg-4 col-md-6 bottommargin-sm">
+					<div class="feature-box media-box fbox-bg">
+						<div class="fbox-media">
+							<div class="service">
+								<img class="service-img" src="{{service.image.url}}" alt="Featured Box Image">
+							</div>
+							<div class="fbox-content border-0">
+								<h3 class="nott ls0 fw-semibold">{{service.title}}
+									{% autoescape off %}
+									<span
+										class="subtitle fw-light ls0 no-markers">{{service.description|safe|striptags|truncatechars:150}}</span>
+									{% endautoescape %}
+								</h3>
+								<a href="{% url 'service' service=service.title %}" class="button-link border-0 color">Read More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+</section><!-- #content end -->

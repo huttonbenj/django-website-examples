@@ -1,0 +1,43 @@
+{% load thumbnail %}
+<section class="clearfix mx-0 px-0 bottommargin">
+    <!-- <div class="heading-block center border-bottom-0 mb-5 mx-auto" style="max-width: 640px">
+        <h3 class="nott font-secondary fw-normal" style="font-size: 36px;">Who We Are</h3>
+    </div> -->
+
+
+
+        <div class="row align-items-stretch col-mb-50">
+
+            <div id="who-we-are-image" class="col-lg-5 center col-padding who-we-are-image" style="background: url({{about_page_obj.who_we_are_image.url}}) center center no-repeat; background-size: cover;">
+            </div>
+            <div class="col-lg-7 text-center text-md-start px-4 py-6">
+                <div class="heading-block border-bottom-0 center">
+                    <h3>{{about_page_obj.who_we_are_title}}</h3>
+                </div>
+
+                <div class="tabs tabs-justify tabs-tb tabs-alt mb-0 clearfix" id="realestate-tabs" data-active="2">
+
+                    <ul class="tab-nav clearfix">
+                        {% for tab in about_sections %}
+                        <li><a href="#realestate-tab-{{forloop.counter}}">{{tab.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+    
+                    <div class="tab-container">
+    
+                        {% for section in about_sections %}
+                        <div class="tab-content clearfix about-section" id="realestate-tab-{{forloop.counter}}">
+                            <p>{{section.description|safe|truncatechars:600}}</p>
+    
+                        </div>
+                        {% endfor %}
+                    </div>
+    
+                </div>
+                <div class="row text-center about-home-button"><a href="{% url 'about' %}" class="btn btn-outline-primary ml-auto">View Full
+                    Description &rarr;</a></div>
+            </div>
+        </div>
+
+
+</section>

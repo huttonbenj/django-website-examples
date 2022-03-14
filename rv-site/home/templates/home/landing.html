@@ -1,0 +1,1073 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load home_tags %}
+
+
+{% block title %}<title>Buena Vista RV Resort | Class A / Super C Luxury Motor Coach Resort</title>{% endblock %}
+{% block description %}<meta name="description" content="Buena Vista RV Resort is a luxury motor coach resort catering only to Class A and Super C.  Come enjoy 32 miles of sugar white sandy beaches spread across Gulf Shores and Orange Beach, AL." />{% endblock %}
+{% block keywords %}<meta name="keywords" content="RV, Motorhome, Motorcoach, Vacation, Beach, RV park, Rv lot, Rv Resort" />{% endblock %}
+{% block image %}<meta property="og:image" content="https://ucarecdn.com/00f29fa9-0fda-484a-a0b4-3d5425394f23/LogoCobaltandCoralSquare.png">{% endblock %}
+{% block analytics_home %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+{% block analytics %}{% endblock %}
+
+{% block extra_css %}
+<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="{% static 'include/rs-plugin/css/settings.css' %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'include/rs-plugin/css/layers.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'include/rs-plugin/css/navigation.css' %}">
+
+<style>
+    .revo-slider-emphasis-text {
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        font-family: 'Poppins', sans-serif;
+        padding: 15px 20px;
+        border-top: 2px solid #FFF;
+        border-bottom: 2px solid #FFF;
+    }
+
+    .revo-slider-desc-text {
+        font-size: 20px;
+        font-family: 'Lato', sans-serif;
+        width: 650px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .revo-slider-caps-text {
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .tp-video-play-button {
+        display: none !important;
+    }
+
+    .tp-caption {
+        white-space: nowrap;
+    }
+
+    ::-webkit-input-placeholder {
+        color: rgb(206, 206, 206) !important;
+    }
+
+    :-moz-placeholder {
+        color: rgb(206, 206, 206) !important;
+    }
+
+    ::-moz-placeholder {
+        color: rgb(206, 206, 206) !important;
+    }
+
+    :-ms-input-placeholder {
+        color: rgb(206, 206, 206) !important;
+    }
+
+
+    #boxes {
+        position: relative;
+        z-index: 100;
+    }
+
+    .box {
+        position: absolute;
+        width: 80%;
+        height: auto;
+        background-color: transparent;
+        top: 0;
+    }
+
+    .popup {
+        position: absolute;
+        /*VERY IMPORTANT*/
+        max-width: 450px;
+        max-height: 200px;
+        height: 200px;
+        background-color: #2c4c62;
+        z-index: 999;
+    }
+
+    .imagescalein {
+        background: none !important;
+        border: none !important;
+    }
+
+    .card-text-padding {
+        padding-bottom: 25px;
+        background: none !important;
+        background-color: transparent !important;
+        border: none;
+
+
+    }
+
+    .mw-card {
+        min-width: 450px;
+    }
+
+
+    .bg-dark {
+        background-color: #2c4c62 !important;
+    }
+
+    .pending-sale-img {
+        position: absolute;
+    }
+
+    @media (max-width:1800px) {
+        .blog-home-img {
+            min-height: 200px !important;
+            max-height: 200px !important;
+        }
+
+        .custom-col-padding {
+            padding-left: 100px;
+        }
+    }
+
+    @media (max-width:1200px) {
+        .blog-home-img {
+            min-height: 140px !important;
+            max-height: 140px !important;
+
+        }
+    }
+
+    @media (max-width:992px) {
+        .blog-home-img {
+            min-height: 220px !important;
+            max-height: 220px !important;
+        }
+
+        .custom-col-padding {
+            padding-left: 0;
+        }
+
+
+
+        #boxes {
+            position: relative;
+            z-index: 100;
+        }
+
+        .box {
+            position: absolute;
+            width: 80%;
+            height: auto;
+            background-color: transparent;
+            top: 0;
+        }
+
+        .popup {
+            position: absolute;
+            /*VERY IMPORTANT*/
+            max-width: 450px;
+            max-height: 200px;
+            height: 200px;
+            background-color: #2c4c62;
+            z-index: 999;
+        }
+
+        .imagescalein {
+            background: none !important;
+            background-color: transparent !important;
+            border: none;
+        }
+
+        .imagescalein .row {
+            flex-wrap: nowrap !important;
+        }
+
+        .card-text-padding {
+            padding-bottom: 5px;
+        }
+
+        .mw-card {
+            min-width: 350px;
+            width: 350px;
+        }
+    }
+
+
+    @media (max-width:767px) {
+        .blog-home-img {
+            min-height: none !important;
+            max-height: none !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block header %}
+{% include 'header-transparent.html' %}
+{% endblock %}
+
+{% block slider %}
+{% include 'slider.html' %}
+{% endblock %}
+
+{% block content %}
+<section id="content">
+    <div class="content-wrap">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-lg-5">
+                    <div class="heading-block">
+                        <h1>{{intro.title}}</h1>
+                    </div>
+                    <p class="lead">{{intro.description|strip_tags}}</p>
+                </div>
+
+                <div class="col-lg-7 align-self-end">
+
+                    <div class="position-relative overflow-hidden" style="min-width: 115% !important;">
+                        <img src="{{intro.image_one.url}}" style="min-width: 100% !important;" data-animate="fadeInUp"
+                            data-delay="100" alt="Chrome">
+                        <img src="{{intro.image_two.url}}"
+                            style="bottom: 0; left: 0px; max-width: 100% !important;min-height: 55% !important;height: 55% !important;"
+                            data-animate="fadeInUp" data-delay="400" alt="iPhone" class="position-absolute">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section my-0">
+            <div class="container">
+
+                <div class="row mt-4 col-mb-50">
+
+                    {% for item in overview %}
+                    <div class="col-lg-4">
+                        <img class="i-plain color i-large icon-line2-screen-desktop inline-block" src="{{item.icon.url}}"
+                            alt="icon">
+                        <div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+                            <span class="before-heading">{{item.title_small}}</span>
+                            <h4>{{item.title_large}}</h4>
+                        </div>
+                        <p class="soft-white">{{item.description|strip_tags}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="about_us" class="container clearfix">
+            <div class="heading-block topmargin-lg center">
+                <h2>What We Offer</h2>
+                <span class="mx-auto">Experience the ultimate luxury motor coach resort in Orange Beach, Alabama!</span>
+            </div>
+            <div class="row col-mb-50 mb-4">
+                {% for item in about.all %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn">
+                        <div class="fbox-icon">
+                            <a href="#"><img src="{{item.icon.url}}" alt="icon"></a>
+                        </div>
+                        <div class="fbox-content">
+                            <h3>{{item.title}}</h3>
+                            <p>{{item.description|safe}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="section topmargin mb-0 border-bottom-0">
+            <div class="container clearfix">
+                <div class="heading-block center m-0">
+                    <h3>Adventure With Every Package</h3>
+                </div>
+            </div>
+        </div>
+
+        <section id="slider" class="slider-element min-vh-100">
+
+            <div class="row no-gutters align-items-center text-center">
+                {% for package in packages.all %}
+                <div id="{{package.package.get_name_display}}-container"
+                    class="col-md-3 grid-inner dark package-container"
+                    style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.9)), url({{package.background_image.url}});">
+                    <div id="{{package.package.get_name_display}}-content"
+                        class="d-flex flex-column justify-content-end text-center min-vh-md-100 min-vh-60 pt-5 px-5 pb-7  packages">
+                        <h3 id="{{package.package.get_name_display}}-title"
+                            class="display-4 font-weight-bold mb-2 packages">{{package.package.get_name_display|title}}
+                        </h3>
+                        <p id="{{package.package.get_name_display}}-short-description"
+                            class="op-07 mb-5 lead px-4 packages">{{package.short_description}}</p>
+                        <p id="{{package.package.get_name_display}}-long-description"
+                            class="mb-5 lead w-100 custom-word-wrap custom-transition-display packages hidden-package-description">
+                            {{package.long_description|strip_tags}}</p>
+                    </div>
+                    <a href="{% url 'rates' %}"
+                        class="btn btn-lg btn-dark mx-auto button-coral my-auto custom-package-button">{{package.button_label}}</a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </section>
+
+
+        <div class="section mt-0 border-top-0 mb-0">
+            <div class="container clearfix">
+                <div class="heading-block center m-0">
+                    <h3>Lots</h3>
+                </div>
+            </div>
+        </div>
+        <section id="" class="p-5">
+            <div class="row align-items-centers">
+                <!-- Image -->
+                <div class="col-md-6 my-auto">
+
+                    <div class=" mx-auto p-0">
+                        <img src="{% static 'images/buena-vista/pics/site-map.jpg' %}" usemap="#image-map">
+                        <div class="map-hovers">
+                            <div class="boxes">
+                                {% for lot in lots %}
+                                {% with counter=forloop.counter %}
+                                <div class="box" id="box{{counter}}">
+
+                                    <div class="popup w-100" id="popup{{counter}}" name="lot-{{lot.number}}"
+                                        onMouseLeave="popupMouseLeave(event);">
+                                        <div class="">
+                                            <div class="card imagescalein mw-card w-100"
+                                                style="background-color: #2c4c62 !important;">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col-xs-8 col-sm-8 col-md-8 p-4">
+                                                        <div class="card-body p-0">
+                                                            <h3 class="card-title">Lot {{lot.number}}</h3>
+                                                            <p class="card-text card-text-padding mb-2">
+                                                            {% if not lot.id in empty_lots_for_sale %}
+                                                                {% if lot.package == 'standard' %}Standard - Starting at $65/night{% endif %}
+                                                                {% if lot.package == 'moderate' %}Moderate - Starting at $95/night{% endif %}
+                                                                {% if lot.package == 'deluxe' %}Deluxe - Starting at $120/night{% endif %}
+                                                                {% if lot.package == 'luxury' %}Luxury - Starting at $190/night{% endif %}
+                                                              {% else %}
+							          {% if not lot.id in pending_sale %}
+                                                                    Lot for sale, $209,000.
+								  {% else %}
+								    Sale Pending.
+                                                                  {% endif %}
+							      {% endif %}
+                                                            </p>
+                                                            <a href="{% url 'lot_single' id=lot.id %}"
+                                                                class="btn button-coral text-white">View Lot
+                                                                {{lot.number}}</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-4 col-md-4 d-flex align-self-stretch overflow-hidden"
+                                                        style="height: 207px;max-height: 207px;">
+                                                        <img src="{{lot.image_set.first.image.cdn_url}}-/scale_crop/300x400/center/"
+                                                            class="rounded-right" alt="..." />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                {% endwith %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <map name="image-map" class="map-areas">
+
+                        <area id="lot-1-area" target="" alt="" title="" href="#"
+                            coords="433,926,475,964,456,982,429,956,436,950,422,938" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-2-area" target="" alt="" title="" href="#"
+                            coords="403,956,406,962,413,967,421,967,446,992,429,1011,401,985,409,979,395,966"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-3-area" target="" alt="" title="" href="#"
+                            coords="372,990,384,1002,389,994,417,1021,399,1039,371,1011,369,1004" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+
+                        <area id="lot-4-area" target="" alt="" title="" href="#"
+                            coords="308,1053,297,1056,305,1063,267,1079,256,1054,298,1042" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-5-area" target="" alt="" title="" href="#"
+                            coords="297,1034,281,1031,281,1039,261,1038,261,1030,251,1029,251,1015,297,1014"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-6-area" target="" alt="" title="" href="#"
+                            coords="301,1010,292,1006,286,1010,273,999,277,990,269,984,280,974,309,998" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-7-area" target="" alt="" title="" href="#"
+                            coords="317,988,294,957,317,944,337,973,344,986,331,989,326,985" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-8-area" target="" alt="" title="" href="#"
+                            coords="368,967,353,956,347,962,319,934,336,916,377,955" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-9-area" target="" alt="" title="" href="#"
+                            coords="390,942,377,929,370,934,343,908,362,890,402,929" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-10-area" target="" alt="" title="" href="#"
+                            coords="416,918,400,902,395,910,368,882,385,862,428,905" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-11-area" target="" alt="" title="" href="#"
+                            coords="440,891,426,878,421,883,393,858,412,839,451,878" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-12-area" target="" alt="" title="" href="#"
+                            coords="496,838,483,828,476,833,451,802,473,786,505,828" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-13-area" target="" alt="" title="" href="#"
+                            coords="523,818,514,805,505,809,481,779,504,766,537,808" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-14-area" target="" alt="" title="" href="#"
+                            coords="551,799,546,782,537,784,522,749,547,740,561,773,561,784,567,790" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-15-area" target="" alt="" title="" href="#"
+                            coords="584,781,580,769,580,757,570,759,569,731,577,730,577,719,594,719,597,768"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-16-area" target="" alt="" title="" href="#"
+                            coords="617,754,616,734,607,734,604,702,615,702,613,695,630,694,633,743" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-17-area" target="" alt="" title="" href="#"
+                            coords="656,729,654,710,646,710,642,680,651,680,650,671,668,670,672,716" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-18-area" target="" alt="" title="" href="#"
+                            coords="693,703,691,684,682,686,681,654,689,655,688,646,706,645,707,663,706,678,708,691"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-19-area" target="" alt="" title="" href="#"
+                            coords="720,658,715,630,725,629,724,622,743,619,746,664,729,676,728,660" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-20-area" target="" alt="" title="" href="#"
+                            coords="764,651,768,640,767,628,761,622,752,622,754,586,782,589,785,594,786,607,788,611,793,613,785,628,776,639"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-21-area" target="" alt="" title="" href="#"
+                            coords="619,308,563,313,547,291,585,285,592,295,608,291" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-22-area" target="" alt="" title="" href="#"
+                            coords="595,271,531,276,520,273,517,253,559,250,564,258,581,256" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-23-area" target="" alt="" title="" href="#"
+                            coords="536,198,541,239,525,242,522,234,514,238,510,207,519,206,517,190,525,190,530,192"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+
+                        <area id="lot-61-area" target="" alt="" title="" href="#"
+                            coords="475,177,453,169,451,179,417,168,429,142,429,128,429,120,450,133,441,138,443,145,454,150,474,158"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-77-area" target="" alt="" title="" href="#"
+                            coords="479,125,500,104,496,87,521,57,534,63,536,73,539,83,545,90,555,94,540,107,535,100,525,100,515,112,501,131"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+
+                        <area id="lot-78-area" target="" alt="" title="" href="" coords="557,95,555,69,538,59,536,18,565,16,571,76,574,81" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-79-area" target="" alt="" title="" href="" coords="589,73,586,58,577,54,575,15,603,12,604,66" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-80-area" target="" alt="" title="" href="" coords="624,60,625,47,616,45,620,13,643,11,641,59" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-81-area" target="" alt="" title="" href="" coords="657,58,666,47,656,37,671,11,695,12,701,16,677,58" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-82-area" target="" alt="" title="" href="" coords="719,59,743,20,728,11,719,9,703,35,707,45,702,59" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-83-area" target="" alt="" title="" href="" coords="745,59,753,45,748,36,763,10,769,14,773,10,787,18,765,58" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-84-area" target="" alt="" title="" href="" coords="787,59,796,45,791,36,807,10,813,15,816,10,831,21,811,51" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-85-area" target="" alt="" title="" href="" coords="833,52,837,47,832,40,846,13,853,18,855,13,871,23,849,60" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-86-area" target="" alt="" title="" href="" coords="762,79,807,125,765,130,737,104,747,93,742,80" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-87-area" target="" alt="" title="" href="" coords="698,80,704,128,731,127,727,98,717,90,718,79" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-88-area" target="" alt="" title="" href="" coords="662,80,669,129,695,126,691,96,682,91,678,79" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-89-area" target="" alt="" title="" href="" coords="647,80,647,91,657,97,660,127,634,128,632,103,634,96,631,88,629,82,626,81" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                        <area id="lot-90-area" target="" alt="" title="" href="" coords="617,81,613,91,615,100,624,107,632,130,606,140,596,108,604,101,600,90" shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);" style="z-index: 999;">
+                      
+
+                        <area id="lot-91-area" target="" alt="" title="" href="#"
+                            coords="546,177,550,172,558,171,568,173,599,148,568,111,556,121,559,129,559,137,556,144,550,150,539,158,539,164,540,170"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-92-area" target="" alt="" title="" href="#"
+                            coords="618,217,617,211,611,211,602,208,594,211,586,212,588,219,567,200,576,199,580,193,578,188,609,162,618,172,622,191,624,199,630,202,636,201,632,208,623,214"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-93-area" target="" alt="" title="" href="#"
+                            coords="637,194,614,149,631,142,633,149,635,142,670,142,670,165,664,165,655,169,649,173"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-94-area" target="" alt="" title="" href="#"
+                            coords="678,164,678,143,711,142,710,145,717,150,728,142,738,156,703,181,691,170"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-95-area" target="" alt="" title="" href="#"
+                            coords="706,216,722,201,728,208,757,182,739,162,707,191,707,197,708,207" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-96-area" target="" alt="" title="" href="#"
+                            coords="635,293,643,280,656,288,679,258,676,247,669,242,669,236,649,234,648,241,645,249,624,276"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+
+                        <area id="lot-102-area" target="" alt="" title="" href="#"
+                            coords="819,584,864,584,863,611,830,610,830,601,817,600,818,592" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-103-area" target="" alt="" title="" href="#"
+                            coords="805,635,823,636,822,644,861,646,862,620,812,619" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-104-area" target="" alt="" title="" href="#"
+                            coords="799,644,852,667,843,682,839,681,836,690,804,675,804,665,798,661,792,658,788,658"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-105-area" target="" alt="" title="" href="#"
+                            coords="772,672,779,676,784,679,790,682,794,682,822,695,814,711,809,708,807,716,775,703,774,692,756,684"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-106-area" target="" alt="" title="" href="#"
+                            coords="750,689,751,702,755,705,761,705,767,708,773,711,778,715,781,726,750,734,747,723,771,716,761,711,753,711,748,713,747,717,745,723,735,732,716,743,706,747,698,748,687,748,677,747,670,744,692,728,733,700"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-107-area" target="" alt="" title="" href="#"
+                            coords="649,757,652,764,658,768,664,770,683,799,662,814,640,782,648,777,639,765"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-108-area" target="" alt="" title="" href="#"
+                            coords="623,776,652,820,629,835,607,803,616,798,608,786" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-109-area" target="" alt="" title="" href="#"
+                            coords="588,798,618,841,596,856,574,824,582,819,575,808" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-110-area" target="" alt="" title="" href="#"
+                            coords="556,820,586,863,564,878,542,845,548,841,541,829" shape="poly"
+                            onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+                        <area id="lot-111-area" target="" alt="" title="" href="#"
+                            coords="533,854,553,883,531,898,508,866,516,861,510,852,520,846,523,850,527,852"
+                            shape="poly" onMouseOver="areaMouseEnter(event);" onMouseOut="areaMouseLeave(event);"
+                            style="z-index: 999;">
+
+                    </map>
+
+
+                </div>
+                <!-- Text -->
+                <div class="col-md-6 my-auto pt-4">
+                    <div class="custom-col-padding">
+                        <h6 class="mb-4 ls1 text-uppercase font-weight-light">Easy to use</h6>
+                        <h1 class="display-3 font-weight-bolder">Interactive<br>Lot Map</h1>
+                        <h4 class="mt-4 font-weight-light">Hover over any lot to see more details about the lot!</h4>
+                        <a href="{% url 'lot-map' %}"
+                            class="button button-xlarge button-circle text-capitalize ls0 mt-2 px-5 button-dark h-bg-dark button-coral">View
+                            Full Sized Map <i class="icon-line-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <div class="section mt-0 border-top-0">
+            <div class="container clearfix">
+                <div class="heading-block center m-0">
+                    <h3>Latest from the Blog</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row posts-md col-mb-30 mb-2">
+
+                {% for blog in blogs %}
+                <div class="col-lg-3 col-md-6">
+                    <div class="entry">
+                        <div class="entry-image">
+                            <a href="{% url 'blog_single' slug=blog.seo_set.last.slug %}"><img class="blog-home-img"
+                                    src="{{blog.image.url}}" alt="Image"></a>
+                        </div>
+                        <div class="entry-title title-xs nott">
+                            <h3><a href="{% url 'blog_single' slug=blog.seo_set.last.slug %}">{{blog.title}}</a></h3>
+                        </div>
+                        <div class="entry-meta">
+                            <ul>
+                                <li><i class="icon-calendar3"></i>{{blog.datetime}}</li>
+                            </ul>
+                        </div>
+                        <div class="entry-content">
+                            <p class="mt-0 pt-0">{{blog.story|safe|truncatewords:"15"}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section parallax dark my-0"
+            style="background-image: url('{{testimonial_bg_image}}'); padding 100px 0;min-height: 400px;"
+            data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+            <div class="heading-block center">
+                <h3>What guests are saying</h3>
+            </div>
+
+            <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+                <div class="flexslider">
+                    <div class="slider-wrap">
+                        {% for testimonial in testimonials.all %}
+                        <div class="slide">
+                            <div class="testi-image">
+                                <a href="#" class="pointer-event-none"><img src="{{testimonial.avatar.url}}"
+                                        alt="Customer Testimonails"></a>
+                            </div>
+                            <div class="testi-content">
+                                <p>{{testimonial.story|strip_tags }}</p>
+                                <div class="testi-meta">
+                                    {{testimonial.first_name}} {{testimonial.last_name}}
+                                    <span>{{testimonial.location}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="contact_us" class="">
+            <div class="heading-block topmargin-sm center">
+                <h3>How To Find Us</h3>
+            </div>
+
+            <div class="row align-items-stretch mb-4 gmaps-row">
+
+                <div class="col-sm-12 col-md-12 col-lg-5 p-0 m-0">
+                    <div class="gmap h-100" data-address="23601 Perdido Beach Blvd, Orange Beach, AL 36561, USA"
+                        data-maptype="ROADMAP" data-zoom="12"
+                        data-markers='[{ address: "23601 Perdido Beach Blvd, Orange Beach, AL 36561, USA", html: "23601 Perdido Beach Blvd, Orange Beach, AL 36561, USA", icon:{ image: "{% static "images/icons/map-icon-red.png" %}", iconsize: [32, 36], iconanchor: [14,44] } }]'
+                        data-styles='[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"color":"#F0AD4E"},{"lightness":60}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#2C3E50"},{"visibility":"on"}]}]'>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-3" style="background-color: #2c4c62;">
+                    <div style="padding-left: 10px;padding-right: 10px;padding-top:50px;padding-bottom: 50px;">
+                        <h4 class="font-body font-weight-semibold ls1">Our Location</h4>
+
+                        <div style="font-size: 15px; line-height: 1.7;">
+                            <address style="line-height: 1.7;">
+                                <strong>Address:</strong><br>
+                                23601 Perdido Beach Blvd<br>
+                                Orange Beach, AL 36561, USA<br><br>
+                                <abbr title="Phone Number"><strong>Phone:</strong></abbr> (251)-980-1855<br>
+                                <abbr title="Email Address"><strong>Email:</strong></abbr>
+                                info@buenavistaorangebeach.com
+                            </address>
+
+                            <div class="clear topmargin-sm"></div>
+
+                            <h4 class="font-body font-weight-medium" style="font-size: 17px; margin-bottom: 10px;">
+                                Working Hours:</h4>
+
+                            <abbr title="Mondays to Fridays"><strong>Mon-Fri:</strong></abbr> 9AM to 5PM<br>
+                            <abbr title="Saturday"><strong>Saturday:</strong></abbr> 9AM to 5PM<br>
+                            <abbr title="Sunday"><strong>Sunday:</strong></abbr> 9AM to 5PM
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-lg-3 bg-color">
+                    <div style="padding: 40px;">
+                        <div class="quick-contact-widget form-widget dark clearfix">
+                            <h3 class="text-capitalize ls1 font-weight-normal">Have a question?</h3>
+                            <form id="gmap_form" method="post" class=" mb-0">
+                                {% csrf_token %}
+                                {{contact_form.name}}
+                                {{contact_form.email}}
+                                {{contact_form.phone}}
+                                {{contact_form.message}}
+                                <button type="submit"
+                                    class="button button-small button-rounded button-light button-white m-0 form-submit"
+                                    onclick="sendEmail()">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section><!-- #content end -->
+{% endblock %}
+
+
+
+{% block extra_js %}
+<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+<script src="{% static 'include/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'include/rs-plugin/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+
+<script>
+
+    function sendEmail() {
+
+
+        event.preventDefault();
+        // event.stopPropagation();
+        if ($('#gmap_form').find('#id_name').val() == '' || $('#gmap_form').find('#id_email').val() == '' || $('#gmap_form').find('#id_phone').val() == '' || $('#gmap_form').find('#id_message').val() == '') {
+            // alert('Please fill out all required fields')
+        }
+        else {
+            var data = new FormData();
+
+            //Form data
+            var form_data = $('#gmap_form ').serializeArray();
+            $.each(form_data, function (key, input) {
+                data.append(input.name, input.value);
+            });
+            $.ajax({
+                type: 'POST',
+                url: '/contact/',
+                csrfmiddlewaretoken: $('#gmap_form input[name=csrfmiddlewaretoken]').val(),
+                dataType: "html",
+                action: 'post',
+                processData: false,
+                contentType: false,
+                data: data,
+
+                success: function (data) {
+                    $('#gmap_form')[0].reset();
+                    alert('Form Submitted')
+
+
+                },
+                error: function (data) {
+                    // alert('hey')
+                    // $('label[class="error"]').remove();
+                    // document.getElementById('id_title').blur()
+                    // var errors = Object.keys(JSON.parse(data['responseText'])['errors'])
+                    // for (var field in errors) {
+                    //     $('label[for="id_' + errors[field] + '"').parent().append('<label class="error">' + JSON.parse(data['responseText'])['errors'][errors[field]] + '</label>')
+                    // }
+                },
+            });
+
+        }
+
+
+    }
+
+</script>
+<script>
+    var tpj = jQuery;
+    var revapi31;
+    var $ = jQuery.noConflict();
+
+    tpj(document).ready(function () {
+        if (tpj("#rev_slider_679_1").revolution == undefined) {
+            revslider_showDoubleJqueryError("#rev_slider_679_1");
+        } else {
+            revapi31 = tpj("#rev_slider_679_1").show().revolution({
+                sliderType: "standard",
+                jsFileLocation: "include/rs-plugin/js/",
+                sliderLayout: "fullwidth",
+                dottedOverlay: "none",
+                delay: 16000,
+                hideThumbs: 200,
+                thumbWidth: 100,
+                thumbHeight: 50,
+                thumbAmount: 5,
+                navigation: {
+                    keyboardNavigation: "on",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "hades",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: false,
+                        tmp: '<div class="tp-arr-allwrapper">	<div class="tp-arr-imgholder"></div></div>',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        }
+                    },
+                },
+                responsiveLevels: [1140, 1024, 778, 480],
+                visibilityLevels: [1140, 1024, 778, 480],
+                gridwidth: [1140, 1024, 778, 480],
+                gridheight: [700, 768, 960, 720],
+                lazyType: "none",
+                shadow: 0,
+                spinner: "off",
+                stopLoop: "off",
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+                shuffle: "off",
+                autoHeight: "off",
+                fullScreenAutoWidth: "off",
+                fullScreenAlignForce: "off",
+                fullScreenOffsetContainer: "",
+                fullScreenOffset: "0px",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    nextSlideOnWindowFocus: "off",
+                    disableFocusListener: false,
+                }
+            });
+        }
+
+        revapi31.on("revolution.slide.onloaded", function (e) {
+            setTimeout(function () { SEMICOLON.slider.sliderDimensions(); }, 200);
+        });
+
+        revapi31.on("revolution.slide.onchange", function (e, data) {
+            SEMICOLON.slider.revolutionSliderMenu();
+        });
+    });	/*ready*/
+</script>
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGwmfDuuavQ3lB52N6VbKzb64xHYo48To&callback=initMap&libraries=&v=weekly" async></script> -->
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAGwmfDuuavQ3lB52N6VbKzb64xHYo48To"></script>
+
+<script>
+    function initMap() {
+        // Create a new StyledMapType object, passing it an array of styles,
+        // and the name to be displayed on the map type control.
+        const styledMapType = new google.maps.StyledMapType(
+            [
+                { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#444444" }] },
+                { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
+                { featureType: "poi", elementType: "all", stylers: [{ visibility: "on" }] },
+                { featureType: "road", elementType: "all", stylers: [{ color: "#F0AD4E" }, { lightness: 60 }] },
+                { featureType: "road.highway", elementType: "all", stylers: [{ visibility: "simplified" }] },
+                { featureType: "road.arterial", elementType: "labels.icon", stylers: [{ visibility: "on" }] },
+                { featureType: "transit", elementType: "all", stylers: [{ visibility: "on" }] },
+                { featureType: "water", elementType: "all", stylers: [{ color: "#2C3E50" }, { visibility: "on" }] }
+            ],
+            { name: "Styled Map" },
+        );
+        // Create a map object, and include the MapTypeId to add
+        // to the map type control.
+        const myLatLng = { lat: 30.26160991967599, lng: -87.62203817527536 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+
+            center: myLatLng,
+            zoom: 12,
+            mapTypeControlOptions: {
+                mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
+            },
+        },
+        );
+        const contentString =
+            '<div id="content">' +
+            '<div id="siteNotice">' +
+            "</div>" +
+            '<h1 id="firstHeading" class="firstHeading mx-auto w-50">Buena-Vista</h1>' +
+            '<div id="bodyContent" class="pl-3 pr-3">' +
+            "<p><b>Luxury Motor Coach Resort</b>, Come experience the new standard of high-end luxury motor coach resort experiences. We offer larger lots, beautifully landscaped for increased privacy, with gorgeous full-featured coach houses.</p>" +
+            '<p>Attribution: Buena-Vista, <a href="http://167.172.139.116/">' +
+            "http://167.172.139.116/</a> " +
+            "</p>" +
+            "</div>" +
+            "</div>";
+        const infowindow = new google.maps.InfoWindow({
+            content: contentString,
+        });
+        const marker = new google.maps.Marker({
+            position: myLatLng,
+            map,
+            title: "Buena-Vista RV Resort",
+        });
+        marker.addListener("click", () => {
+            infowindow.open(map, marker);
+        });
+
+        let infoWindow;
+        let pos;
+        infoWindow = new google.maps.InfoWindow();
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        const directionsService = new google.maps.DirectionsService();
+        directionsRenderer.setMap(map);
+        const control = document.getElementById("floating-panel");
+        control.style.display = "none";
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+        const onChangeHandler = function () {
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
+        };
+        onChangeHandler()
+
+        function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+            directionsService.route(
+                {
+                    origin: { lat: 32.22603248667249, lng: -90.15663865483897 },
+                    destination: '23601 Perdido Beach Blvd Orange Beach, AL 36561, USA',
+                    travelMode: google.maps.TravelMode.DRIVING,
+                },
+                (response, status) => {
+                    if (status === "OK") {
+                        directionsRenderer.setDirections(response);
+                    } else {
+                        window.alert("Directions request failed due to " + status);
+                    }
+                }
+            );
+        };
+
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            map.setCenter(new google.maps.LatLng(lat, lng));
+        }
+
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set("styled_map", styledMapType);
+        map.setMapTypeId("styled_map");
+    }
+</script>
+
+<script src="{% static 'js/image-map/jquery.rwdImageMaps.js' %}"></script>
+<script src="{% static 'js/image-map/jquery.rwdImageMaps.min.js' %}"></script>
+<script>
+    $('map[name=image-map] area').on('click', function (e) {
+        //... snip ...
+        e.stopPropagation();
+        return false;
+    });
+</script>
+<script>
+    function areaMouseEnter(event) {
+        var _this = $(event.target);
+        var idx = $(event.target).attr('id').split('-')[1];
+        var popup = $('.popup[name=lot-' + idx + ']');
+        popup.show();
+
+        var width = popup.width()
+        var height = popup.height()
+        var mouseX = event.pageX - $('img[usemap="#image-map"]').offset().left - width / 2 + 2;
+        var mouseY = event.pageY - $('img[usemap="#image-map"]').offset().top - height;
+        var windowWidth = $(window).width()
+
+
+        var area_id = _this.attr('id');
+        var lot_name = ".popup[name=lot-" + idx + "]"
+        $(lot_name).css({ 'top': mouseY, 'left': mouseX });
+        return false;
+
+    };
+    function areaMouseLeave(event) {
+        toEl = event.toElement || event.relatedTarget
+        var _id = $(event.target).attr('id').split('-')[1];
+        if ($(toEl).attr('class') != 'popup') {
+            $('.popup[name=lot-' + _id + ']').hide();
+        }
+
+    };
+    function popupMouseLeave(event) {
+        var _id = $(event.target).attr('name').split('-')[1];
+        $('.popup[name=lot-' + _id + ']').hide();
+    };
+
+    $(document).ready(function () {
+        $('img[usemap]').rwdImageMaps();
+    });
+    $(document).ready(function () {
+        $('img[usemap]').rwdImageMaps();
+        var boxHovered, boxNumber, selector, targetedBox, adjustX, adjustY;
+        $(".popup").hide();//This hides all the pop-ups when page loads
+        $(".box").hover(function () {//This executes when you hover ON the box
+            boxHovered = $(this).attr("id");//Gets the id of the box such as "box1", "box2"
+            targetedBox = "#" + boxHovered;//creates a value of "#box1", "#box2", etc for future use
+            boxNumber = boxHovered.substr(3, 5);//extracts the # from the id, such as 1, 2, 3
+            selector = "#popup" + boxNumber;//creates a value of "#popup1", "#popup2", etc for future use
+            $(selector).show();//This reveals the popup inside the hovered box
+        }, function () {//This executes when you hover OFF the box
+            $(selector).hide();//This hides the popup inside the hovered box
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        if (window.location.hash) scroll(0, 0);
+        if (String(window.location.hash).includes('about_us')) {
+            document.getElementById('about_us').scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+                inline: "center",
+            })
+        }
+        else if (String(window.location.hash).includes('contact_us')) {
+            document.getElementById('contact_us').scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+                inline: "center",
+            })
+        }
+
+    })
+</script>
+{% endblock %}

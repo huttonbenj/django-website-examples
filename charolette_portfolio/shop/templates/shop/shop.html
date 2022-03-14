@@ -1,0 +1,43 @@
+{% load static %}
+{% block shop %}
+<!--====== Shop ======-->
+<section id="shop" class="blog" style="padding: 5%;">
+    <div class="container">
+
+        <!-- section header -->
+        <div class="section-head text-center">
+            <h5 class="tit">Shop</h5>
+            <!-- <a href="blog.html">
+                <p class="pull-right">For All Newsletter >></p>
+            </a> -->
+        </div>
+
+        <div class="row">
+
+            {% for post in shop %}
+            <!-- posts -->
+            <div class="col-md-4">
+                <div class="s-post">
+                    <div class="post-img">
+                        <img src="{{ post.thumbnail.cdn_url }}" alt="image">
+                    </div>
+                    <div class="s-post-content">
+                        <h6>{{ post.title }}</h6>
+                        <p>{{ post.description }}</p>
+
+                        {% if post.category == 'originals' or post.category == 'prints' %}
+                        <a href="{{ post.category }}"><span>SHOP {{ post.category|upper }}</span></a>
+                        
+                        {% else %}
+                        <a href="artwork"><span>SHOP {{ post.category|upper }}</span></a>                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<!--====== End Blog ======-->
+{% endblock %}

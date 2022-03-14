@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<title>{{seo.title}}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{seo.description}}" />{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{meta_tags}}" />{% endblock %}
+{% block image %}<meta property="og:image" content="{{event.background_image.url}}">{% endblock %}
+
+{% block analytics %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-196612514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-196612514-1');
+</script>
+{% endblock %}
+
+{% block header %}
+    {% include 'header-color.html' %}
+{% endblock %}
+
+{% block content %}
+<style>
+    .bg-dark {
+        background-color: #2c4c62 !important;
+    }
+</style>
+<section id="content">
+    <div class="content-wrap pt-0 ">
+        <div class="container clearfix">
+
+            <!-- Entry Image
+            ============================================= -->
+            <div class="entry-image align-wide-full min-vh-50 d-flex align-items-center justify-content-center px-5" style="background: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{page_title.background_image.url}}) no-repeat center center / cover;height: 400px;">
+
+                <div class="p-4 bg-dark position-relative rounded text-sm-center mw-xs">
+
+                    <!-- Entry Title
+                    ============================================= -->
+                    <h2 class="mb-3">{{event.short_title}}</h2>
+
+                    <!-- Entry Meta
+                    ============================================= -->
+                    <div class="d-flex justify-content-center">
+                        <div class="entry-meta mb-0 pb-3">
+                            <ul>
+                                <li><i class="icon-calendar3"></i> <strong>Date:</strong> {{event.datetime}}</li>
+                                <li><i class="icon-map-marker2"></i> <strong>Location:</strong> {{event.location}}</li>
+                                <!-- <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li> -->
+                            </ul>
+                        </div><!-- .entry-meta end -->
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="single-post mx-auto">
+
+                <!-- Single Post
+                ============================================= -->
+                <div class="entry clearfix">
+
+                    <div class="clear"></div>
+
+                    <!-- Entry Content
+                    ============================================= -->
+                    <div class="entry-content mt-3">
+
+                        <p>
+                            <div class="entry-image alignleft">
+                                <a href="#"><img src="{{event.background_image.url}}" alt="Event Image"></a>
+                            </div>{{event.description|safe}}</p>
+
+                        <div class="clear"></div>
+
+                    </div>
+                </div><!-- .entry end -->
+       
+            </div>
+
+            <div class="col-md-12">
+                <h4>Events Timeline</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date/Time</th>
+                                <th>Location</th>
+                                <th>Events</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for event in events_timeline %}
+                            <tr>
+                                <td><span class="badge badge-danger">{{event.datetime}}</span></td>
+                                <td>{{event.location}}</td>
+                                <td>{{event.short_title}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/components/moment.js' %}"></script>
+{% endblock %}

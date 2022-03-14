@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static thumbnail %}
+
+{% block extra_css %}
+<style>
+	.dark .entry::after {
+		background-color: transparent;
+	}
+	.service-description {
+		padding-bottom: 50px;
+	}
+	
+	.service-description h1, h2, h3, h4, h5, h6 {
+		margin-top: 15px !important;
+        margin-bottom: 0px !important;
+    }
+	@media (max-width: 992px){
+        .mobile {
+			padding-top: 20px !important;
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+			text-align: left !important;
+        }
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- <section id="page-title" class="page-title-mini">
+
+    <div class="container clearfix">
+        <h1>{{service.title}}</h1>
+        <span>{{service.page_title_description}}</span>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ service.title }}</li>
+		</ol>
+    </div>
+
+</section> -->
+
+<!-- <section id="page-title" class="page-title-parallax include-header" style="background-image:  radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{service.image.url}}); padding: 120px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="container clearfix">
+        <h1 data-animate="fadeInUp" class="fadeInUp animated">{{ service.title }}</h1>
+        <span data-animate="fadeInUp" data-delay="300" class="fadeInUp animated">{{service.page_title_description}}</span>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ service.title }}</li>
+		</ol>
+    </div>
+
+</section> -->
+<section id="page-title" class="page-title-mini">
+
+<div class="container clearfix">
+	<h1>{{service.title}}</h1>
+	<span>{{service.page_title_description}}</span>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item active">{{service.title}}</li>
+	  </ol>
+</div>
+
+</section>
+		<!-- Content
+		============================================= -->
+		<!-- <section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+
+					<div class="row gutter-40 col-mb-80">
+						<div class="postcontent col-lg-12 mx-auto">
+
+							<div class="single-post mb-0">
+
+								<div class="entry clearfix">
+
+									<div class="entry-content mt-0">
+
+
+                                        <p> {{ service.description|safe }} </p>
+
+
+										<div class="clear"></div>
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section> -->
+		<div class="row">
+	
+		{% thumbnail service.image "800" crop="center" as im %}
+		<div class="col-lg-4 center col-padding" style="background: url({{im.url}}) center center no-repeat; background-size: cover;">
+		</div>
+		{% endthumbnail %}
+
+		<div class="col-lg-8 col-md-12 text-center text-md-start px-6 pt-5 service-description mobile">
+
+			<p> {{ service.description|safe }} </p>
+			<!-- <a href="" class="button button-large button-rounded topmargin-sm ms-0">Book Now</a> -->
+		</div>
+	</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+	let els = $('.service-description').children()
+	$.each(els, function(index){
+		let lastIndex = els.length-1;
+
+		if (index < lastIndex){
+			let tagName = els[index+1].tagName;
+			if (tagName == 'UL'){
+				$(els[index]).css('margin-bottom', '0px');
+			} else {
+				$(els[index]).css('margin-bottom', '10px');
+			}
+		}
+
+	})
+</script>
+{% endblock %}

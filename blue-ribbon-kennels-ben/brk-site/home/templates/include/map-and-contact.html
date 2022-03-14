@@ -1,0 +1,62 @@
+{% load static %}
+
+<div class="row align-items-stretch mx-0">
+
+    <div class="col-lg-3" style="background-color: #162340;">
+        <div style="padding: 40px;">
+            <h4 class="font-body fw-semibold ls1">Our Headquarters</h4>
+
+            <div style="font-size: 15px; line-height: 1.7;">
+                <address style="line-height: 1.7;">
+                    <strong>Address:</strong><br>
+                    3030 Kickapoo Rd<br>
+                    Jackson, MS 39209.<br><br>
+                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> (601)-981-0183<br>
+                    <abbr title="Email Address"><strong>Email:</strong></abbr> Replace Email
+                </address>
+
+                <div class="clear topmargin-sm"></div>
+
+                <h4 class="font-body fw-medium" style="font-size: 17px; margin-bottom: 10px;">Working Hours:</h4>
+
+                <abbr title="Mondays to Fridays"><strong>Mon-Fri:</strong></abbr> 7:30AM to 5:30PM<br>
+                <abbr title="Saturday"><strong>Saturday:</strong></abbr> 8AM to 12PM<br>
+                <abbr title="Sunday"><strong>Sunday:</strong></abbr> Closed
+            </div>
+        </div>
+    </div>
+    <div id="map" class="col-sm-12 col-md-12 col-lg-5 px-0 d-block">
+        <div class="gmap h-100" data-address="3030 Kickapoo Rd, Jackson, MS" data-maptype="ROADMAP" data-zoom="11" data-markers='[{ address: "3030 Kickapoo Rd, Jackson, MS", html: "3030 Kickapoo Rd, Jackson, MS", icon:{ image: "{% static 'images/icons/map-icon-red.png' %}", iconsize: [32, 36], iconanchor: [14,44] } }]' data-styles='[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"color":"#F0AD4E"},{"lightness":60}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#2C3E50"},{"visibility":"on"}]}]'></div>
+    </div>
+    <div class="col-lg-4 bg-color" style="background-color: #162340 !important;">
+        <div class="col-padding mobile-col-padding">
+            <div class="quick-contact-widget form-widget dark clearfix">
+
+                <h3 class="text-capitalize ls1 fw-normal">Have A Question?</h3>
+
+                <div class="form-result"></div>
+
+                <form id="quick-contact-form" name="quick-contact-form" action="" method="post" class="quick-contact-form mb-0">
+                    {% csrf_token %}
+                    <div class="form-process">
+                        <div class="css3-spinner">
+                            <div class="css3-spinner-scaler"></div>
+                        </div>
+                    </div>
+
+                    <input type="text" class="required sm-form-control input-block-level not-dark" id="name" name="name" value="" placeholder="Full Name" />
+
+                    <input type="email" class="required sm-form-control email input-block-level not-dark" id="email" name="email" value="" placeholder="Email Address" />
+
+                    <input type="text" class="required sm-form-control input-block-level not-dark" id="phone" name="phone" value="" placeholder="Phone Number " />
+
+                    <textarea class="required sm-form-control input-block-level not-dark short-textarea" id="message" name="message" rows="5" cols="30" placeholder="How can we help you?"></textarea>
+
+                    <button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="button button-small button-rounded button-light button-white m-0" value="submit" onclick="submitContactForm(event);">Submit Form</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

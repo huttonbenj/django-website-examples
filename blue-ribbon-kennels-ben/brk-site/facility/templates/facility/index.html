@@ -1,0 +1,115 @@
+{% extends 'base.html' %} {% load thumbnail %} {% block content %}
+
+{% block extra_css %}
+<style>
+  .custom-light-bg {
+    background-color: #383838;
+  }
+  .facility-description h2,
+  .facility-description p {
+    text-align: left !important;
+  }
+  .content-wrap {
+    background-color: rgba(0,0,0,0.2);
+  }
+  .desktop {
+		display: block;
+	}
+	.mobile {
+		display: none;
+	}
+
+  @media (max-width: 992px){
+    .desktop {
+			display: none !important;
+		}
+		.mobile {
+			display: block !important;
+		}
+    .mobile-padding {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
+}
+</style>
+{% endblock %}
+
+<section id="page-title" class="page-title-mini">
+
+  <div class="container clearfix">
+    <h1>{{page_obj.page_title}}</h1>
+    <span>{{page_obj.page_title_description}}</span>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active">{{page_obj.page_title}}</li>
+    </ol>
+  </div>
+
+</section>
+
+<section id="content">
+  <div class="content-wrap py-0">
+    <div class="row align-items-stretch ">
+      {% thumbnail page_obj.content_image "800" crop="center" as im %}
+      <div class="col-lg-5 center col-padding" style="background: url({{im.url}}) center center no-repeat; background-size: cover;">
+      </div>
+      {% endthumbnail %}
+      <div class="col-lg-7 col-md-12 text-center text-md-start px-6 pt-5 facility-description custom-light-bg mobile-padding">
+        <div class="heading-block border-bottom-0 center">
+          <h2>{{page_obj.content_title}}</h2>
+          <p>{{page_obj.content_description|safe}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="line mt-0"></div>
+
+    <!-- <div class="container"> -->
+      <h3 class="center">Facility Images</h3>
+      <div class="masonry-thumbs grid-container grid-6 desktop" data-big="3" data-lightbox="gallery">
+        {% for item in images %}
+        <a class="grid-item" href="{{item.image.url}}" data-lightbox="gallery-item">
+          <div class="grid-inner">
+            {% thumbnail item.image "700x500" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+            {% endthumbnail %}
+            <div class="bg-overlay">
+              <div class="bg-overlay-content dark">
+                <i class="icon-line-plus h4 mb-0" data-hover-animate="fadeIn"></i>
+              </div>
+              <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="masonry-thumbs grid-container grid-3 mobile" data-big="3" data-lightbox="gallery">
+        {% for item in images %}
+        <a class="grid-item" href="{{item.image.url}}" data-lightbox="gallery-item">
+          <div class="grid-inner">
+            {% thumbnail item.image "700x500" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+            {% endthumbnail %}
+            <div class="bg-overlay">
+              <div class="bg-overlay-content dark">
+                <i class="icon-line-plus h4 mb-0" data-hover-animate="fadeIn"></i>
+              </div>
+              <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="row text-center ">
+        <div class="m-4">
+
+          <a href="{% url 'gallery' %}" class="btn btn-outline-primary facility-button">View Full Gallery &rarr;</a>
+        </div>
+
+      </div>
+    <!-- </div> -->
+  </div>
+</section>
+<!-- #content end -->
+
+{% endblock %}

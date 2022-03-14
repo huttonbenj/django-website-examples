@@ -1,0 +1,94 @@
+{% extends 'cart_base.html' %}
+{% load static %}
+{% block content %}
+<!-- ====== Header ======  -->
+<header id="home" class="header" style="background-image: url({{ background.0.background_image.cdn_url }});min-height:70vh;">
+	<div class="header-overlay">
+		<!-- header content -->
+		<div class="caption v-middle text-center">
+			<h1>{{ background.0.header_title }}</h1>
+
+		</div>
+	</div>
+</header>
+<!-- ====== End Header ======  -->
+
+
+<!-- ====== products ======  -->
+<section class="products section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				{% for i in cart_items %}			
+
+
+				<div class="shop-items single mb-80">
+					<div class="col-md-5">
+						<div class="owl-carousel owl-theme">
+							<div class="item">
+								<div class="item-img">
+									<img src="{{ i.image_url }}" alt="image">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-7">
+						<div class="product-info">
+							<h4>{{ i.image_title }}</h4>
+							<span class="categrs">{{ i.image_category }}</span>
+							<h5>${{ i.image_price }}</h5>
+
+							<div class="accordion">
+								<div class="">
+									<h6>Description <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+									</h6>
+								</div>
+								<div class="active">
+									<p>{{ i.image_description }}</p>
+
+								</div>
+							</div>
+
+							<form action="{% url 'cart' %}" method="post" class="text-center">
+								{% csrf_token %}
+								<button type="submit" id="remove" name="remove" value="{{ i.image_url }}" class="btn btn-danger">Remove</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				{% if cart_items|length == 0 %}
+				<section class="shop-cart text-center">
+					<h1>Cart Empty <span> <i class="fa fa-exclamation" aria-hidden="true"></i></span></h1>
+				</section>
+				{% endif %}
+				
+
+
+				<div class="col-md-12 text-center">
+					<h6>Total: ${{ total }}</h6>
+				</div>
+
+				<form action="{% url 'checkout' %}?total={{ total }}" method="post" class="text-center">
+					{% csrf_token %}
+					<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+						data-key="{{ stripe_key }}" data-description="Charolette Meadows"
+						data-amount="{{ payment_total }}" data-locale="auto"></script>
+				</form>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+<div class="clear-fix"></div>
+<!-- ====== End posts ======  -->
+
+
+
+
+{% endblock %}

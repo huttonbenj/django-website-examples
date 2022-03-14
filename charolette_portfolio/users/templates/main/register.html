@@ -1,0 +1,64 @@
+{% extends 'user_base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <!-- ====== Login ======  -->
+    <section class="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+                    <div class="login-box">
+                        <div class="login-info text-center mb-50">
+                            <h4>Create Account</h4>
+                        </div>
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            <!-- {{form.as_p}} -->
+                            <div class="col-sm-6">
+                                {% render_field form.first_name placeholder=form.first_name.label style='margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;width:100% '%}
+                            </div>
+                            <div class="col-sm-6">
+                                {% render_field form.last_name placeholder=form.last_name.label style='margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;width:100%  '%}
+                            </div>
+                            <div class="col-sm-12">
+                                {% render_field form.username placeholder=form.username.label style='margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;width:100% '%}
+                            </div>
+                            <div class="col-sm-12">
+                                {% render_field form.email placeholder=form.email.label class='col-sm-12' style='margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;width:100% ' %}
+                            </div>
+                            <div class="col-sm-12">
+                                {% render_field form.password1 placeholder=form.password1.label class='col-sm-12' style='margin-bottom:25px;padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;width:100% ' %}
+                            </div>
+                            <div class="col-sm-12">
+                                {% render_field form.password2 placeholder=form.password2.label class='col-sm-12' style='padding-left:3px;padding-bottom:3px;border-top:none;border-left:none;border-right:none;border-bottom:1px solid grey;width:100% ' %}
+                            </div>
+                            <div class="col-sm-12">
+                                <input type="hidden" name="previous_url" value="{{ previous_url }}">
+                                <input type="hidden" name="keep_shopping" value="{{ keep_shopping }}">
+                                <input type="hidden" name="checkout" value="{{ checkout }}">
+                                <input type="hidden" name="item" value="{{ item }}">
+                                <input type="hidden" name="cart_link" value="{{ cart_link }}">
+                                <input type="hidden" name="login_link" value="{{ login_link }}">
+                                <input type="hidden" name="referrer" value="{{ referrer }}">
+                                <input type="hidden" name="reset" value="{{ reset }}">
+
+                                <input type="submit" name="send" value="Register">
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+                    <div class="login-link">
+                        <p>Already Have An Account! <span><a href="/login/?previous_url={{ previous_url }}&keep_shopping={{ keep_shopping }}&checkout={{ checkout }}&item={{ item }}&cart_link={{ cart_link }}&login_link={{ login_link }}&referrer={{ referrer }}">Login</a></span></p>
+                        <p>Forgot your username or password? <span><a href="{% url 'password_reset' %}">Recover account</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== End Login ======  -->
+
+{% endblock %}

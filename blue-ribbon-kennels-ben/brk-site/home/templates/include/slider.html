@@ -1,0 +1,92 @@
+<!-- Slider
+============================================= -->
+<section id="slider" class="slider-element revslider-wrap slider-parallax min-vh-100 include-header">
+    <div class="slider-inner">
+        <div id="rev_slider_579_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="default-slider" style="padding:0px;">
+            <!-- START REVOLUTION SLIDER 5.1.4 fullscreen mode -->
+            <div id="rev_slider_579_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.1.4">
+                <ul>   <!-- SLIDE  -->
+                    {% for slide in slides %}
+                    <li class="dark" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="{{slide.image.url}}"  data-saveperformance="off"  data-title="Welcome to Canvas">
+                        <!-- MAIN IMAGE -->
+                        <img src="{{slide.image.url}}"  alt="kenburns6"  data-bgposition="center center" data-bgpositionend="center bottom"  data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="130" data-scaleend="100" data-bgpositionend="right bottom">
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+              
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption ltl tp-resizeme revo-slider-caps-text text-uppercase custom-slider-text-shadow"
+                        data-x="center" data-hoffset="0"
+                        data-y="top" data-voffset="235"
+                        data-width="none"
+                        data-height="none"
+                        data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+                        data-speed="800"
+                        data-start="1000"
+                        data-easing="easeOutQuad"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.1"
+                        data-endspeed="1000"
+                        data-textAlign="center"
+                        data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;">{{slide.meta_title}}</div>
+
+                        <div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0 custom-slider-text-shadow"
+                        data-x="center" data-hoffset="0"
+                        data-y="top" data-voffset="260"
+                        data-width="none"
+                        data-height="none"
+                        data-fontsize="['60','50','40','28']"
+                        data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+                        data-speed="800"
+                        data-start="1200"
+                        data-easing="easeOutQuad"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.1"
+                        data-endspeed="1000"
+                        data-textAlign="center"
+                        data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;">{{slide.title}}</div>
+
+                        <div class="tp-caption ltl tp-resizeme revo-slider-desc-text custom-slider-text-shadow"
+                        data-x="center" data-hoffset="0"
+                        data-y="top" data-voffset="370"
+                        data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+                        data-speed="800"
+                        data-lineheight="['30','30','34','26']"
+                        data-width="['750','750','480','360']"
+                        data-fontsize="['20','20','20','16']"
+                        data-start="1400"
+                        data-easing="easeOutQuad"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.1"
+                        data-endspeed="1000"
+                        data-textAlign="center"
+                        data-endeasing="Power4.easeIn" style="z-index: 3; width: 750px; max-width: 750px; white-space: normal;">{{slide.description}}</div>
+
+                        <div class="tp-caption ltl tp-resizeme custom-slider-text-shadow"
+                        data-x="center" data-hoffset="0"
+                        data-y="top" data-voffset="478"
+                        data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
+                        data-speed="800"
+                        data-start="1550"
+                        data-easing="easeOutQuad"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.1"
+                        data-endspeed="1000"
+                        data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;"><a href="{{slide.button_link}}" class="button button-border button-white button-light button-large button-rounded text-end m-0 custom-slider-button-shadow"><span>{{slide.button_text}}</span> <i class="icon-angle-right"></i></a></div>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div><!-- END REVOLUTION SLIDER -->
+    </div>
+</section>

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Dark - Canvas | The Multi-Purpose HTML5 Template</title>
+    
+    {% block extra_css %}{% endblock %}
+
+</head>
+
+<body class="stretched dark">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+		<div id="custom-error-msg" class="position-fixed top-0 end-0 p-3" style="z-index: 999999;"><div id="toast" class="toast p-2 text-white bg-danger border-0 fade " role="alert" aria-live="assertive" aria-atomic="true"><div class="d-flex"><div class="toast-body"></div><button type="button" class="btn-close btn-close-white btn-sm me-2 mt-2 ms-auto" data-bs-dismiss="toast" aria-label="Close"></button></div></div></div>
+		<div id="custom-success-msg" class="position-fixed top-0 end-0 p-3" style="z-index: 999999;"><div id="toast" class="toast p-2 text-white bg-success border-0 fade " role="alert" aria-live="assertive" aria-atomic="true"><div class="d-flex"><div class="toast-body"></div><button type="button" class="btn-close btn-close-white btn-sm me-2 mt-2 ms-auto" data-bs-dismiss="toast" aria-label="Close"></button></div></div></div>
+
+        {% include 'include/header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'include/footer.html' %}
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<a href="{% url 'create' %}"><button id="gotoTop" class="button button-circle">Book Now</button></a>
+
+	<!-- <div class="si-sticky si-sticky-right d-none d-lg-block">
+		<a href="#" class="button bounceInRight animated" data-animate="bounceInRight" style="box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.726);">
+			Book Now
+		</a>
+	</div> -->
+	<!-- JavaScripts
+	============================================= -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{% static 'js/functions.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+
+	<script>
+		$('.menu-item').click(function(e) {
+			let _this = $(this)
+			let targ = $(e.target)
+			if (_this.attr('id') == 'boarding-and-training-btn') {
+				e.preventDefault()
+				if(!$(targ).hasClass('sub-menu-trigger')) {
+					if (targ.attr('class') == 'menu-item sub-menu'){
+						_this.find('.sub-menu-trigger').click()
+					} else if (targ.attr('class') == undefined || targ.attr('class') == 'menu-link has-href' || targ.attr('class') == 'custom-icon' ){
+						window.location.href = window.location.origin + targ.closest('a').attr('href')
+					}
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>
